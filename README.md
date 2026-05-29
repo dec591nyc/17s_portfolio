@@ -6,6 +6,12 @@ A premium, state-of-the-art developer portfolio website featuring a **Next.js** 
 
 ---
 
+## 📊 Project Infographic
+
+![17s Portfolio Infographic](./images/portfolio_infographic.jpg)
+
+---
+
 ## 📁 Project Structure
 
 This repository is split into two primary components:
