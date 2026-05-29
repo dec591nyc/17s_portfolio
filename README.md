@@ -1,8 +1,8 @@
-# Ethan Nien - Portfolio Website (17s_portfolio)
+# Yichi Nien - Portfolio Website (17s_portfolio)
 
 A premium, state-of-the-art developer portfolio website featuring a **Next.js** frontend and a **FastAPI (Python)** backend, styled using vanilla CSS variables for a clean, earthy beige-grey design system with olive green highlights.
 
-🔗 **Live Demo**: [https://17s-portfolio.vercel.app](https://17s-portfolio.vercel.app) *(如果您已有部署好的網址，可以將此處替換為您的連結)*
+🔗 **Live Demo**: [https://17s-portfolio.vercel.app](https://17s-portfolio.vercel.app)
 
 ---
 
