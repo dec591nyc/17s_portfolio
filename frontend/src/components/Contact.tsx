@@ -31,7 +31,7 @@ export default function Contact() {
 
   const contactInfo = [
     { icon: "📍", label: "Location", value: "Adelaide, South Australia, Australia", href: null },
-    { icon: "💼", label: "LinkedIn", value: "Ethan Nien", href: "https://au.linkedin.com/in/zifuera17n9" },
+    { icon: "💼", label: "LinkedIn", value: "Yichi Nien", href: "https://au.linkedin.com/in/zifuera17n9" },
     { icon: "🐙", label: "GitHub", value: "dec591nyc", href: "https://github.com/dec591nyc" },
   ];
 

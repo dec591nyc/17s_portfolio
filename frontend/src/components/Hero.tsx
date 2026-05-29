@@ -62,7 +62,7 @@ export default function Hero() {
               lineHeight: "1.05", fontWeight: "900",
               fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em", color: "#1c1a17",
             }}>
-              Ethan<br />
+              Yichi<br />
               <span style={{ color: "var(--orange)" }}>Nien</span>
               <span style={{ color: "rgba(100,97,93,0.4)", fontSize: "0.6em" }}>.</span>
             </h1>
@@ -93,8 +93,8 @@ export default function Hero() {
           {/* Location */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "#6b6865", fontSize: "0.88rem" }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
             Adelaide, South Australia, Australia
           </div>
@@ -202,7 +202,7 @@ export default function Hero() {
                 EN
               </div>
               <div>
-                <div style={{ fontWeight: "800", fontSize: "1.05rem", color: "#1c1a17", letterSpacing: "-0.02em" }}>Ethan Nien</div>
+                <div style={{ fontWeight: "800", fontSize: "1.05rem", color: "#1c1a17", letterSpacing: "-0.02em" }}>Yichi Nien</div>
                 <div style={{
                   color: "var(--olive)", fontSize: "0.78rem", fontWeight: "700",
                   letterSpacing: "0.10em", textTransform: "uppercase", marginTop: "3px",

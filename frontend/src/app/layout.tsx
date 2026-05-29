@@ -15,12 +15,12 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Ethan Nien | Data Engineer Portfolio",
-  description: "Professional portfolio of Ethan Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Adelaide, Australia.",
+  title: "Yichi Nien | Data Engineer Portfolio",
+  description: "Professional portfolio of Yichi Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Adelaide, Australia.",
   keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Adelaide Australia"],
-  authors: [{ name: "Ethan Nien" }],
+  authors: [{ name: "Yichi Nien" }],
   openGraph: {
-    title: "Ethan Nien | Data Engineer Portfolio",
+    title: "Yichi Nien | Data Engineer Portfolio",
     description: "Backend software engineer transitioning into data engineering. Specializing in ETL, SQL, Power BI, and Python.",
     type: "website",
   },
