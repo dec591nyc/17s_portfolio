@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { Inter, Outfit } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "Yichi Nien | Data Engineer Portfolio",
+  description: "Professional portfolio of Yichi Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Adelaide, Australia.",
+  keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Adelaide Australia"],
+  authors: [{ name: "Yichi Nien" }],
+  openGraph: {
+    title: "Yichi Nien | Data Engineer Portfolio",
+    description: "Backend software engineer transitioning into data engineering. Specializing in ETL, SQL, Power BI, and Python.",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`} style={{ scrollBehavior: 'smooth' }}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+        {children}
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,30 @@
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*.local
+
+# Python / FastAPI
+backend/.venv/
+backend/venv/
+backend/env/
+backend/__pycache__/
+backend/*.pyc
+backend/sqlite.db
+backend/*.db
+
+# Windows / OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
