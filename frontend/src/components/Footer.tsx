@@ -26,7 +26,7 @@ export default function Footer() {
             href="#home"
             style={{ fontSize: "1.15rem", fontWeight: "900", fontFamily: "var(--font-outfit)", letterSpacing: "-0.03em", color: "#1c1a17" }}
           >
-            Yichi<span style={{ color: "var(--orange)" }}>.</span>
+            Ethan<span style={{ color: "var(--orange)" }}>.</span>
           </a>
           <p style={{ color: "#6b6865", fontSize: "0.82rem", fontWeight: "500" }}>
             Data Engineer · Adelaide, Australia
@@ -53,7 +53,7 @@ export default function Footer() {
             ))}
           </div>
           <p style={{ color: "#6b6865", fontSize: "0.78rem" }}>
-            © {currentYear} Yichi Nien. All rights reserved.
+            © {currentYear} Ethan Nien. All rights reserved.
           </p>
         </div>
       </div>

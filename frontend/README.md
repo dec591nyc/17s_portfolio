@@ -1,6 +1,6 @@
 # Portfolio Frontend (Next.js)
 
-This is the Next.js frontend component of Yichi Nien's developer portfolio, styled with a custom vanilla CSS design system.
+This is the Next.js frontend component of Ethan Nien's developer portfolio, styled with a custom vanilla CSS design system.
 
 ## Getting Started
 

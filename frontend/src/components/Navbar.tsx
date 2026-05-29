@@ -55,9 +55,9 @@ export default function Navbar() {
           color: "#ffffff", fontWeight: "900", fontSize: "0.85rem",
           letterSpacing: "-0.02em",
         }}>
-          YN
+          EN
         </span>
-        <span style={{ color: "#1c1a17" }}>Yichi<span style={{ color: "var(--orange)" }}>.</span></span>
+        <span style={{ color: "#1c1a17" }}>Ethan<span style={{ color: "var(--orange)" }}>.</span></span>
       </a>
 
       {/* Desktop Nav */}

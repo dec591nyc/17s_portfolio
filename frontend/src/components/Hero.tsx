@@ -62,7 +62,7 @@ export default function Hero() {
               lineHeight: "1.05", fontWeight: "900",
               fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em", color: "#1c1a17",
             }}>
-              Yichi<br />
+              Ethan<br />
               <span style={{ color: "var(--orange)" }}>Nien</span>
               <span style={{ color: "rgba(100,97,93,0.4)", fontSize: "0.6em" }}>.</span>
             </h1>
@@ -199,10 +199,10 @@ export default function Hero() {
                 fontSize: "1.4rem", fontWeight: "900", color: "var(--orange)",
                 fontFamily: "var(--font-outfit)", letterSpacing: "-0.02em",
               }}>
-                YN
+                EN
               </div>
               <div>
-                <div style={{ fontWeight: "800", fontSize: "1.05rem", color: "#1c1a17", letterSpacing: "-0.02em" }}>Yichi Nien</div>
+                <div style={{ fontWeight: "800", fontSize: "1.05rem", color: "#1c1a17", letterSpacing: "-0.02em" }}>Ethan Nien</div>
                 <div style={{
                   color: "var(--olive)", fontSize: "0.78rem", fontWeight: "700",
                   letterSpacing: "0.10em", textTransform: "uppercase", marginTop: "3px",
