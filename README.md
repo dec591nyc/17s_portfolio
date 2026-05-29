@@ -59,3 +59,24 @@ cd frontend
 npm run dev
 ```
 Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the web application in action.
+
+---
+
+## 💾 How to Push Updates to GitHub
+
+Next time you make changes to the project and want to push them to GitHub, open a terminal at the **project root folder** (`C:\Users\admin\Documents\17s_workplace`) and run:
+
+1. **Stage all changes**:
+   ```bash
+   git add .
+   ```
+
+2. **Commit the changes with a message**:
+   ```bash
+   git commit -m "Describe your changes here"
+   ```
+
+3. **Push to GitHub**:
+   ```bash
+   git push
+   ```
