@@ -1,4 +1,4 @@
-# Yichi Nien - Portfolio Website (17s_workplace)
+# Ethan Nien - Portfolio Website (17's portfolio)
 
 A premium, state-of-the-art developer portfolio website featuring a **Next.js** frontend and a **FastAPI (Python)** backend, styled using vanilla CSS variables for a clean, earthy beige-grey design system with olive green highlights.
 
