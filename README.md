@@ -6,6 +6,12 @@ A premium, state-of-the-art developer portfolio website featuring a **Next.js** 
 
 ---
 
+## 📊 Development Milestone Infographic
+
+<img width="1536" height="2752" alt="image" src="https://github.com/user-attachments/assets/66c77857-5d72-4938-8fb6-64d14ddc321d" />
+
+---
+
 ## 📊 Project Infographic
 
 ![17s Portfolio Infographic](./images/portfolio_infographic.jpg)
