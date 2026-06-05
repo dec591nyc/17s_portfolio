@@ -57,6 +57,15 @@ def seed_db():
             github_url="https://github.com/dec591nyc/First-AI-Dev-Practice",
             demo_url="https://dec591nyc.github.io/First-AI-Dev-Practice/",
             image_url="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
+            title="Hugging Face AI Practice",
+            description="The third industrial training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
+            category="AI & ML Dev",
+            tags="Python,Hugging Face,Transformers,PyTorch,NLP,Jupyter",
+            github_url="https://github.com/dec591nyc/HuggingFace-Practice",
+            demo_url=None,
+            image_url="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"
         )
     ]
     

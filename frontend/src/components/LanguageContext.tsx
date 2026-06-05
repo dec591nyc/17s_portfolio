@@ -125,6 +125,10 @@ const translations = {
     proj_l2_desc: "An interactive front-end dashboard featuring a premium glassmorphic UI. Integrates dynamic light refraction tracking mouse movement, slow-floating ambient gradients, and a real-time ticking calendar clock.",
     proj_l2_highlight: "AI Dev Practice Clock",
 
+    proj_l3_title: "Hugging Face AI Practice",
+    proj_l3_desc: "The third industrial training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
+    proj_l3_highlight: "Hugging Face & NLP",
+
     // Skills
     skills_badge: "Technical Skills",
     skills_title: "What I Bring",
@@ -271,6 +275,10 @@ const translations = {
     proj_l2_title: "AI開發實作儀表板",
     proj_l2_desc: "極具美感的互動式前端網頁儀表板。具備毛玻璃擬態 UI，並整合了能隨滑鼠軌跡變化的折射光影特效、慢速飄移的背景漸變，以及自動偵測當地時區的即時數位日曆時鐘。",
     proj_l2_highlight: "AI開發實作首發",
+
+    proj_l3_title: "Hugging Face AI 實作專案",
+    proj_l3_desc: "產業訓練第三份作業。基於 Hugging Face Transformers 與 PyTorch 的 AI 模型應用實作，涵蓋自然語言處理 (NLP)、文本情緒分類以及互動式 AI 任務實踐。",
+    proj_l3_highlight: "Hugging Face & NLP 實踐",
 
     // Skills
     skills_badge: "技術能力專長",

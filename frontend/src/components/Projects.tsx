@@ -83,6 +83,18 @@ export default function Projects() {
       highlight: t("proj_l2_highlight"),
       section: "developed",
     },
+    {
+      id: 6,
+      title: t("proj_l3_title"),
+      description: t("proj_l3_desc"),
+      category: "AI & ML Dev",
+      tags: ["Python", "Hugging Face", "Transformers", "PyTorch", "NLP", "Jupyter"],
+      github_url: "https://github.com/dec591nyc/HuggingFace-Practice",
+      demo_url: null,
+      period: "Jun 2026",
+      highlight: t("proj_l3_highlight"),
+      section: "developed",
+    },
   ];
 
   // Try to load projects from backend API on mount
