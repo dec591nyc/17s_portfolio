@@ -231,14 +231,15 @@ export default function Hero() {
               {/* Sparkline Visual Nodes */}
               <div style={{ display: "flex", flexDirection: "column", gap: "16px", flex: 1, justifyContent: "space-between" }}>
                 {[
+                  { company: "NCHU", role: "AI & Data Analysis (Taiwan)", year: "2026", color: "var(--olive)" },
                   { company: "UniSA", role: "Master of IT (Adelaide)", year: "2024-2025", color: "var(--olive)" },
                   { company: "St Peter's College", role: "Data Specialist (Adelaide)", year: "2025", color: "var(--orange)" },
-                  { company: "FarEasTone", role: "Advanced Software Eng. (Taiwan)", year: "2020-2022", color: "var(--olive)" },
-                  { company: "South China Insurance", role: "Software Programmer (Taiwan)", year: "2017-2020", color: "var(--fg-subtle)" },
+                  { company: "FarEasTone", role: "Advanced Software Eng. (Taiwan)", year: "2020-2022", color: "var(--orange)" },
+                  { company: "South China Insurance", role: "Software Programmer (Taiwan)", year: "2017-2020", color: "var(--orange)" },
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: "flex", gap: "14px", position: "relative" }}>
                     {/* Connecting line */}
-                    {idx < 3 && (
+                    {idx < 4 && (
                       <div style={{
                         position: "absolute", left: "9px", top: "18px", bottom: "-18px",
                         width: "2px", background: "var(--card-border)",
