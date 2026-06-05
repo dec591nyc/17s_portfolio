@@ -251,7 +251,7 @@ const translations = {
     proj_dev_sec_desc: "本次職前訓練過程中所建構與完成的各項作業及系統解決方案。",
     proj_ongoing_sec: "開發中專案 (Developing Projects)",
     proj_ongoing_sec_desc: "目前正積極規劃、撰寫與進行的資料工程及架構實驗專案。",
-    proj_view_github: "瀏覽 GitHub 原始碼",
+    proj_view_github: "GitHub 原始碼",
     proj_view_demo: "線上展示",
     proj_coming_soon: "更多專案持續開發中 ── 正努力打造並開源更多實用的資料工程專案。",
 

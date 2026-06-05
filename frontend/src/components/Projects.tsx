@@ -227,8 +227,8 @@ export default function Projects() {
 
               {/* Buttons */}
               <div style={{
-                display: "grid",
-                gridTemplateColumns: project.github_url && project.demo_url ? "1fr 1fr" : "1fr",
+                display: "flex",
+                flexWrap: "wrap",
                 gap: "10px",
                 borderTop: "1px solid var(--card-border)",
                 paddingTop: "14px",
@@ -244,6 +244,8 @@ export default function Projects() {
                       letterSpacing: "0.05em", textTransform: "uppercase",
                       display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
+                      flex: "1 1 140px",
+                      whiteSpace: "nowrap",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = "var(--olive-dark)";
@@ -266,6 +268,8 @@ export default function Projects() {
                       letterSpacing: "0.05em", textTransform: "uppercase",
                       display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
+                      flex: "1 1 140px",
+                      whiteSpace: "nowrap",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = "var(--bg-card-inner)";
