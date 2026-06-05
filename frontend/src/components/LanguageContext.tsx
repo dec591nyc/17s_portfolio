@@ -129,6 +129,10 @@ const translations = {
     proj_l3_desc: "The third industrial training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
     proj_l3_highlight: "Hugging Face & NLP",
 
+    proj_l8_title: "Multiple Linear Regression Practice",
+    proj_l8_desc: "The fourth industrial training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
+    proj_l8_highlight: "Regression & EDA",
+
     // Skills
     skills_badge: "Technical Skills",
     skills_title: "What I Bring",
@@ -279,6 +283,10 @@ const translations = {
     proj_l3_title: "Hugging Face AI 實作專案",
     proj_l3_desc: "產業訓練第三份作業。基於 Hugging Face Transformers 與 PyTorch 的 AI 模型應用實作，涵蓋自然語言處理 (NLP)、文本情緒分類以及互動式 AI 任務實踐。",
     proj_l3_highlight: "Hugging Face & NLP 實踐",
+
+    proj_l8_title: "多元線性迴歸實作專案",
+    proj_l8_desc: "產業訓練第四份作業。基於 Kaggle 50 Startups 數據集的多元線性迴歸分析，涵蓋探索性數據分析 (EDA)、虛擬變數編碼、模型訓練、迴歸係數評估，以及即時利潤預測功能。",
+    proj_l8_highlight: "線性迴歸與 EDA 實踐",
 
     // Skills
     skills_badge: "技術能力專長",

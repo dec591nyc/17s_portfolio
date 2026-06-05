@@ -66,6 +66,15 @@ def seed_db():
             github_url="https://github.com/dec591nyc/HuggingFace-Practice",
             demo_url="https://huggingface-practice-dec591nyc.streamlit.app/",
             image_url="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
+            title="Multiple Linear Regression Practice",
+            description="The fourth industrial training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
+            category="AI & ML Dev",
+            tags="Python,Streamlit,Scikit-Learn,Regression,EDA,Pandas",
+            github_url="https://github.com/dec591nyc/Multiple-Linear-Regression-Practice",
+            demo_url="https://multiple-linear-regression-practice-dec591nyc.streamlit.app/",
+            image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
         )
     ]
     

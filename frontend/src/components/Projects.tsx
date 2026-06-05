@@ -95,6 +95,18 @@ export default function Projects() {
       highlight: t("proj_l3_highlight"),
       section: "developed",
     },
+    {
+      id: 7,
+      title: t("proj_l8_title"),
+      description: t("proj_l8_desc"),
+      category: "AI & ML Dev",
+      tags: ["Python", "Streamlit", "Scikit-Learn", "Regression", "EDA", "Pandas"],
+      github_url: "https://github.com/dec591nyc/Multiple-Linear-Regression-Practice",
+      demo_url: "https://multiple-linear-regression-practice-dec591nyc.streamlit.app/",
+      period: "Jun 2026",
+      highlight: t("proj_l8_highlight"),
+      section: "developed",
+    },
   ];
 
   // Try to load projects from backend API on mount
