@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeContext";
+import { LanguageProvider } from "@/components/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,8 +18,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Yichi Nien | Data Engineer Portfolio",
-  description: "Professional portfolio of Yichi Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Adelaide, Australia.",
-  keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Adelaide Australia"],
+  description: "Professional portfolio of Yichi Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Changhua, Taiwan.",
+  keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
   authors: [{ name: "Yichi Nien" }],
   openGraph: {
     title: "Yichi Nien | Data Engineer Portfolio",
@@ -37,8 +39,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-        {children}
+        <ThemeProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

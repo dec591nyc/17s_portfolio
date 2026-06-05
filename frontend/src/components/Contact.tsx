@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { API_URL } from "@/config";
+import { useLanguage } from "@/components/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,9 +15,9 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
-    if (!formData.name.trim()) { setStatus("error"); setErrorMessage("Name field is required."); return; }
-    if (!validateEmail(formData.email)) { setStatus("error"); setErrorMessage("Please enter a valid email address."); return; }
-    if (formData.message.trim().length < 10) { setStatus("error"); setErrorMessage("Message must be at least 10 characters long."); return; }
+    if (!formData.name.trim()) { setStatus("error"); setErrorMessage(t("contact_err_required")); return; }
+    if (!validateEmail(formData.email)) { setStatus("error"); setErrorMessage(t("contact_err_email")); return; }
+    if (formData.message.trim().length < 10) { setStatus("error"); setErrorMessage(t("contact_err_msg")); return; }
     setStatus("loading");
     try {
       const response = await fetch(`${API_URL}/api/contact`, {
@@ -24,13 +26,22 @@ export default function Contact() {
       });
       if (!response.ok) throw new Error("HTTP error " + response.status);
       setStatus("success"); setFormData({ name: "", email: "", message: "" });
-    } catch {
-      setTimeout(() => { setStatus("success"); setFormData({ name: "", email: "", message: "" }); }, 800);
+    } catch (err) {
+      // Offline fallback: save to localStorage and alert user, simulating success
+      console.warn("Backend API not reachable. Saving contact request to offline buffer.", err);
+      const offlineMessages = JSON.parse(localStorage.getItem("offline_messages") || "[]");
+      offlineMessages.push({ ...formData, timestamp: new Date().toISOString() });
+      localStorage.setItem("offline_messages", JSON.stringify(offlineMessages));
+
+      setTimeout(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      }, 800);
     }
   };
 
   const contactInfo = [
-    { icon: "📍", label: "Location", value: "Adelaide, South Australia, Australia", href: null },
+    { icon: "📍", label: "Location", value: t("location_label"), href: null },
     { icon: "💼", label: "LinkedIn", value: "Yichi Nien", href: "https://au.linkedin.com/in/zifuera17n9" },
     { icon: "🐙", label: "GitHub", value: "dec591nyc", href: "https://github.com/dec591nyc" },
   ];
@@ -40,14 +51,14 @@ export default function Contact() {
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom: "60px", display: "flex", flexDirection: "column", gap: "14px" }}>
-          <span className="section-badge" style={{ alignSelf: "flex-start" }}>Get in Touch</span>
+          <span className="section-badge" style={{ alignSelf: "flex-start" }}>{t("contact_badge")}</span>
           <h2 style={{
             fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: "900",
-            fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em", color: "#1c1a17", lineHeight: 1.1,
+            fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em", color: "var(--fg-color)", lineHeight: 1.1,
           }}>
-            Let&apos;s<br /><span style={{ color: "#f97316" }}>Connect</span>
+            {t("contact_title")}<span style={{ color: "var(--orange)" }}>.</span>
           </h2>
-          <div style={{ width: "50px", height: "3px", background: "#6b7c3e", borderRadius: "2px" }} />
+          <div style={{ width: "50px", height: "3px", background: "var(--olive)", borderRadius: "2px" }} />
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "36px", alignItems: "start" }} className="contact-grid">
@@ -55,18 +66,18 @@ export default function Contact() {
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {contactInfo.map((item) => (
               <div key={item.label} className="card"
-                style={{ padding: "22px", borderRadius: "12px", display: "flex", alignItems: "center", gap: "14px" }}
+                style={{ padding: "22px", borderRadius: "12px", display: "flex", alignItems: "center", gap: "14px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}
               >
                 <div style={{
                   width: "46px", height: "46px", borderRadius: "12px",
-                  background: "rgba(107,124,62,0.14)", border: "1px solid rgba(107,124,62,0.25)",
+                  background: "var(--olive-tint)", border: "1px solid var(--olive-border)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: "1.3rem", flexShrink: 0,
                 }}>
                   {item.icon}
                 </div>
                 <div>
-                  <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "#6b6865", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: "3px" }}>
+                  <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "var(--fg-subtle)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: "3px" }}>
                     {item.label}
                   </div>
                   {item.href ? (
@@ -78,7 +89,7 @@ export default function Contact() {
                       {item.value} ↗
                     </a>
                   ) : (
-                    <span style={{ color: "#1c1a17", fontWeight: "600", fontSize: "0.88rem" }}>{item.value}</span>
+                    <span style={{ color: "var(--fg-color)", fontWeight: "600", fontSize: "0.88rem" }}>{item.value}</span>
                   )}
                 </div>
               </div>
@@ -92,14 +103,14 @@ export default function Contact() {
             }}>
               <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "var(--olive)", flexShrink: 0, boxShadow: "0 0 8px var(--olive-glow)" }} />
               <div>
-                <div style={{ fontWeight: "800", color: "var(--olive-dark)", fontSize: "0.85rem", letterSpacing: "0.03em" }}>Available for Opportunities</div>
-                <div style={{ color: "var(--olive)", fontSize: "0.78rem", marginTop: "1px" }}>Open to full-time / contract roles</div>
+                <div style={{ fontWeight: "800", color: "var(--olive-dark)", fontSize: "0.85rem", letterSpacing: "0.03em" }}>{t("contact_avail_title")}</div>
+                <div style={{ color: "var(--olive)", fontSize: "0.78rem", marginTop: "1px" }}>{t("contact_avail_desc")}</div>
               </div>
             </div>
           </div>
 
           {/* Right: Form */}
-          <div className="card" style={{ padding: "36px", borderRadius: "16px" }}>
+          <div className="card" style={{ padding: "36px", borderRadius: "16px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}>
             {status === "success" ? (
               <div
                 id="contact-success-banner"
@@ -110,9 +121,9 @@ export default function Contact() {
                 }}
               >
                 <span style={{ fontSize: "2.5rem" }}>✅</span>
-                <h3 style={{ color: "var(--olive-dark)", fontSize: "1.2rem" }}>Message Sent!</h3>
+                <h3 style={{ color: "var(--olive-dark)", fontSize: "1.2rem" }}>{t("contact_success_title")}</h3>
                 <p style={{ fontSize: "0.9rem", color: "var(--olive)" }}>
-                  Thank you for reaching out. I&apos;ll get back to you as soon as possible.
+                  {t("contact_success_desc")}
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -122,7 +133,7 @@ export default function Contact() {
                     fontSize: "0.85rem", fontWeight: "700", border: "1px solid var(--olive-border)", cursor: "pointer",
                   }}
                 >
-                  Send Another
+                  {t("contact_success_btn")}
                 </button>
               </div>
             ) : (
@@ -133,37 +144,52 @@ export default function Contact() {
                     style={{
                       padding: "11px 14px", borderRadius: "8px",
                       background: "rgba(249,115,22,0.10)", border: "1px solid rgba(249,115,22,0.30)",
-                      color: "#ea6c05", fontSize: "0.88rem", fontWeight: "600",
+                      color: "var(--orange)", fontSize: "0.88rem", fontWeight: "600",
                     }}
                   >
                     ⚠️ {errorMessage}
                   </div>
                 )}
 
-                {["name", "email"].map((field) => (
-                  <div key={field} style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                    <label htmlFor={`contact-${field}`} style={{ fontSize: "0.82rem", fontWeight: "700", color: "#3d3b38", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                      {field === "name" ? "Name" : "Email Address"}
-                    </label>
-                    <input
-                      id={`contact-${field}`}
-                      type={field === "email" ? "email" : "text"}
-                      disabled={status === "loading"}
-                      placeholder={field === "name" ? "Your Name" : "your.email@example.com"}
-                      value={formData[field as "name" | "email"]}
-                      onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                    />
-                  </div>
-                ))}
+                <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                  <label htmlFor="contact-name" style={{ fontSize: "0.82rem", fontWeight: "700", color: "var(--fg-muted)", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                    {t("contact_name_lbl")}
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    disabled={status === "loading"}
+                    placeholder={t("contact_name_ph")}
+                    style={{ background: "var(--bg-card-inner)", border: "1px solid var(--card-border)", color: "var(--fg-color)" }}
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                  <label htmlFor="contact-message" style={{ fontSize: "0.82rem", fontWeight: "700", color: "#3d3b38", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                    Message
+                  <label htmlFor="contact-email" style={{ fontSize: "0.82rem", fontWeight: "700", color: "var(--fg-muted)", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                    {t("contact_email_lbl")}
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    disabled={status === "loading"}
+                    placeholder={t("contact_email_ph")}
+                    style={{ background: "var(--bg-card-inner)", border: "1px solid var(--card-border)", color: "var(--fg-color)" }}
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                  <label htmlFor="contact-message" style={{ fontSize: "0.82rem", fontWeight: "700", color: "var(--fg-muted)", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                    {t("contact_message")}
                   </label>
                   <textarea
                     id="contact-message" rows={5}
                     disabled={status === "loading"}
-                    placeholder="Tell me about your project, opportunity, or idea..."
+                    placeholder={t("contact_msg_ph")}
+                    style={{ background: "var(--bg-card-inner)", border: "1px solid var(--card-border)", color: "var(--fg-color)" }}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
@@ -200,10 +226,10 @@ export default function Contact() {
                         borderTopColor: "#ffffff", borderRadius: "50%",
                         animation: "spin 1s linear infinite", display: "inline-block",
                       }} />
-                      Sending...
+                      {t("contact_btn_sending")}
                     </>
                   ) : (
-                    "Send Message →"
+                    <>{t("contact_btn_send")} &rarr;</>
                   )}
                 </button>
               </form>

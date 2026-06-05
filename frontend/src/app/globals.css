@@ -43,18 +43,56 @@
   --card-shadow-hover: 0 8px 32px var(--olive-glow);
 }
 
+[data-theme="dark"] {
+  /* Dark Warm Charcoal × Rich Accent Design System */
+  --bg-color: #121210;           /* deep warm charcoal background */
+  --bg-secondary: #191815;       /* slightly lighter for alt sections */
+  --bg-card: #201f1c;            /* charcoal-grey for cards */
+  --bg-card-inner: #292824;      /* lighter charcoal for inner panels */
+
+  --fg-color: #eae8e3;           /* warm beige-grey for headings */
+  --fg-muted: #c8c6c0;           /* light grey for body text */
+  --fg-subtle: #989690;          /* medium-light for captions */
+  --fg-on-dark: #ffffff;         /* text on dark/olive surfaces */
+
+  /* Orange Accents in Dark mode - slightly brighter for visibility */
+  --orange: #e56c32;
+  --orange-dark: #ff8e59;
+  --orange-glow: rgba(229, 108, 50, 0.25);
+  --orange-tint: rgba(229, 108, 50, 0.12);
+  --orange-border: rgba(229, 108, 50, 0.40);
+
+  /* Olive Green Accents in Dark mode */
+  --olive: #81944e;
+  --olive-dark: #9bb065;
+  --olive-light: #b0c976;
+  --olive-tint: rgba(129, 148, 78, 0.15);
+  --olive-border: rgba(129, 148, 78, 0.35);
+  --olive-glow: rgba(129, 148, 78, 0.25);
+
+  /* Card system in Dark Mode */
+  --card-bg: var(--bg-card);
+  --card-border: rgba(234, 232, 227, 0.10);
+  --card-border-hover: var(--olive);
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.40);
+  --card-shadow-hover: 0 8px 36px rgba(0,0,0,0.60), 0 0 24px var(--olive-glow);
+}
+
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   color: var(--fg-color);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.6;
   background-color: var(--bg-color);
+  color: var(--fg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Card Utility */
@@ -63,7 +101,7 @@ body {
   border: 1px solid var(--card-border);
   border-radius: 16px;
   box-shadow: var(--card-shadow);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }

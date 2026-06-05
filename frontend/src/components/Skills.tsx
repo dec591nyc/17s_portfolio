@@ -1,9 +1,11 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageContext";
+
 interface Skill {
   id: number;
   name: string;
-  category: string;
+  category: "Data Engineering" | "Backend" | "DevOps & Tools" | "ML & Analytics";
   proficiency: number;
 }
 
@@ -26,45 +28,46 @@ const skills: Skill[] = [
   { id: 16, name: "Excel / Reporting", category: "ML & Analytics", proficiency: 88 },
 ];
 
-const categoryMeta: Record<string, { emoji: string; barColor: string; labelColor: string }> = {
-  "Data Engineering": { emoji: "🗄️", barColor: "var(--orange)", labelColor: "var(--orange)" },
-  "Backend":          { emoji: "⚙️", barColor: "var(--olive)", labelColor: "var(--olive)" },
-  "DevOps & Tools":   { emoji: "🐳", barColor: "#1c1a17", labelColor: "#3d3b38" },
-  "ML & Analytics":   { emoji: "📊", barColor: "var(--olive)", labelColor: "var(--olive)" },
-};
-
 export default function Skills() {
-  const categories = Array.from(new Set(skills.map((s) => s.category)));
+  const { t } = useLanguage();
+
+  const categoryMeta: Record<string, { emoji: string; barColor: string; labelColor: string; translationKey: string }> = {
+    "Data Engineering": { emoji: "🗄️", barColor: "var(--orange)", labelColor: "var(--orange)", translationKey: "skills_cat_de" },
+    "Backend":          { emoji: "⚙️", barColor: "var(--olive)", labelColor: "var(--olive)", translationKey: "skills_cat_be" },
+    "DevOps & Tools":   { emoji: "🐳", barColor: "var(--fg-color)", labelColor: "var(--fg-muted)", translationKey: "skills_cat_devops" },
+    "ML & Analytics":   { emoji: "📊", barColor: "var(--olive)", labelColor: "var(--olive)", translationKey: "skills_cat_ml" },
+  };
+
+  const categories = ["Data Engineering", "Backend", "DevOps & Tools", "ML & Analytics"];
 
   return (
     <section id="skills" style={{ padding: "100px 5%", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Section Header */}
         <div style={{ marginBottom: "60px", display: "flex", flexDirection: "column", gap: "14px" }}>
-          <span className="section-badge" style={{ alignSelf: "flex-start" }}>Technical Skills</span>
+          <span className="section-badge" style={{ alignSelf: "flex-start" }}>{t("skills_badge")}</span>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
             <h2 style={{
               fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: "900",
               fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em",
-              color: "#1c1a17", lineHeight: 1.1,
+              color: "var(--fg-color)", lineHeight: 1.1,
             }}>
-              What I<br /><span style={{ color: "#f97316" }}>Bring</span>
+              {t("skills_title")}<span style={{ color: "var(--orange)" }}>.</span>
             </h2>
-            <p style={{ color: "#3d3b38", fontSize: "0.95rem", maxWidth: "400px", lineHeight: "1.80" }}>
-              4+ years of hands-on experience across backend development, data engineering,
-              DevOps pipelines, and applied machine learning.
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "400px", lineHeight: "1.80" }}>
+              {t("skills_desc")}
             </p>
           </div>
-          <div style={{ width: "50px", height: "3px", background: "#6b7c3e", borderRadius: "2px" }} />
+          <div style={{ width: "50px", height: "3px", background: "var(--olive)", borderRadius: "2px" }} />
         </div>
 
         {/* Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "22px" }} className="skills-grid">
           {categories.map((category) => {
-            const meta = categoryMeta[category] ?? { emoji: "🔧", barColor: "#f97316", labelColor: "#f97316" };
+            const meta = categoryMeta[category];
             const categorySkills = skills.filter((s) => s.category === category);
             return (
-              <div key={category} className="card" style={{ padding: "30px", borderRadius: "12px" }}>
+              <div key={category} className="card" style={{ padding: "30px", borderRadius: "12px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}>
                 {/* Category header */}
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>
                   <span style={{ fontSize: "1.3rem" }}>{meta.emoji}</span>
@@ -73,20 +76,21 @@ export default function Skills() {
                     color: meta.labelColor,
                     letterSpacing: "0.08em", textTransform: "uppercase",
                   }}>
-                    {category}
+                    {t(meta.translationKey)}
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                   {categorySkills.map((skill) => (
                     <div key={skill.id} style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontWeight: "600", fontSize: "0.88rem", color: "#1c1a17" }}>{skill.name}</span>
+                        <span style={{ fontWeight: "600", fontSize: "0.88rem", color: "var(--fg-color)" }}>{skill.name}</span>
                         <span style={{ fontSize: "0.80rem", fontWeight: "800", color: meta.barColor }}>{skill.proficiency}%</span>
                       </div>
                       {/* Track */}
                       <div style={{
                         width: "100%", height: "5px",
-                        background: "rgba(100,97,93,0.20)",
+                        background: "var(--bg-card-inner)",
+                        border: "1px solid var(--card-border)",
                         borderRadius: "3px", overflow: "hidden",
                       }}>
                         <div style={{
