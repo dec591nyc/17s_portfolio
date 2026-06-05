@@ -81,6 +81,9 @@ const translations = {
     exp_sci_b2: "Built and maintained internal websites and automated data exchange tasks.",
     exp_sci_b3: "Retrieved customer data to support seasonal promotions and analyzed results.",
 
+    exp_nchu_title: "AI Data Analysis Industrial Training Course",
+    exp_nchu_desc: "Pre-employment training at National Chung Hsing University focusing on artificial intelligence applications, data mining, and big data analysis workflows.",
+
     exp_uni_title: "Master's, Information Technology",
     exp_uni_desc: "Enterprise Management specialization at University of South Australia. Expanding data systems expertise in an international academic setting.",
 
@@ -118,9 +121,9 @@ const translations = {
     proj_stream_desc: "An ongoing development of a streaming ETL pipeline designed to ingest, process, and store live telemetry data. Targets high throughput with Kafka message queues and structured streaming databases.",
     proj_stream_highlight: "Kafka & Stream ETL",
 
-    proj_l2_title: "Dynamic Glassmorphic Dashboard",
+    proj_l2_title: "AI Dev Practice Dashboard",
     proj_l2_desc: "An interactive front-end dashboard featuring a premium glassmorphic UI. Integrates dynamic light refraction tracking mouse movement, slow-floating ambient gradients, and a real-time ticking calendar clock.",
-    proj_l2_highlight: "Glassmorphic Clock UI",
+    proj_l2_highlight: "AI Dev Practice Clock",
 
     // Skills
     skills_badge: "Technical Skills",
@@ -225,6 +228,9 @@ const translations = {
     exp_sci_b2: "開發內部辦公系統並排程自動化資料串接與交換任務。",
     exp_sci_b3: "提取並整理客戶數據以支持季節性行銷推廣，並對其效益進行數據分析。",
 
+    exp_nchu_title: "AI數據分析職前訓練班",
+    exp_nchu_desc: "國立中興大學職前訓練課程，專注於人工智慧應用、資料探勘與大數據分析工作流之實踐。",
+
     exp_uni_title: "資訊科技碩士 (IT)",
     exp_uni_desc: "南澳大學 (UniSA) 企業管理專精。在國際學術環境中擴展大型資料系統之架構與管理知能。",
 
@@ -262,9 +268,9 @@ const translations = {
     proj_stream_desc: "目前正在進行的串流 ETL 管道開發。預計使用 Kafka 訊息佇列進行實時資料吞吐，並寫入時序資料庫以進行實時看板監控。",
     proj_stream_highlight: "Kafka & 實時串流 ETL",
 
-    proj_l2_title: "動態玻璃擬態時間儀表板",
+    proj_l2_title: "AI開發實作儀表板",
     proj_l2_desc: "極具美感的互動式前端網頁儀表板。具備毛玻璃擬態 UI，並整合了能隨滑鼠軌跡變化的折射光影特效、慢速飄移的背景漸變，以及自動偵測當地時區的即時數位日曆時鐘。",
-    proj_l2_highlight: "玻璃擬態與動態光效",
+    proj_l2_highlight: "AI開發實作首發",
 
     // Skills
     skills_badge: "技術能力專長",

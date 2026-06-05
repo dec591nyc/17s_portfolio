@@ -87,7 +87,7 @@ export default function Hero() {
             padding: "10px 18px", borderRadius: "8px", background: "var(--bg-card-inner)",
             display: "flex", alignItems: "center", gap: "10px", border: "1px solid var(--card-border)",
           }}>
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#6b7c3e", display: "inline-block", animation: "pulse 1.5s infinite" }} />
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e", display: "inline-block", animation: "pulse 1.5s infinite" }} />
             <span style={{ fontSize: "0.80rem", fontWeight: "700", letterSpacing: "0.06em", color: "var(--fg-muted)" }}>
               LIVE: <span style={{ color: "var(--orange)", fontFamily: "monospace" }}>{liveTime}</span>
             </span>

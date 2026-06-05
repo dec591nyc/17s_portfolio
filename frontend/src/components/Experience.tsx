@@ -22,6 +22,18 @@ export default function Experience() {
 
   const experiences: Experience[] = [
     {
+      id: 6,
+      title: t("exp_nchu_title"),
+      company: "National Chung Hsing University",
+      companyUrl: "https://www.nchu.edu.tw/",
+      period: "Jun 2026 – Present",
+      location: "Taichung, Taiwan",
+      description: t("exp_nchu_desc"),
+      bullets: [],
+      category: "education",
+      tags: ["AI", "Data Analysis", "Python", "Machine Learning"],
+    },
+    {
       id: 1,
       title: t("exp_spc_title"),
       company: "St Peter's College",

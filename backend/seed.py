@@ -50,7 +50,7 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Dynamic Glassmorphic Dashboard",
+            title="AI Dev Practice Dashboard",
             description="An interactive front-end dashboard featuring a premium glassmorphic UI. Integrates dynamic light refraction tracking mouse movement, slow-floating ambient gradients, and a real-time ticking calendar clock.",
             category="Frontend Dev",
             tags="HTML5,CSS3,JavaScript,CSS Variables,Glassmorphism",
@@ -105,6 +105,13 @@ def seed_db():
             period="Dec 2017 – Feb 2020",
             description="Internal staff E-workplace platform, Insurance E-commerce portal and customer data analysis.",
             category="work"
+        ),
+        models.Experience(
+            title="AI Data Analysis Industrial Training Course",
+            company="National Chung Hsing University",
+            period="Jun 2026 – Present",
+            description="Pre-employment training focusing on artificial intelligence applications, data mining, and big data analysis workflows.",
+            category="education"
         ),
         models.Experience(
             title="Master's, Information Technology",
