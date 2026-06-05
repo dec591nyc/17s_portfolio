@@ -107,7 +107,7 @@ def seed_db():
             category="work"
         ),
         models.Experience(
-            title="AI Data Analysis Industrial Training Course",
+            title="AI & Data Analysis Applications Training Course",
             company="National Chung Hsing University",
             period="Jun 2026 – Present",
             description="Pre-employment training focusing on artificial intelligence applications, data mining, and big data analysis workflows.",

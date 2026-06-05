@@ -81,7 +81,7 @@ const translations = {
     exp_sci_b2: "Built and maintained internal websites and automated data exchange tasks.",
     exp_sci_b3: "Retrieved customer data to support seasonal promotions and analyzed results.",
 
-    exp_nchu_title: "AI Data Analysis Industrial Training Course",
+    exp_nchu_title: "AI & Data Analysis Applications Training Course",
     exp_nchu_desc: "Pre-employment training at National Chung Hsing University focusing on artificial intelligence applications, data mining, and big data analysis workflows.",
 
     exp_uni_title: "Master's, Information Technology",
@@ -228,7 +228,7 @@ const translations = {
     exp_sci_b2: "開發內部辦公系統並排程自動化資料串接與交換任務。",
     exp_sci_b3: "提取並整理客戶數據以支持季節性行銷推廣，並對其效益進行數據分析。",
 
-    exp_nchu_title: "AI數據分析職前訓練班",
+    exp_nchu_title: "中興大學職前訓練 AI人工智慧與數據分析應用班",
     exp_nchu_desc: "國立中興大學職前訓練課程，專注於人工智慧應用、資料探勘與大數據分析工作流之實踐。",
 
     exp_uni_title: "資訊科技碩士 (IT)",
