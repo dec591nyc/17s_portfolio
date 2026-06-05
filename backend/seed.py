@@ -64,7 +64,7 @@ def seed_db():
             category="AI & ML Dev",
             tags="Python,Hugging Face,Transformers,PyTorch,NLP,Jupyter",
             github_url="https://github.com/dec591nyc/HuggingFace-Practice",
-            demo_url=None,
+            demo_url="https://huggingface-practice-dec591nyc.streamlit.app/",
             image_url="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"
         )
     ]

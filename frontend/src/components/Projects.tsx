@@ -90,7 +90,7 @@ export default function Projects() {
       category: "AI & ML Dev",
       tags: ["Python", "Hugging Face", "Transformers", "PyTorch", "NLP", "Jupyter"],
       github_url: "https://github.com/dec591nyc/HuggingFace-Practice",
-      demo_url: null,
+      demo_url: "https://huggingface-practice-dec591nyc.streamlit.app/",
       period: "Jun 2026",
       highlight: t("proj_l3_highlight"),
       section: "developed",
