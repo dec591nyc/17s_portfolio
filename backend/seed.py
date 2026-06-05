@@ -95,11 +95,25 @@ def seed_db():
     # 3. Experiences
     experiences = [
         models.Experience(
+            title="AI & Data Analysis Applications Training Course",
+            company="National Chung Hsing University",
+            period="Jun 2026 – Present",
+            description="Pre-employment training focusing on artificial intelligence applications, data mining, and big data analysis workflows.",
+            category="education"
+        ),
+        models.Experience(
             title="Data Specialist",
             company="St Peter's College",
             period="Aug 2025 – Nov 2025",
             description="Developed a Python-based data pipeline to automate analytics tasks for the fundraising team.",
             category="work"
+        ),
+        models.Experience(
+            title="Master's, Information Technology",
+            company="University of South Australia",
+            period="Feb 2024 – Nov 2025",
+            description="Enterprise Management specialization. Expanding data systems expertise in an international academic setting.",
+            category="education"
         ),
         models.Experience(
             title="Advanced Software Engineer",
@@ -114,20 +128,6 @@ def seed_db():
             period="Dec 2017 – Feb 2020",
             description="Internal staff E-workplace platform, Insurance E-commerce portal and customer data analysis.",
             category="work"
-        ),
-        models.Experience(
-            title="AI & Data Analysis Applications Training Course",
-            company="National Chung Hsing University",
-            period="Jun 2026 – Present",
-            description="Pre-employment training focusing on artificial intelligence applications, data mining, and big data analysis workflows.",
-            category="education"
-        ),
-        models.Experience(
-            title="Master's, Information Technology",
-            company="University of South Australia",
-            period="Feb 2024 – Nov 2025",
-            description="Enterprise Management specialization. Expanding data systems expertise in an international academic setting.",
-            category="education"
         ),
         models.Experience(
             title="Bachelor's, IT & Management",

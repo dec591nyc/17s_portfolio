@@ -226,16 +226,23 @@ export default function Projects() {
               </div>
 
               {/* Buttons */}
-              <div style={{ display: "flex", gap: "10px", borderTop: "1px solid var(--card-border)", paddingTop: "14px", marginTop: "4px" }}>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: project.github_url && project.demo_url ? "1fr 1fr" : "1fr",
+                gap: "10px",
+                borderTop: "1px solid var(--card-border)",
+                paddingTop: "14px",
+                marginTop: "4px",
+              }}>
                 {project.github_url && (
                   <a
                     href={project.github_url} target="_blank" rel="noreferrer"
                     style={{
-                      padding: "8px 18px", borderRadius: "6px",
+                      padding: "8px 12px", borderRadius: "6px",
                       background: "var(--olive)", color: "#ffffff",
                       fontWeight: "700", fontSize: "0.78rem",
                       letterSpacing: "0.05em", textTransform: "uppercase",
-                      display: "inline-flex", alignItems: "center", gap: "6px",
+                      display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
                     }}
                     onMouseEnter={(e) => {
@@ -252,12 +259,12 @@ export default function Projects() {
                   <a
                     href={project.demo_url} target="_blank" rel="noreferrer"
                     style={{
-                      padding: "8px 18px", borderRadius: "6px",
+                      padding: "8px 12px", borderRadius: "6px",
                       background: "transparent", color: "var(--fg-color)",
                       border: "1px solid var(--card-border)",
                       fontWeight: "700", fontSize: "0.78rem",
                       letterSpacing: "0.05em", textTransform: "uppercase",
-                      display: "inline-flex", alignItems: "center", gap: "6px",
+                      display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
                     }}
                     onMouseEnter={(e) => {
