@@ -1,8 +1,10 @@
-# Yichi Nien Portfolio Dashboard
+# Portfolio Dashboard
 
-這是 Yichi Nien 的個人職涯作品集儀表板，也是職前訓練第二份作業。專案以前端 `Next.js`、`TypeScript` 與後端 `FastAPI` 整合實作，展示個人背景、職涯軌跡、技能標籤、專案作品、聯絡表單儲存與基礎防 spam 機制。
+這是一個以 AI 配合個人專業知識開發的個人職涯作品集儀表板，也是職前訓練第二份作業。
 
-目前作品定位是「資料工程 / 後端工程 / 分析應用」方向的 portfolio。內容聚焦於資料工程、ETL 資料流水線、SQL 分析、Power BI / Tableau 儀表板、Python 自動化，以及過去 C# / Java 後端開發經驗。
+專案旨在以前端 `Next.js`、`TypeScript` 與後端 `FastAPI` 整合實作，展示個人背景、職涯軌跡、技能概況、專案作品和反饋意見的收集。
+
+目前作品定位是「資料工程 / 後端工程 / 分析應用」方向的 portfolio。內容聚焦於資料工程、ETL 資料流水線、SQL 分析、Power BI / Tableau 儀表板、Python 自動化，以及過去 C# / Java 後端開發經驗。# Portfolio Dashboard
 
 🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
