@@ -31,6 +31,13 @@ export default function Hero() {
   ];
 
   const coreTech = ["Python", "SQL / Postgres", "Next.js", "Power BI", "Docker", "FastAPI", "Kubernetes"];
+  const careerNodes = [
+    { company: t("career_nchu_company"), role: t("career_nchu_role"), year: "2026", color: "var(--education-accent)", glow: "var(--education-accent-glow)" },
+    { company: t("career_spc_company"), role: t("career_spc_role"), year: "2025", color: "var(--work-accent)", glow: "var(--work-accent-glow)" },
+    { company: t("career_unisa_company"), role: t("career_unisa_role"), year: "2024-2025", color: "var(--education-accent)", glow: "var(--education-accent-glow)" },
+    { company: t("career_fet_company"), role: t("career_fet_role"), year: "2020-2022", color: "var(--work-accent)", glow: "var(--work-accent-glow)" },
+    { company: t("career_sci_company"), role: t("career_sci_role"), year: "2017-2020", color: "var(--work-accent)", glow: "var(--work-accent-glow)" },
+  ];
 
   return (
     <section
@@ -41,7 +48,7 @@ export default function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "120px 5% 80px 5%",
+        padding: "104px 5% 64px 5%",
         background: "var(--bg-color)",
         position: "relative",
         overflow: "hidden",
@@ -135,7 +142,7 @@ export default function Hero() {
           {/* Left panel: Summary & Skills */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
             {/* Profile Summary Card */}
-            <div className="card" style={{ padding: "28px", background: "var(--bg-card)" }}>
+            <div className="card" style={{ padding: "24px", background: "var(--bg-card)" }}>
               <h3 style={{
                 fontSize: "1.2rem", fontWeight: "800", color: "var(--fg-color)",
                 marginBottom: "12px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
@@ -191,7 +198,7 @@ export default function Hero() {
             </div>
 
             {/* Core Stack widget */}
-            <div className="card" style={{ padding: "24px", background: "var(--bg-card)" }}>
+            <div className="card" style={{ padding: "22px", background: "var(--bg-card)" }}>
               <h3 style={{
                 fontSize: "1rem", fontWeight: "800", color: "var(--fg-color)",
                 marginBottom: "14px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
@@ -217,26 +224,20 @@ export default function Hero() {
 
           {/* Right panel: Career Path Sparkline */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <div className="card" style={{ padding: "28px", background: "var(--bg-card)", flex: 1, display: "flex", flexDirection: "column" }}>
+            <div className="card" style={{ padding: "24px", background: "var(--bg-card)", flex: 1, display: "flex", flexDirection: "column" }}>
               <h3 style={{
                 fontSize: "1.2rem", fontWeight: "800", color: "var(--fg-color)",
                 marginBottom: "4px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
               }}>
                 <span>📈</span> {t("db_timeline_title")}
               </h3>
-              <p style={{ color: "var(--fg-subtle)", fontSize: "0.78rem", marginBottom: "24px" }}>
+              <p style={{ color: "var(--fg-subtle)", fontSize: "0.78rem", marginBottom: "18px" }}>
                 {t("db_timeline_subtitle")}
               </p>
 
               {/* Sparkline Visual Nodes */}
               <div style={{ display: "flex", flexDirection: "column", gap: "16px", flex: 1, justifyContent: "space-between" }}>
-                {[
-                  { company: "NCHU", role: "AI & Data Analysis (Taiwan)", year: "2026", color: "var(--olive)" },
-                  { company: "St Peter's College", role: "Data Specialist (Adelaide)", year: "2025", color: "var(--orange)" },
-                  { company: "UniSA", role: "Master of IT (Adelaide)", year: "2024-2025", color: "var(--olive)" },
-                  { company: "FarEasTone", role: "Advanced Software Eng. (Taiwan)", year: "2020-2022", color: "var(--orange)" },
-                  { company: "South China Insurance", role: "Software Programmer (Taiwan)", year: "2017-2020", color: "var(--orange)" },
-                ].map((item, idx) => (
+                {careerNodes.map((item, idx) => (
                   <div key={idx} style={{ display: "flex", gap: "14px", position: "relative" }}>
                     {/* Connecting line */}
                     {idx < 4 && (
@@ -250,7 +251,7 @@ export default function Hero() {
                     <div style={{
                       width: "20px", height: "20px", borderRadius: "50%",
                       background: item.color, border: "4px solid var(--bg-card)",
-                      boxShadow: "0 0 8px rgba(0,0,0,0.15)",
+                      boxShadow: `0 0 0 3px ${item.glow}`,
                       zIndex: 2, marginTop: "2px",
                     }} />
                     <div>
@@ -273,7 +274,7 @@ export default function Hero() {
 
         {/* Quick Nav Dashboard panel */}
         <div className="card" style={{
-          padding: "24px", background: "var(--bg-card)",
+          padding: "22px", background: "var(--bg-card)",
           display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "18px",
         }}>
           {[

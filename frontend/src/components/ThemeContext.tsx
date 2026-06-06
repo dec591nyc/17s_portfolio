@@ -13,12 +13,12 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Determine initial theme
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     if (savedTheme) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
     } else {
@@ -27,7 +27,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(initialTheme);
       document.documentElement.setAttribute("data-theme", initialTheme);
     }
-    setMounted(true);
   }, []);
 
   const toggleTheme = () => {

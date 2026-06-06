@@ -1,6 +1,8 @@
-# Yichi Nien - Portfolio Website (17s_portfolio)
+# Yichi Nien - Portfolio Website
 
-A premium, state-of-the-art developer portfolio website featuring a **Next.js** frontend and a **FastAPI (Python)** backend, styled using vanilla CSS variables for a clean, earthy beige-grey design system with olive green highlights.
+A bilingual portfolio website for Yichi Nien, a backend software engineer planning to invest more career effort in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation.
+
+The frontend is built with **Next.js**, **TypeScript**, and vanilla CSS variables. The backend uses **FastAPI**, **SQLAlchemy**, and SQLite/PostgreSQL to serve portfolio data and handle contact-form submissions.
 
 🔗 **Live Demo**: [https://17s-portfolio.vercel.app](https://17s-portfolio.vercel.app)
 
@@ -69,7 +71,14 @@ Open a second terminal, navigate to the `/frontend` directory, and start the Nex
 # Navigate to the frontend directory
 cd frontend
 
+# Install exact dependencies from package-lock.json
+npm ci
+
 # Run the Next.js development server
 npm run dev
 ```
 Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the web application in action.
+
+> `npm ci` is recommended for a fresh clone because it installs the exact dependency versions recorded in `package-lock.json`. Use `npm install` when you intentionally add or update packages.
+
+> On Windows PowerShell, if `npm` is blocked by execution policy, run these commands in Command Prompt or use `npm.cmd ci` and `npm.cmd run dev`.

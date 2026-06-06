@@ -17,6 +17,18 @@ interface Project {
   section: "previous" | "developed" | "developing";
 }
 
+interface ApiProject {
+  id: number;
+  title?: string;
+  description?: string;
+  category?: string;
+  tags?: string | string[];
+  github_url?: string | null;
+  demo_url?: string | null;
+  period?: string;
+  highlight?: string;
+}
+
 export default function Projects() {
   const { t, locale } = useLanguage();
   const [dbProjects, setDbProjects] = useState<Project[] | null>(null);
@@ -37,42 +49,6 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: t("proj_portfolio_title"),
-      description: t("proj_portfolio_desc"),
-      category: "Full-Stack Dev",
-      tags: ["Next.js", "TypeScript", "React", "Vanilla CSS", "Theme Mode", "i18n"],
-      github_url: "https://github.com/dec591nyc/17s_portfolio",
-      demo_url: null,
-      period: "Jun 2026",
-      highlight: t("proj_portfolio_highlight"),
-      section: "developed",
-    },
-    {
-      id: 3,
-      title: t("proj_api_title"),
-      description: t("proj_api_desc"),
-      category: t("skills_cat_be"),
-      tags: ["Python", "FastAPI", "SQLite", "SQLAlchemy", "Docker", "REST API"],
-      github_url: "https://github.com/dec591nyc/17s_portfolio", // same repo
-      demo_url: null,
-      period: "Jun 2026",
-      highlight: t("proj_api_highlight"),
-      section: "developed",
-    },
-    {
-      id: 4,
-      title: t("proj_stream_title"),
-      description: t("proj_stream_desc"),
-      category: t("skills_cat_de"),
-      tags: ["Python", "Apache Kafka", "Docker", "PostgreSQL", "ETL Streaming"],
-      github_url: null,
-      demo_url: null,
-      period: "Planning",
-      highlight: t("proj_stream_highlight"),
-      section: "developing",
-    },
-    {
-      id: 5,
       title: t("proj_l2_title"),
       description: t("proj_l2_desc"),
       category: "Frontend Dev",
@@ -84,7 +60,31 @@ export default function Projects() {
       section: "developed",
     },
     {
-      id: 6,
+      id: 3,
+      title: t("proj_portfolio_title"),
+      description: t("proj_portfolio_desc"),
+      category: "Full-Stack Dev",
+      tags: ["Next.js", "TypeScript", "FastAPI", "SQLite", "Contact API", "Anti-Spam"],
+      github_url: "https://github.com/dec591nyc/17s_portfolio",
+      demo_url: null,
+      period: "Jun 2026",
+      highlight: t("proj_portfolio_highlight"),
+      section: "developed",
+    },
+    {
+      id: 4,
+      title: t("proj_linebot_title"),
+      description: t("proj_linebot_desc"),
+      category: t("proj_idea_category"),
+      tags: ["LINE Bot", "n8n", "Automation", "Booking App"],
+      github_url: null,
+      demo_url: null,
+      period: t("proj_idea_period"),
+      highlight: t("proj_linebot_highlight"),
+      section: "developing",
+    },
+    {
+      id: 5,
       title: t("proj_l3_title"),
       description: t("proj_l3_desc"),
       category: "AI & ML Dev",
@@ -96,7 +96,7 @@ export default function Projects() {
       section: "developed",
     },
     {
-      id: 7,
+      id: 6,
       title: t("proj_l8_title"),
       description: t("proj_l8_desc"),
       category: "AI & ML Dev",
@@ -106,6 +106,30 @@ export default function Projects() {
       period: "Jun 2026",
       highlight: t("proj_l8_highlight"),
       section: "developed",
+    },
+    {
+      id: 7,
+      title: t("proj_legal_title"),
+      description: t("proj_legal_desc"),
+      category: t("proj_idea_category"),
+      tags: ["Web Scraping", "Data Analysis", "Legal Data", "Dashboard"],
+      github_url: null,
+      demo_url: null,
+      period: t("proj_idea_period"),
+      highlight: t("proj_legal_highlight"),
+      section: "developing",
+    },
+    {
+      id: 8,
+      title: t("proj_travel_title"),
+      description: t("proj_travel_desc"),
+      category: t("proj_idea_category"),
+      tags: ["Web Scraping", "Travel Planning", "Python", "Automation"],
+      github_url: null,
+      demo_url: null,
+      period: t("proj_idea_period"),
+      highlight: t("proj_travel_highlight"),
+      section: "developing",
     },
   ];
 
@@ -119,25 +143,33 @@ export default function Projects() {
         
         // Map API objects to matching fields (ensuring correct section categories)
         if (Array.isArray(data) && data.length > 0) {
-          const mapped: Project[] = data.map((item: any) => {
+          const mapped: Project[] = (data as ApiProject[]).map((item) => {
             // Determine section based on tags or category from DB
             let sec: "previous" | "developed" | "developing" = "developed";
             const titleLower = (item.title || "").toLowerCase();
+            const categoryLower = (item.category || "").toLowerCase();
             if (titleLower.includes("donor") || titleLower.includes("analytics")) {
               sec = "previous";
-            } else if (titleLower.includes("stream") || titleLower.includes("real-time")) {
+            } else if (
+              categoryLower.includes("planned") ||
+              titleLower.includes("line bot") ||
+              titleLower.includes("judicial") ||
+              titleLower.includes("penalty") ||
+              titleLower.includes("travel") ||
+              titleLower.includes("scraper")
+            ) {
               sec = "developing";
             }
             return {
               id: item.id,
-              title: item.title,
-              description: item.description,
-              category: item.category,
+              title: item.title || "",
+              description: item.description || "",
+              category: item.category || "Project",
               tags: typeof item.tags === "string" ? item.tags.split(",") : item.tags || [],
-              github_url: item.github_url,
-              demo_url: item.demo_url,
+              github_url: item.github_url ?? null,
+              demo_url: item.demo_url ?? null,
               period: item.period || "2025/2026",
-              highlight: item.highlight || item.category,
+              highlight: item.highlight || item.category || "",
               section: sec,
             };
           });
@@ -183,7 +215,7 @@ export default function Projects() {
                 : "linear-gradient(90deg, var(--fg-subtle) 0%, var(--card-border) 100%)",
           }} />
 
-          <div style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, gap: "16px" }}>
+          <div style={{ padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, gap: "14px" }}>
             <div>
               {/* Category and Period */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
@@ -241,6 +273,7 @@ export default function Projects() {
               <div style={{
                 display: "flex",
                 flexWrap: "wrap",
+                alignItems: "center",
                 gap: "10px",
                 borderTop: "1px solid var(--card-border)",
                 paddingTop: "14px",
@@ -256,7 +289,7 @@ export default function Projects() {
                       letterSpacing: "0.05em", textTransform: "uppercase",
                       display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
-                      flex: "1 1 140px",
+                      flex: "0 0 auto",
                       whiteSpace: "nowrap",
                     }}
                     onMouseEnter={(e) => {
@@ -280,7 +313,7 @@ export default function Projects() {
                       letterSpacing: "0.05em", textTransform: "uppercase",
                       display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
                       transition: "all 0.25s",
-                      flex: "1 1 140px",
+                      flex: "0 0 auto",
                       whiteSpace: "nowrap",
                     }}
                     onMouseEnter={(e) => {
@@ -315,8 +348,8 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" style={{ padding: "100px 5%", background: "var(--bg-secondary)" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "54px" }}>
+    <section id="projects" style={{ padding: "76px 5%", background: "var(--bg-secondary)" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "42px" }}>
         {/* Header */}
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           <span className="section-badge" style={{ alignSelf: "flex-start" }}>{t("proj_badge")}</span>
@@ -340,7 +373,7 @@ export default function Projects() {
         </div>
 
         {/* 1. Previous Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <div>
             <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
               📁 {t("proj_prev_sec")}
@@ -356,7 +389,7 @@ export default function Projects() {
         <div style={{ height: "1px", background: "var(--card-border)" }} />
 
         {/* 2. Developed Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <div>
             <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
               🛠️ {t("proj_dev_sec")}
@@ -372,7 +405,7 @@ export default function Projects() {
         <div style={{ height: "1px", background: "var(--card-border)" }} />
 
         {/* 3. Developing Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <div>
             <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
               🚀 {t("proj_ongoing_sec")}
@@ -386,7 +419,7 @@ export default function Projects() {
 
         {/* Coming soon banner */}
         <div style={{
-          marginTop: "20px", textAlign: "center", padding: "28px",
+          marginTop: "8px", textAlign: "center", padding: "22px",
           borderRadius: "12px",
           background: "var(--olive-tint)",
           border: "1.5px dashed var(--olive-border)",

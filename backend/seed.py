@@ -15,7 +15,7 @@ def seed_db():
     projects = [
         models.Project(
             title="Donor Analytics Pipeline",
-            description="A Python-based data pipeline built for St Peter's College to automate fundraising analytics. Extracted ~20 years of donation data from SQL Server, implemented predictive modeling to identify high-value donors, and delivered Power BI dashboards and Excel reports.",
+            description="Using St Peter's College fundraising records as the data source, this Python pipeline focused on the latest ~20 years of SQL Server donation data for predictive modeling, high-value donor analysis, and Power BI / Excel reporting.",
             category="Data Engineering",
             tags="Python,SQL Server,Power BI,ETL,Predictive Modeling,Excel",
             github_url="https://github.com/dec591nyc/Donor-Analytics-Pipeline",
@@ -23,35 +23,8 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Full-Stack Portfolio System",
-            description="This portfolio website. Built using Next.js (App Router, TypeScript) and styled with raw CSS variables. Integrates a Python FastAPI backend with SQLite database for dynamic skills telemetry and secure message capture.",
-            category="Full-Stack Dev",
-            tags="Next.js,TypeScript,React,Vanilla CSS,Theme Mode,i18n",
-            github_url="https://github.com/dec591nyc/17s_portfolio",
-            demo_url=None,
-            image_url="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
-        ),
-        models.Project(
-            title="FastAPI Database Server",
-            description="Containerized backend REST API featuring SQLAlchemy ORM integration. Auto-migrates database schemas, feeds structured data payloads to frontend telemetry, and securely stores contact submissions.",
-            category="Backend",
-            tags="Python,FastAPI,SQLite,SQLAlchemy,Docker,REST API",
-            github_url="https://github.com/dec591nyc/17s_portfolio",
-            demo_url=None,
-            image_url="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
-        ),
-        models.Project(
-            title="Real-Time Telemetry Streaming Platform",
-            description="An ongoing development of a streaming ETL pipeline designed to ingest, process, and store live telemetry data. Targets high throughput with Kafka message queues and structured streaming databases.",
-            category="Data Engineering",
-            tags="Python,Apache Kafka,Docker,PostgreSQL,ETL Streaming",
-            github_url=None,
-            demo_url=None,
-            image_url="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=800&auto=format&fit=crop"
-        ),
-        models.Project(
-            title="AI Dev Practice Dashboard",
-            description="An interactive front-end dashboard featuring a premium glassmorphic UI. Integrates dynamic light refraction tracking mouse movement, slow-floating ambient gradients, and a real-time ticking calendar clock.",
+            title="AI Dev Dashboard Practice",
+            description="The first pre-employment training assignment: an interactive front-end dashboard featuring a glassmorphic UI, mouse-responsive light effects, ambient gradients, and a real-time calendar clock.",
             category="Frontend Dev",
             tags="HTML5,CSS3,JavaScript,CSS Variables,Glassmorphism",
             github_url="https://github.com/dec591nyc/First-AI-Dev-Practice",
@@ -59,8 +32,26 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
+            title="Portfolio Dashboard",
+            description="The second pre-employment training assignment: a career portfolio dashboard built with Next.js, TypeScript, and a FastAPI backend. It combines portfolio presentation, contact-message storage, basic anti-spam checks, and deployment-ready frontend/backend structure.",
+            category="Full-Stack Dev",
+            tags="Next.js,TypeScript,FastAPI,SQLite,Contact API,Anti-Spam",
+            github_url="https://github.com/dec591nyc/17s_portfolio",
+            demo_url=None,
+            image_url="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
+            title="Booking App & LINE Bot Notifications",
+            description="A possible future project combining a reservation workflow, LINE Bot push notifications, and n8n automation. This is a candidate idea, not a completed feature.",
+            category="Planned Idea",
+            tags="LINE Bot,n8n,Automation,Booking App",
+            github_url=None,
+            demo_url=None,
+            image_url="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
             title="Hugging Face AI Practice",
-            description="The third industrial training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
+            description="The third pre-employment training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
             category="AI & ML Dev",
             tags="Python,Hugging Face,Transformers,PyTorch,NLP,Jupyter",
             github_url="https://github.com/dec591nyc/HuggingFace-Practice",
@@ -69,12 +60,30 @@ def seed_db():
         ),
         models.Project(
             title="Multiple Linear Regression Practice",
-            description="The fourth industrial training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
+            description="The fourth pre-employment training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
             category="AI & ML Dev",
             tags="Python,Streamlit,Scikit-Learn,Regression,EDA,Pandas",
             github_url="https://github.com/dec591nyc/Multiple-Linear-Regression-Practice",
             demo_url="https://multiple-linear-regression-practice-dec591nyc.streamlit.app/",
             image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
+            title="Judicial Penalty Case Scraper Analysis",
+            description="A planned data-analysis practice around scraping public judicial or administrative penalty case data, then organizing it into searchable summaries and basic trend views.",
+            category="Planned Idea",
+            tags="Web Scraping,Data Analysis,Legal Data,Dashboard",
+            github_url=None,
+            demo_url=None,
+            image_url="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=800&auto=format&fit=crop"
+        ),
+        models.Project(
+            title="Travel Planning Suggestions with Scraper Practice",
+            description="A planned practice combining travel-planning suggestions with crawler-based information gathering, then turning scattered travel data into easier comparison material.",
+            category="Planned Idea",
+            tags="Web Scraping,Travel Planning,Python,Automation",
+            github_url=None,
+            demo_url=None,
+            image_url="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"
         )
     ]
     
@@ -125,7 +134,7 @@ def seed_db():
             category="education"
         ),
         models.Experience(
-            title="Advanced Software Engineer",
+            title="Professional Software Engineer",
             company="FarEasTone Telecom",
             period="Mar 2020 – Apr 2022",
             description="Data analysis using GBDT, optimizing internal staff processes, and maintaining Insurance E-commerce portal.",

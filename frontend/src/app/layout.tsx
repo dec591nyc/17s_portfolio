@@ -18,12 +18,12 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Yichi Nien | Data Engineer Portfolio",
-  description: "Professional portfolio of Yichi Nien — a backend software engineer transitioning into data engineering. Specializing in ETL pipelines, SQL, Power BI, Python, and Docker. Based in Changhua, Taiwan.",
+  description: "Professional portfolio of Yichi Nien — a backend software engineer planning to invest more career effort in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation. Based in Changhua, Taiwan.",
   keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
   authors: [{ name: "Yichi Nien" }],
   openGraph: {
     title: "Yichi Nien | Data Engineer Portfolio",
-    description: "Backend software engineer transitioning into data engineering. Specializing in ETL, SQL, Power BI, and Python.",
+    description: "Backend software engineer planning to invest more career effort in data engineering, ETL, SQL analytics, Power BI, and Python automation.",
     type: "website",
   },
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+      <body style={{ fontFamily: 'var(--font-inter), sans-serif' }} suppressHydrationWarning>
         <ThemeProvider>
           <LanguageProvider>
             {children}

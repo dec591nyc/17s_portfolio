@@ -41,10 +41,10 @@ export default function Skills() {
   const categories = ["Data Engineering", "Backend", "DevOps & Tools", "ML & Analytics"];
 
   return (
-    <section id="skills" style={{ padding: "100px 5%", background: "var(--bg-secondary)" }}>
+    <section id="skills" style={{ padding: "76px 5%", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Section Header */}
-        <div style={{ marginBottom: "60px", display: "flex", flexDirection: "column", gap: "14px" }}>
+        <div style={{ marginBottom: "42px", display: "flex", flexDirection: "column", gap: "12px" }}>
           <span className="section-badge" style={{ alignSelf: "flex-start" }}>{t("skills_badge")}</span>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
             <h2 style={{
@@ -67,9 +67,9 @@ export default function Skills() {
             const meta = categoryMeta[category];
             const categorySkills = skills.filter((s) => s.category === category);
             return (
-              <div key={category} className="card" style={{ padding: "30px", borderRadius: "12px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}>
+              <div key={category} className="card" style={{ padding: "26px", borderRadius: "12px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}>
                 {/* Category header */}
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "26px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
                   <span style={{ fontSize: "1.3rem" }}>{meta.emoji}</span>
                   <span style={{
                     fontWeight: "800", fontSize: "0.82rem",
@@ -79,7 +79,7 @@ export default function Skills() {
                     {t(meta.translationKey)}
                   </span>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                   {categorySkills.map((skill) => (
                     <div key={skill.id} style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

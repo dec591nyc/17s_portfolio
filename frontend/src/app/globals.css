@@ -35,6 +35,12 @@
   --olive-border: rgba(92, 107, 53, 0.25);
   --olive-glow: rgba(92, 107, 53, 0.18);
 
+  /* Career timeline accents */
+  --work-accent: #1ecaaf;        /* bright teal for work experience */
+  --work-accent-glow: rgba(30, 202, 175, 0.24);
+  --education-accent: #6d4cc2;   /* academic indigo for education */
+  --education-accent-glow: rgba(109, 76, 194, 0.24);
+
   /* Card system */
   --card-bg: var(--bg-card);
   --card-border: rgba(100, 97, 93, 0.18);
@@ -69,6 +75,12 @@
   --olive-tint: rgba(129, 148, 78, 0.15);
   --olive-border: rgba(129, 148, 78, 0.35);
   --olive-glow: rgba(129, 148, 78, 0.25);
+
+  /* Career timeline accents */
+  --work-accent: #5eead4;
+  --work-accent-glow: rgba(94, 234, 212, 0.30);
+  --education-accent: #c4b5fd;
+  --education-accent-glow: rgba(196, 181, 253, 0.30);
 
   /* Card system in Dark Mode */
   --card-bg: var(--bg-card);

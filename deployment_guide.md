@@ -63,18 +63,25 @@ gcloud beta billing projects link portfolio-backend-12345 --billing-account=YOUR
 ### Step 3.3: Deploy the Backend
 We can deploy the backend directly from the `backend/` folder. Run this command from the root directory of your project:
 ```bash
-gcloud run deploy portfolio-backend --source ./backend --region us-central1 --allow-unauthenticated --set-env-vars="DATABASE_URL=your_supabase_connection_string"
+gcloud run deploy portfolio-backend --source ./backend --region us-central1 --allow-unauthenticated --set-env-vars="DATABASE_URL=your_supabase_connection_string,ALLOWED_ORIGINS=https://17s-portfolio.vercel.app"
 ```
 - Replace `your_supabase_connection_string` with the URI you copied from Supabase.
+- Replace `https://17s-portfolio.vercel.app` with your deployed Vercel frontend URL if it changes.
 - Google Cloud Run will automatically compile the Docker container, upload it to Artifact Registry, and deploy the service.
 - **Copy the Service URL** once the deployment succeeds (it will look like `https://portfolio-backend-xxxxxx.a.run.app`).
+
+Optional contact-form anti-spam environment variables:
+- `CONTACT_IP_LIMIT_1M`: same IP submissions allowed per 1 minute. Default: `5`.
+- `CONTACT_EMAIL_LIMIT_10M`: same email submissions allowed per 10 minutes. Default: `3`.
+- `CONTACT_MAX_LINKS`: maximum links allowed in one first-contact message. Default: `3`.
+- `CONTACT_HASH_SALT`: salt used before hashing IP/email/message fingerprints. Set a private random value in production.
 
 ### Step 3.4: Seed the Supabase Database
 To populate your new Supabase database with initial mock portfolio data:
 1. In your local backend environment, set the environment variable:
    - On Windows PowerShell: `$env:DATABASE_URL="your_supabase_connection_string"`
 2. Run the seed script:
-   - `C:\Users\admin\Documents\17s_workplace\backend\.venv\Scripts\python.exe backend\seed.py`
+   - From the project root, run `backend\.venv\Scripts\python.exe backend\seed.py`
 
 ---
 
