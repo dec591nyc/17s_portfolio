@@ -30,7 +30,7 @@ export default function Hero() {
     { val: t("db_stat_status_val"), lbl: t("db_stat_status_lbl"), icon: "🟢" },
   ];
 
-  const coreTech = ["Python", "SQL / Postgres", "Next.js", "Power BI", "Docker", "FastAPI", "Kubernetes"];
+  const coreTech = ["Python", "SQL / Postgres", "Next.js", "Power BI", "Tableau", "C#", "Java", "Docker", "FastAPI"];
   const careerNodes = [
     { company: t("career_nchu_company"), role: t("career_nchu_role"), year: "2026", color: "var(--education-accent)", glow: "var(--education-accent-glow)" },
     { company: t("career_spc_company"), role: t("career_spc_role"), year: "2025", color: "var(--work-accent)", glow: "var(--work-accent-glow)" },

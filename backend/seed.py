@@ -26,7 +26,7 @@ def seed_db():
             title="AI Dev Dashboard Practice",
             description="The first pre-employment training assignment: an interactive front-end dashboard featuring a glassmorphic UI, mouse-responsive light effects, ambient gradients, and a real-time calendar clock.",
             category="Frontend Dev",
-            tags="HTML5,CSS3,JavaScript,CSS Variables,Glassmorphism",
+            tags="HTML5,CSS3,JavaScript,CSS Variables,Interactive UI",
             github_url="https://github.com/dec591nyc/First-AI-Dev-Practice",
             demo_url="https://dec591nyc.github.io/First-AI-Dev-Practice/",
             image_url="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
@@ -50,10 +50,10 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Hugging Face AI Practice",
-            description="The third pre-employment training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
+            title="Hugging Face AI Image Generator",
+            description="The third pre-employment training assignment: a Streamlit AI image generator that calls Hugging Face inference endpoints for FLUX.1 Schnell and Stable Diffusion XL. It includes bilingual UI, light/dark themes, prompt controls, batch generation, token handling, and a local demo mode for safer testing.",
             category="AI & ML Dev",
-            tags="Python,Hugging Face,Transformers,PyTorch,NLP,Jupyter",
+            tags="Python,Streamlit,Hugging Face,FLUX.1,SDXL,Image Generation",
             github_url="https://github.com/dec591nyc/HuggingFace-Practice",
             demo_url="https://huggingface-practice-dec591nyc.streamlit.app/",
             image_url="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"

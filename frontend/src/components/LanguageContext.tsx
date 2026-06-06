@@ -147,11 +147,11 @@ const translations = {
 
     proj_l2_title: "AI Dev Dashboard Practice",
     proj_l2_desc: "The first pre-employment training assignment: an interactive front-end dashboard featuring a glassmorphic UI, mouse-responsive light effects, ambient gradients, and a real-time calendar clock.",
-    proj_l2_highlight: "AI Dev Practice Clock",
+    proj_l2_highlight: "AI Dev Warm-Up",
 
-    proj_l3_title: "Hugging Face AI Practice",
-    proj_l3_desc: "The third pre-employment training assignment showcasing AI model integration with Hugging Face transformers. Implements text processing, sentiment classification, and interactive AI tasks in Python.",
-    proj_l3_highlight: "Hugging Face & NLP",
+    proj_l3_title: "Hugging Face AI Image Generator",
+    proj_l3_desc: "The third pre-employment training assignment: a Streamlit AI image generator that calls Hugging Face inference endpoints for FLUX.1 Schnell and Stable Diffusion XL. It includes bilingual UI, light/dark themes, prompt controls, batch generation, token handling, and a local demo mode for safer testing.",
+    proj_l3_highlight: "HF image generation",
 
     proj_l8_title: "Multiple Linear Regression Practice",
     proj_l8_desc: "The fourth pre-employment training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
@@ -330,11 +330,11 @@ const translations = {
 
     proj_l2_title: "AI開發儀表板實踐",
     proj_l2_desc: "職前訓練第一份作業。以互動式前端網頁儀表板為主題，具備毛玻璃擬態 UI，並整合能隨滑鼠軌跡變化的折射光影特效、慢速飄移的背景漸變，以及自動偵測當地時區的即時數位日曆時鐘。",
-    proj_l2_highlight: "AI開發實作首發",
+    proj_l2_highlight: "AI開發實作熱身",
 
-    proj_l3_title: "Hugging Face AI 實作專案",
-    proj_l3_desc: "職前訓練第三份作業。基於 Hugging Face Transformers 與 PyTorch 的 AI 模型應用實作，涵蓋自然語言處理 (NLP)、文本情緒分類以及互動式 AI 任務實踐。",
-    proj_l3_highlight: "Hugging Face & NLP 實踐",
+    proj_l3_title: "Hugging Face AI 繪圖生成器",
+    proj_l3_desc: "職前訓練第三份作業。以 Streamlit 建立 AI 繪圖生成器，透過 Hugging Face Inference API 串接 FLUX.1 Schnell 與 Stable Diffusion XL，支援中英文介面、深淺色主題、提示詞/風格/比例控制、多圖並行生成、Token 設定與本機 Demo 模式。",
+    proj_l3_highlight: "HF 繪圖生成實作",
 
     proj_l8_title: "多元線性迴歸實作專案",
     proj_l8_desc: "職前訓練第四份作業。基於 Kaggle 50 Startups 數據集的多元線性迴歸分析，涵蓋探索性數據分析 (EDA)、虛擬變數編碼、模型訓練、迴歸係數評估，以及即時利潤預測功能。",
