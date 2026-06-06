@@ -4,7 +4,7 @@
 
 目前作品定位是「資料工程 / 後端工程 / 分析應用」方向的 portfolio。內容聚焦於資料工程、ETL 資料流水線、SQL 分析、Power BI / Tableau 儀表板、Python 自動化，以及過去 C# / Java 後端開發經驗。
 
-Live Demo: [https://17s-portfolio.vercel.app](https://17s-portfolio.vercel.app)
+🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
 ---
 
@@ -18,18 +18,17 @@ Live Demo: [https://17s-portfolio.vercel.app](https://17s-portfolio.vercel.app)
 | 作品展示 | Previous Projects、Developed Projects、Developing / Planned Projects |
 | 聯絡表單 | 後端 API 儲存留言，展示版尚未串接正式 email 寄送 |
 | 防 spam | Honeypot、IP 限流、Email 限流、重複訊息偵測、連結數限制、250 字留言上限 |
-| 核心技能 tags | Python、SQL / Postgres、Next.js、Power BI、Tableau、C#、Java、Docker、FastAPI |
 | 部署規劃 | 前端 Vercel，後端可部署至 Cloud Run，資料庫可銜接 Supabase PostgreSQL |
 
 ```mermaid
 flowchart LR
-    A[使用者瀏覽 Portfolio] --> B[Next.js Frontend]
-    B --> C[職涯儀表板與專案卡片]
-    B --> D[Contact Form]
-    D --> E[FastAPI Backend]
-    E --> F[Anti-Spam Checks]
-    F --> G[SQLite / PostgreSQL]
-    B --> H[Theme and Language Context]
+    A["使用者瀏覽 Portfolio"] --> B["Next.js Frontend"]
+    B --> C["職涯儀表板與專案卡片"]
+    B --> D["Contact Form"]
+    D --> E["FastAPI Backend"]
+    E --> F["Anti-Spam Checks"]
+    F --> G["SQLite / PostgreSQL"]
+    B --> H["Theme and Language Context"]
     H --> C
 ```
 
@@ -155,10 +154,10 @@ FastAPI contact endpoint 目前支援以下環境變數：
 
 ---
 
-## 目前版本重點
+## 開發收穫
 
-- README 已中文化並改為可維護的系統 infographic。
-- 首頁核心技術 tags 已納入 C#、Java，並以 Tableau 取代 Kubernetes。
-- AI 開發儀表板文案調整為「AI 開發實作熱身」。
-- Hugging Face 專案卡片已改為 AI 繪圖生成器定位，對齊實際 Streamlit / Hugging Face Inference API 內容。
-- Contact form 已加入 250 字上限與基礎防 spam 邏輯。
+- 完整練習 Next.js 前端與 FastAPI 後端的分工整合。
+- 實作作品集常見的內容管理需求，包含專案卡片、技能資料、職涯時間軸與聯絡表單。
+- 透過 Contact API 練習表單驗證、資料儲存、CORS 設定與基礎防 spam 設計。
+- 建立可部署的前後端結構，並保留後續銜接 Supabase PostgreSQL 與雲端後端服務的空間。
+- 在 UI 文案、雙語內容、主題色彩與 README 說明之間維持一致，讓作品展示更接近實際求職情境。
