@@ -153,9 +153,9 @@ const translations = {
     proj_l3_desc: "The third pre-employment training assignment: a Streamlit AI image generator that calls Hugging Face inference endpoints for FLUX.1 Schnell and Stable Diffusion XL. It includes bilingual UI, light/dark themes, prompt controls, batch generation, token handling, and a local demo mode for safer testing.",
     proj_l3_highlight: "HF image generation",
 
-    proj_l8_title: "Multiple Linear Regression Practice",
-    proj_l8_desc: "The fourth pre-employment training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
-    proj_l8_highlight: "Regression & EDA",
+    proj_l8_title: "Linear Regression Practice",
+    proj_l8_desc: "The fourth pre-employment training assignment: an interactive linear regression simulator and air-quality anomaly detection prototype built under the CRISP-DM framework. It uses central Taiwan AQI records to fit regression models and rank pollution residual outliers for decision support.",
+    proj_l8_highlight: "Regression & CRISP-DM",
 
     // Skills
     skills_badge: "Technical Skills",
@@ -336,9 +336,9 @@ const translations = {
     proj_l3_desc: "職前訓練第三份作業。以 Streamlit 建立 AI 繪圖生成器，透過 Hugging Face Inference API 串接 FLUX.1 Schnell 與 Stable Diffusion XL，支援中英文介面、深淺色主題、提示詞/風格/比例控制、多圖並行生成、Token 設定與本機 Demo 模式。",
     proj_l3_highlight: "HF 繪圖生成實作",
 
-    proj_l8_title: "多元線性迴歸實作專案",
-    proj_l8_desc: "職前訓練第四份作業。基於 Kaggle 50 Startups 數據集的多元線性迴歸分析，涵蓋探索性數據分析 (EDA)、虛擬變數編碼、模型訓練、迴歸係數評估，以及即時利潤預測功能。",
-    proj_l8_highlight: "線性迴歸與 EDA 實踐",
+    proj_l8_title: "線性迴歸與異常監測實作",
+    proj_l8_desc: "職前訓練第四份作業。基於 CRISP-DM 框架的線性迴歸與空污異常觀測偵測展示工具，系統性整合公式模擬器與中部地區（台中、彰化、南投）實施 AQI 建模，利用殘差排序實踐污染監測決策支持原型。",
+    proj_l8_highlight: "迴歸與 CRISP-DM 實踐",
 
     // Skills
     skills_badge: "技術能力專長",

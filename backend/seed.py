@@ -59,12 +59,12 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Multiple Linear Regression Practice",
-            description="The fourth pre-employment training assignment focusing on Multiple Linear Regression analysis on the Kaggle 50 Startups dataset. Includes exploratory data analysis (EDA), dummy variable encoding, model training, coefficient evaluation, and real-time profit prediction.",
+            title="Linear Regression Practice",
+            description="The fourth pre-employment training assignment: an interactive linear regression simulator and air-quality anomaly detection prototype built under the CRISP-DM framework. It uses central Taiwan AQI records to fit regression models and rank pollution residual outliers for decision support.",
             category="AI & ML Dev",
-            tags="Python,Streamlit,Scikit-Learn,Regression,EDA,Pandas",
-            github_url="https://github.com/dec591nyc/Multiple-Linear-Regression-Practice",
-            demo_url="https://multiple-linear-regression-practice-dec591nyc.streamlit.app/",
+            tags="Python,Streamlit,Scikit-Learn,Linear Regression,CRISP-DM,Pandas",
+            github_url="https://github.com/dec591nyc/Linear-Regression-Practice",
+            demo_url="https://linear-regression-practice-dec591nyc.streamlit.app/",
             image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
