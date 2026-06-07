@@ -53,7 +53,7 @@ flowchart LR
 | 分類 | 內容 |
 | --- | --- |
 | Previous Projects | Donor Analytics Pipeline，聚焦 St Peter's College 募款資料來源與近 20 年 SQL Server 捐款資料建模 |
-| Developed Projects | AI 開發儀表板實踐、個人 Portfolio Dashboard、Hugging Face AI 繪圖生成器、多元線性迴歸實作 |
+| Developed Projects | AI 開發儀表板實踐、個人 Portfolio Dashboard、Hugging Face AI 繪圖生成器、線性迴歸實作 |
 | Developing / Planned Projects | 預約 App 與 LINE Bot 推播、司法機關裁罰案件爬蟲數據分析、旅遊規劃建議配合爬蟲實踐 |
 
 ---
