@@ -52,7 +52,7 @@ def seed_db():
         models.Project(
             title="Hugging Face AI Image Generator",
             description="The third pre-employment training assignment: a Streamlit AI image generator that calls Hugging Face inference endpoints for FLUX.1 Schnell and Stable Diffusion XL. It includes bilingual UI, light/dark themes, prompt controls, batch generation, token handling, and a local demo mode for safer testing.",
-            category="AI & ML Dev",
+            category="AI Dev",
             tags="Python,Streamlit,Hugging Face,FLUX.1,SDXL,Image Generation",
             github_url="https://github.com/dec591nyc/HuggingFace-Practice",
             demo_url="https://huggingface-practice-dec591nyc.streamlit.app/",

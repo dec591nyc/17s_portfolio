@@ -300,7 +300,7 @@ const translations = {
     proj_prev_sec: "過往分析與流水線專案 (Previous Projects)",
     proj_prev_sec_desc: "過去在企業實作之數據分析與自動化流水線專案，附 GitHub 連結。",
     proj_dev_sec: "職前訓開發完成專案 (Developed Projects)",
-    proj_dev_sec_desc: "職前訓練過程中已完成的作業與系統實作。",
+    proj_dev_sec_desc: "職前訓練過程中完成的作業與系統實作。",
     proj_ongoing_sec: "開發中 / 構想中專案 (Developing Projects)",
     proj_ongoing_sec_desc: "以下是本人指定的候選開發方向，非已完成成果，也不是隨意生成的建議清單。",
     proj_view_github: "GitHub",
