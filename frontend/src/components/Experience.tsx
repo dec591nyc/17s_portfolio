@@ -54,7 +54,7 @@ export default function Experience() {
       id: 4,
       title: t("exp_uni_title"),
       company: t("exp_uni_company"),
-      companyUrl: "https://www.unisa.edu.au/",
+      companyUrl: "https://adelaide.edu.au/",
       period: "Feb 2024 – Nov 2025",
       location: t("loc_adelaide_au"),
       description: t("exp_uni_desc"),
@@ -120,7 +120,7 @@ export default function Experience() {
     category === "work" ? "var(--work-accent-glow)" : "var(--education-accent-glow)";
 
   return (
-    <section id="experience" style={{ padding: "76px 5%", background: "var(--bg-color)" }}>
+    <section id="experience" style={{ padding: "48px 5%", background: "var(--bg-color)" }}>
       <div style={{ maxWidth: "960px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom: "36px", display: "flex", flexDirection: "column", gap: "12px" }}>

@@ -128,9 +128,9 @@ def seed_db():
         ),
         models.Experience(
             title="Master's, Information Technology",
-            company="University of South Australia",
+            company="Adelaide University",
             period="Feb 2024 – Nov 2025",
-            description="Enterprise Management specialization. Expanding data systems expertise in an international academic setting.",
+            description="Business Analytics specialization. Focused on large-scale database design, architectural planning, and database management.",
             category="education"
         ),
         models.Experience(

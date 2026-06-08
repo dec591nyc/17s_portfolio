@@ -2,46 +2,80 @@
 
 import { useLanguage } from "@/components/LanguageContext";
 
-interface Skill {
-  id: number;
-  name: string;
-  category: "Data Engineering" | "Backend" | "DevOps & Tools" | "ML & Analytics";
-  proficiency: number;
+interface CompetencyCategory {
+  id: string;
+  icon: string;
+  catKey: string;
+  descKey: string;
+  impactKey: string;
+  badges: string[];
+  colorTheme: "orange" | "olive" | "neutral" | "brand";
 }
 
-const skills: Skill[] = [
-  { id: 1, name: "ETL Pipeline Design", category: "Data Engineering", proficiency: 88 },
-  { id: 2, name: "SQL / PostgreSQL / MySQL", category: "Data Engineering", proficiency: 90 },
-  { id: 3, name: "Power BI", category: "Data Engineering", proficiency: 82 },
-  { id: 4, name: "Tableau", category: "Data Engineering", proficiency: 78 },
-  { id: 5, name: "Python (FastAPI / Flask)", category: "Backend", proficiency: 88 },
-  { id: 6, name: "C# (.Net MVC / WebForm)", category: "Backend", proficiency: 82 },
-  { id: 7, name: "Java (SpringBoot)", category: "Backend", proficiency: 75 },
-  { id: 8, name: "RESTful API", category: "Backend", proficiency: 90 },
-  { id: 9, name: "Docker", category: "DevOps & Tools", proficiency: 82 },
-  { id: 10, name: "Kubernetes", category: "DevOps & Tools", proficiency: 72 },
-  { id: 11, name: "GitLab CI/CD", category: "DevOps & Tools", proficiency: 80 },
-  { id: 12, name: "Jenkins", category: "DevOps & Tools", proficiency: 70 },
-  { id: 13, name: "LightGBM / GBDT", category: "ML & Analytics", proficiency: 72 },
-  { id: 14, name: "Data Analysis", category: "ML & Analytics", proficiency: 85 },
-  { id: 15, name: "Predictive Modeling", category: "ML & Analytics", proficiency: 70 },
-  { id: 16, name: "Excel / Reporting", category: "ML & Analytics", proficiency: 88 },
+const competencies: CompetencyCategory[] = [
+  {
+    id: "backend",
+    icon: "💻",
+    catKey: "skills_cat_backend",
+    descKey: "skills_desc_backend",
+    impactKey: "skills_impact_backend",
+    badges: ["Python", "Java", "C#", "RESTful API", "Docker & Kubernetes", "DB Schema Design"],
+    colorTheme: "brand",
+  },
+  {
+    id: "data",
+    icon: "🗄️",
+    catKey: "skills_cat_data",
+    descKey: "skills_desc_data",
+    impactKey: "skills_impact_data",
+    badges: ["ETL Pipelines", "Python Scripts", "Scikit-Learn / ML", "SQL Server / Postgres", "Data Automation"],
+    colorTheme: "olive",
+  },
+  {
+    id: "analytics",
+    icon: "📊",
+    catKey: "skills_cat_analytics",
+    descKey: "skills_desc_analytics",
+    impactKey: "skills_impact_analytics",
+    badges: ["Power BI", "Tableau", "Advanced Excel", "SQL Queries", "Data Modeling"],
+    colorTheme: "orange",
+  },
 ];
 
 export default function Skills() {
   const { t } = useLanguage();
 
-  const categoryMeta: Record<string, { emoji: string; barColor: string; labelColor: string; translationKey: string }> = {
-    "Data Engineering": { emoji: "🗄️", barColor: "var(--orange)", labelColor: "var(--orange)", translationKey: "skills_cat_de" },
-    "Backend":          { emoji: "⚙️", barColor: "var(--olive)", labelColor: "var(--olive)", translationKey: "skills_cat_be" },
-    "DevOps & Tools":   { emoji: "🐳", barColor: "var(--fg-color)", labelColor: "var(--fg-muted)", translationKey: "skills_cat_devops" },
-    "ML & Analytics":   { emoji: "📊", barColor: "var(--olive)", labelColor: "var(--olive)", translationKey: "skills_cat_ml" },
+  const getThemeColors = (theme: CompetencyCategory["colorTheme"]) => {
+    switch (theme) {
+      case "orange":
+        return {
+          border: "var(--orange-border)",
+          bgTint: "var(--orange-tint)",
+          fg: "var(--orange)",
+        };
+      case "olive":
+        return {
+          border: "var(--olive-border)",
+          bgTint: "var(--olive-tint)",
+          fg: "var(--olive)",
+        };
+      case "brand":
+        return {
+          border: "var(--olive-border)",
+          bgTint: "var(--bg-card-inner)",
+          fg: "var(--olive)",
+        };
+      default:
+        return {
+          border: "var(--card-border)",
+          bgTint: "var(--bg-card-inner)",
+          fg: "var(--fg-muted)",
+        };
+    }
   };
 
-  const categories = ["Data Engineering", "Backend", "DevOps & Tools", "ML & Analytics"];
-
   return (
-    <section id="skills" style={{ padding: "76px 5%", background: "var(--bg-secondary)" }}>
+    <section id="skills" style={{ padding: "48px 5%", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Section Header */}
         <div style={{ marginBottom: "42px", display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -54,53 +88,89 @@ export default function Skills() {
             }}>
               {t("skills_title")}<span style={{ color: "var(--orange)" }}>.</span>
             </h2>
-            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "400px", lineHeight: "1.80" }}>
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "420px", lineHeight: "1.80" }}>
               {t("skills_desc")}
             </p>
           </div>
           <div style={{ width: "50px", height: "3px", background: "var(--olive)", borderRadius: "2px" }} />
         </div>
 
-        {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "22px" }} className="skills-grid">
-          {categories.map((category) => {
-            const meta = categoryMeta[category];
-            const categorySkills = skills.filter((s) => s.category === category);
+        {/* Competencies Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }} className="skills-grid">
+          {competencies.map((comp) => {
+            const colors = getThemeColors(comp.colorTheme);
             return (
-              <div key={category} className="card" style={{ padding: "26px", borderRadius: "12px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}>
-                {/* Category header */}
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
-                  <span style={{ fontSize: "1.3rem" }}>{meta.emoji}</span>
-                  <span style={{
-                    fontWeight: "800", fontSize: "0.82rem",
-                    color: meta.labelColor,
-                    letterSpacing: "0.08em", textTransform: "uppercase",
-                  }}>
-                    {t(meta.translationKey)}
-                  </span>
+              <div
+                key={comp.id}
+                className="card"
+                style={{
+                  padding: "28px",
+                  borderRadius: "16px",
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--card-border)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "20px",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div>
+                  {/* Category header */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+                    <span style={{ fontSize: "1.5rem" }}>{comp.icon}</span>
+                    <h3 style={{
+                      fontWeight: "800", fontSize: "1rem",
+                      color: "var(--fg-color)",
+                      fontFamily: "var(--font-outfit)",
+                      letterSpacing: "0.02em",
+                    }}>
+                      {t(comp.catKey)}
+                    </h3>
+                  </div>
+
+                  {/* Trend Description */}
+                  <p style={{ color: "var(--fg-muted)", fontSize: "0.88rem", lineHeight: "1.6", marginBottom: "16px" }}>
+                    {t(comp.descKey)}
+                  </p>
+
+                  {/* Badges */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                    {comp.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="tech-tag"
+                        style={{
+                          padding: "5px 12px",
+                          fontSize: "0.76rem",
+                          borderRadius: "6px",
+                          background: "var(--bg-card-inner)",
+                          border: "1px solid var(--card-border)",
+                          color: "var(--fg-color)",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-                  {categorySkills.map((skill) => (
-                    <div key={skill.id} style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <span style={{ fontWeight: "600", fontSize: "0.88rem", color: "var(--fg-color)" }}>{skill.name}</span>
-                        <span style={{ fontSize: "0.80rem", fontWeight: "800", color: meta.barColor }}>{skill.proficiency}%</span>
-                      </div>
-                      {/* Track */}
-                      <div style={{
-                        width: "100%", height: "5px",
-                        background: "var(--bg-card-inner)",
-                        border: "1px solid var(--card-border)",
-                        borderRadius: "3px", overflow: "hidden",
-                      }}>
-                        <div style={{
-                          width: `${skill.proficiency}%`, height: "100%",
-                          borderRadius: "3px", background: meta.barColor,
-                          transition: "width 1s ease",
-                        }} />
-                      </div>
-                    </div>
-                  ))}
+
+                {/* HR Callout Highlight Box */}
+                <div style={{
+                  padding: "14px 16px",
+                  borderRadius: "10px",
+                  background: colors.bgTint,
+                  border: `1px solid ${colors.border}`,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "8px",
+                }}>
+                  <span style={{ fontSize: "1rem", color: colors.fg }}>🎯</span>
+                  <div style={{ fontSize: "0.78rem", color: "var(--fg-muted)", lineHeight: "1.5", fontWeight: "600" }}>
+                    <span style={{ color: colors.fg, fontWeight: "800" }}>HR Highlight: </span>
+                    {t(comp.impactKey)}
+                  </div>
                 </div>
               </div>
             );

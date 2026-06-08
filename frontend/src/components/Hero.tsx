@@ -48,7 +48,7 @@ export default function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "104px 5% 64px 5%",
+        padding: "80px 5% 48px 5%",
         background: "var(--bg-color)",
         position: "relative",
         overflow: "hidden",
@@ -141,83 +141,43 @@ export default function Hero() {
         }} className="dashboard-main-grid">
           {/* Left panel: Summary & Skills */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            {/* Profile Summary Card */}
-            <div className="card" style={{ padding: "24px", background: "var(--bg-card)" }}>
-              <h3 style={{
-                fontSize: "1.2rem", fontWeight: "800", color: "var(--fg-color)",
-                marginBottom: "12px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
-              }}>
-                <span>👤</span> {t("db_profile_title")}
-              </h3>
-              <p style={{ color: "var(--fg-muted)", fontSize: "0.92rem", lineHeight: "1.75", marginBottom: "20px" }}>
-                {t("db_profile_desc")}
-              </p>
-              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                <a
-                  href="#projects"
-                  style={{
-                    padding: "10px 22px", borderRadius: "6px",
-                    background: "var(--olive)", color: "#ffffff",
-                    fontSize: "0.80rem", fontWeight: "700",
-                    letterSpacing: "0.06em", textTransform: "uppercase",
-                    boxShadow: "0 2px 8px var(--olive-glow)",
-                    transition: "all 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--olive-dark)";
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "var(--olive)";
-                    e.currentTarget.style.transform = "translateY(0)";
-                  }}
-                >
-                  {t("view_work")}
-                </a>
-                <a
-                  href="#contact"
-                  style={{
-                    padding: "10px 22px", borderRadius: "6px",
-                    border: "1.5px solid var(--olive)", color: "var(--olive)",
-                    fontSize: "0.80rem", fontWeight: "700",
-                    letterSpacing: "0.06em", textTransform: "uppercase",
-                    transition: "all 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--olive)";
-                    e.currentTarget.style.color = "#ffffff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = "var(--olive)";
-                  }}
-                >
-                  {t("contact_me")}
-                </a>
+            <div className="card" style={{ padding: "24px", background: "var(--bg-card)", display: "flex", flexDirection: "column", gap: "20px" }}>
+              <div>
+                <h3 style={{
+                  fontSize: "1.2rem", fontWeight: "800", color: "var(--fg-color)",
+                  marginBottom: "12px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
+                }}>
+                  <span>👤</span> {t("db_profile_title")}
+                </h3>
+                <p style={{ color: "var(--fg-muted)", fontSize: "0.92rem", lineHeight: "1.75", margin: 0 }}>
+                  {t("db_profile_desc")}
+                </p>
               </div>
-            </div>
 
-            {/* Core Stack widget */}
-            <div className="card" style={{ padding: "22px", background: "var(--bg-card)" }}>
-              <h3 style={{
-                fontSize: "1rem", fontWeight: "800", color: "var(--fg-color)",
-                marginBottom: "14px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
-              }}>
-                <span>🥞</span> {t("db_tech_stack")}
-              </h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {coreTech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="tech-tag"
-                    style={{
-                      padding: "6px 14px", fontSize: "0.80rem", borderRadius: "6px",
-                      background: "var(--bg-card-inner)", border: "1px solid var(--card-border)",
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
+              {/* Horizontal Divider */}
+              <div style={{ height: "1px", background: "var(--card-border)" }} />
+
+              <div>
+                <h3 style={{
+                  fontSize: "1rem", fontWeight: "800", color: "var(--fg-color)",
+                  marginBottom: "14px", fontFamily: "var(--font-outfit)", display: "flex", alignItems: "center", gap: "8px",
+                }}>
+                  <span>💻</span> {t("db_tech_stack")}
+                </h3>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                  {coreTech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="tech-tag"
+                      style={{
+                        padding: "6px 14px", fontSize: "0.80rem", borderRadius: "6px",
+                        background: "var(--bg-card-inner)", border: "1px solid var(--card-border)",
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -272,45 +232,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Quick Nav Dashboard panel */}
-        <div className="card" style={{
-          padding: "22px", background: "var(--bg-card)",
-          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "18px",
-        }}>
-          {[
-            { target: "#experience", title: t("nav_background"), desc: t("db_nav_bg_desc"), icon: "📜" },
-            { target: "#projects", title: t("nav_projects"), desc: t("db_nav_proj_desc"), icon: "📂" },
-            { target: "#skills", title: t("nav_skills"), desc: t("db_nav_skills_desc"), icon: "⚡" },
-          ].map((nav, i) => (
-            <a
-              key={i}
-              href={nav.target}
-              style={{
-                display: "flex", gap: "14px", padding: "16px", borderRadius: "10px",
-                background: "var(--bg-card-inner)", border: "1px solid var(--card-border)",
-                transition: "all 0.25s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--orange)";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--card-border)";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
-              <div style={{ fontSize: "1.5rem", marginTop: "2px" }}>{nav.icon}</div>
-              <div>
-                <div style={{ fontSize: "0.88rem", fontWeight: "800", color: "var(--fg-color)" }}>
-                  {nav.title} &rarr;
-                </div>
-                <div style={{ fontSize: "0.75rem", color: "var(--fg-muted)", marginTop: "3px", lineHeight: 1.4 }}>
-                  {nav.desc}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
       </div>
 
       <style jsx global>{`

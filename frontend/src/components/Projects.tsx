@@ -15,6 +15,7 @@ interface Project {
   period: string;
   highlight: string;
   section: "previous" | "developed" | "developing";
+  tabGroup: "data" | "ai" | "future";
 }
 
 interface ApiProject {
@@ -46,6 +47,7 @@ export default function Projects() {
       period: "Aug – Nov 2025",
       highlight: t("proj_donor_highlight"),
       section: "previous",
+      tabGroup: "data",
     },
     {
       id: 2,
@@ -58,6 +60,7 @@ export default function Projects() {
       period: "Jun 2026",
       highlight: t("proj_l2_highlight"),
       section: "developed",
+      tabGroup: "ai",
     },
     {
       id: 3,
@@ -70,30 +73,20 @@ export default function Projects() {
       period: "Jun 2026",
       highlight: t("proj_portfolio_highlight"),
       section: "developed",
-    },
-    {
-      id: 4,
-      title: t("proj_linebot_title"),
-      description: t("proj_linebot_desc"),
-      category: t("proj_idea_category"),
-      tags: ["LINE Bot", "n8n", "Automation", "Booking App"],
-      github_url: null,
-      demo_url: null,
-      period: t("proj_idea_period"),
-      highlight: t("proj_linebot_highlight"),
-      section: "developing",
+      tabGroup: "ai",
     },
     {
       id: 5,
       title: t("proj_l3_title"),
       description: t("proj_l3_desc"),
-      category: "AI & ML Dev",
+      category: "AI Dev",
       tags: ["Python", "Streamlit", "Hugging Face", "FLUX.1", "SDXL", "Image Generation"],
       github_url: "https://github.com/dec591nyc/HuggingFace-Practice",
       demo_url: "https://huggingface-practice-dec591nyc.streamlit.app/",
       period: "Jun 2026",
       highlight: t("proj_l3_highlight"),
       section: "developed",
+      tabGroup: "ai",
     },
     {
       id: 6,
@@ -106,6 +99,20 @@ export default function Projects() {
       period: "Jun 2026",
       highlight: t("proj_l8_highlight"),
       section: "developed",
+      tabGroup: "ai",
+    },
+    {
+      id: 4,
+      title: t("proj_linebot_title"),
+      description: t("proj_linebot_desc"),
+      category: t("proj_idea_category"),
+      tags: ["LINE Bot", "n8n", "Automation", "Booking App"],
+      github_url: null,
+      demo_url: null,
+      period: t("proj_idea_period"),
+      highlight: t("proj_linebot_highlight"),
+      section: "developing",
+      tabGroup: "future",
     },
     {
       id: 7,
@@ -118,6 +125,7 @@ export default function Projects() {
       period: t("proj_idea_period"),
       highlight: t("proj_legal_highlight"),
       section: "developing",
+      tabGroup: "future",
     },
     {
       id: 8,
@@ -130,6 +138,7 @@ export default function Projects() {
       period: t("proj_idea_period"),
       highlight: t("proj_travel_highlight"),
       section: "developing",
+      tabGroup: "future",
     },
   ];
 
@@ -144,14 +153,19 @@ export default function Projects() {
         // Map API objects to matching fields (ensuring correct section categories)
         if (Array.isArray(data) && data.length > 0) {
           const mapped: Project[] = (data as ApiProject[]).map((item) => {
-            // Determine section based on tags or category from DB
+            // Determine section & tabGroup based on tags or category from DB
             let sec: "previous" | "developed" | "developing" = "developed";
+            let tabGroup: "data" | "ai" | "future" = "ai";
+            
             const titleLower = (item.title || "").toLowerCase();
             const categoryLower = (item.category || "").toLowerCase();
+            
             if (titleLower.includes("donor") || titleLower.includes("analytics")) {
               sec = "previous";
+              tabGroup = "data";
             } else if (
               categoryLower.includes("planned") ||
+              categoryLower.includes("idea") ||
               titleLower.includes("line bot") ||
               titleLower.includes("judicial") ||
               titleLower.includes("penalty") ||
@@ -159,7 +173,9 @@ export default function Projects() {
               titleLower.includes("scraper")
             ) {
               sec = "developing";
+              tabGroup = "future";
             }
+            
             return {
               id: item.id,
               title: item.title || "",
@@ -171,6 +187,7 @@ export default function Projects() {
               period: item.period || "2025/2026",
               highlight: item.highlight || item.category || "",
               section: sec,
+              tabGroup: tabGroup,
             };
           });
           setDbProjects(mapped);
@@ -183,10 +200,6 @@ export default function Projects() {
   }, []);
 
   const projectsToRender = dbProjects || localProjects;
-
-  const previousProjects = projectsToRender.filter((p) => p.section === "previous");
-  const developedProjects = projectsToRender.filter((p) => p.section === "developed");
-  const developingProjects = projectsToRender.filter((p) => p.section === "developing");
 
   const renderProjectGrid = (projectsList: Project[]) => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px" }}>
@@ -208,11 +221,9 @@ export default function Projects() {
           {/* Card visual top banner */}
           <div style={{
             height: "8px",
-            background: project.section === "previous" 
-              ? "linear-gradient(90deg, var(--orange) 0%, var(--orange-dark) 100%)" 
-              : project.section === "developed" 
-                ? "linear-gradient(90deg, var(--olive) 0%, var(--olive-light) 100%)"
-                : "linear-gradient(90deg, var(--fg-subtle) 0%, var(--card-border) 100%)",
+            background: project.section === "developing"
+              ? "linear-gradient(90deg, var(--fg-subtle) 0%, var(--card-border) 100%)"
+              : "linear-gradient(90deg, var(--olive) 0%, var(--olive-light) 100%)",
           }} />
 
           <div style={{ padding: "24px", display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1, gap: "14px" }}>
@@ -221,9 +232,9 @@ export default function Projects() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                 <span style={{
                   padding: "4px 10px", borderRadius: "4px",
-                  background: project.section === "previous" ? "var(--orange-tint)" : "var(--olive-tint)",
-                  border: `1px solid ${project.section === "previous" ? "var(--orange-border)" : "var(--olive-border)"}`,
-                  color: project.section === "previous" ? "var(--orange)" : "var(--olive)",
+                  background: project.section === "developing" ? "var(--bg-card-inner)" : "var(--olive-tint)",
+                  border: `1px solid ${project.section === "developing" ? "var(--card-border)" : "var(--olive-border)"}`,
+                  color: project.section === "developing" ? "var(--fg-muted)" : "var(--olive)",
                   fontSize: "0.72rem", fontWeight: "800",
                   letterSpacing: "0.06em", textTransform: "uppercase",
                 }}>
@@ -348,7 +359,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" style={{ padding: "76px 5%", background: "var(--bg-secondary)" }}>
+    <section id="projects" style={{ padding: "48px 5%", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "42px" }}>
         {/* Header */}
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
@@ -362,7 +373,7 @@ export default function Projects() {
               {locale === "en" ? (
                 <>Selected<br /><span style={{ color: "var(--orange)" }}>Projects</span></>
               ) : (
-                <>精選開發<br /><span style={{ color: "var(--orange)" }}>專案展示</span></>
+                <>個人專案<br /><span style={{ color: "var(--orange)" }}>實作展示</span></>
               )}
             </h2>
             <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "420px", lineHeight: "1.80" }}>
@@ -372,49 +383,20 @@ export default function Projects() {
           <div style={{ width: "50px", height: "3px", background: "var(--olive)", borderRadius: "2px" }} />
         </div>
 
-        {/* 1. Previous Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div>
-            <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
-              📁 {t("proj_prev_sec")}
-            </h3>
-            <p style={{ color: "var(--fg-subtle)", fontSize: "0.85rem", marginTop: "4px" }}>
-              {t("proj_prev_sec_desc")}
-            </p>
-          </div>
-          {renderProjectGrid(previousProjects)}
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: "1px", background: "var(--card-border)" }} />
-
-        {/* 2. Developed Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div>
-            <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
-              🛠️ {t("proj_dev_sec")}
-            </h3>
-            <p style={{ color: "var(--fg-subtle)", fontSize: "0.85rem", marginTop: "4px" }}>
-              {t("proj_dev_sec_desc")}
-            </p>
-          </div>
-          {renderProjectGrid(developedProjects)}
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: "1px", background: "var(--card-border)" }} />
-
-        {/* 3. Developing Projects */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          <div>
-            <h3 style={{ fontSize: "1.4rem", fontWeight: "900", fontFamily: "var(--font-outfit)", color: "var(--fg-color)" }}>
-              🚀 {t("proj_ongoing_sec")}
-            </h3>
-            <p style={{ color: "var(--fg-subtle)", fontSize: "0.85rem", marginTop: "4px" }}>
-              {t("proj_ongoing_sec_desc")}
-            </p>
-          </div>
-          {renderProjectGrid(developingProjects)}
+        {/* Main Grid display */}
+        <div style={{ minHeight: "380px" }}>
+          {projectsToRender.length > 0 ? (
+            renderProjectGrid(projectsToRender)
+          ) : (
+            <div style={{
+              textAlign: "center", padding: "64px 32px",
+              borderRadius: "12px", background: "var(--bg-card)",
+              border: "1.5px dashed var(--card-border)",
+              color: "var(--fg-subtle)", fontSize: "0.95rem"
+            }}>
+              No projects found.
+            </div>
+          )}
         </div>
 
         {/* Coming soon banner */}

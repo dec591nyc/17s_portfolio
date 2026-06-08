@@ -94,7 +94,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" style={{ padding: "76px 5%", background: "var(--bg-color)" }}>
+    <section id="contact" style={{ padding: "48px 5%", background: "var(--bg-color)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom: "42px", display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -111,45 +111,71 @@ export default function Contact() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "28px", alignItems: "start" }} className="contact-grid">
           {/* Left: Info */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            {contactInfo.map((item) => (
-              <div key={item.label} className="card"
-                style={{ padding: "18px", borderRadius: "12px", display: "flex", alignItems: "center", gap: "14px", background: "var(--bg-card)", border: "1px solid var(--card-border)" }}
-              >
-                <div style={{
-                  width: "54px", height: "54px", borderRadius: "14px",
-                  background: "var(--bg-card-inner)", border: "1px solid var(--card-border)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.35)",
-                  flexShrink: 0,
-                }}>
-                  {renderContactIcon(item.icon)}
-                </div>
-                <div>
-                  <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "var(--fg-subtle)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: "3px" }}>
-                    {item.label}
+            {contactInfo.map((item) => {
+              const isLink = !!item.href;
+              const CardElement = isLink ? "a" : "div";
+              return (
+                <CardElement
+                  key={item.label}
+                  className="card"
+                  href={item.href || undefined}
+                  target={isLink ? "_blank" : undefined}
+                  rel={isLink ? "noreferrer" : undefined}
+                  style={{
+                    padding: "18px", borderRadius: "12px",
+                    display: "flex", alignItems: "center", gap: "14px",
+                    background: "var(--bg-card)", border: "1px solid var(--card-border)",
+                    textDecoration: "none", color: "inherit",
+                    cursor: isLink ? "pointer" : "default",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (isLink) {
+                      e.currentTarget.style.borderColor = "var(--olive)";
+                      e.currentTarget.style.boxShadow = "var(--card-shadow-hover)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (isLink) {
+                      e.currentTarget.style.borderColor = "var(--card-border)";
+                      e.currentTarget.style.boxShadow = "var(--card-shadow)";
+                    }
+                  }}
+                >
+                  <div style={{
+                    width: "54px", height: "54px", borderRadius: "14px",
+                    background: "var(--bg-card-inner)", border: "1px solid var(--card-border)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.35)",
+                    flexShrink: 0,
+                  }}>
+                    {renderContactIcon(item.icon)}
                   </div>
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noreferrer"
-                      style={{ color: "var(--olive)", fontWeight: "700", fontSize: "0.88rem", transition: "color 0.2s" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--olive-dark)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--olive)")}
-                    >
-                      {item.value} ↗
-                    </a>
-                  ) : (
-                    <span
-                      style={{
-                        color: item.label === "Location" ? "var(--olive)" : "var(--fg-color)",
-                        fontWeight: item.label === "Location" ? "800" : "600",
-                        fontSize: "0.88rem",
-                      }}
-                    >
-                      {item.value}
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
+                  <div>
+                    <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "var(--fg-subtle)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: "3px" }}>
+                      {item.label}
+                    </div>
+                    {isLink ? (
+                      <span
+                        style={{ color: "var(--olive)", fontWeight: "800", fontSize: "0.88rem" }}
+                      >
+                        {item.value} ↗
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          color: item.label === "Location" ? "var(--olive)" : "var(--fg-color)",
+                          fontWeight: item.label === "Location" ? "800" : "600",
+                          fontSize: "0.88rem",
+                        }}
+                      >
+                        {item.value}
+                      </span>
+                    )}
+                  </div>
+                </CardElement>
+              );
+            })}
 
             {/* Availability banner */}
             <div style={{
@@ -183,6 +209,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
+                  data-baseweb="button"
                   style={{
                     marginTop: "8px", padding: "9px 22px", borderRadius: "6px",
                     background: "var(--olive-tint)", color: "var(--olive-dark)",
@@ -269,13 +296,11 @@ export default function Contact() {
                       {formData.message.trim().length}/250
                     </span>
                   </div>
-                  <p style={{ color: "var(--fg-subtle)", fontSize: "0.76rem", lineHeight: "1.55" }}>
-                    {t("contact_delivery_note")}
-                  </p>
                 </div>
 
                 <button
                   id="contact-submit-btn" type="submit"
+                  data-baseweb="button"
                   disabled={status === "loading"}
                   style={{
                     padding: "14px 28px", borderRadius: "6px",
@@ -311,6 +336,9 @@ export default function Contact() {
                     <>{t("contact_btn_send")} &rarr;</>
                   )}
                 </button>
+                <p style={{ color: "var(--fg-subtle)", fontSize: "0.76rem", lineHeight: "1.55", textAlign: "center", marginTop: "14px" }}>
+                  {t("contact_delivery_note")}
+                </p>
               </form>
             )}
           </div>

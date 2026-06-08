@@ -31,6 +31,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
+      data-baseweb="navbar"
       style={{
         position: "fixed",
         top: 0, left: 0, right: 0,
@@ -71,11 +72,12 @@ export default function Navbar() {
       </a>
 
       {/* Desktop Nav */}
-      <div style={{ display: "flex", gap: "20px", alignItems: "center" }} className="desktop-menu">
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }} className="desktop-menu" data-baseweb="tab-list">
         {navLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}
+            data-baseweb="tab"
             style={{
               fontSize: "0.82rem", fontWeight: "700", color: "var(--fg-muted)",
               letterSpacing: "0.06em", textTransform: "uppercase",
@@ -95,6 +97,7 @@ export default function Navbar() {
         <button
           onClick={toggleTheme}
           aria-label="Toggle Theme"
+          data-baseweb="button"
           style={{
             width: "34px", height: "34px", borderRadius: "50%",
             display: "flex", alignItems: "center", justifyContent: "center",
@@ -122,6 +125,7 @@ export default function Navbar() {
         <button
           onClick={handleLanguageToggle}
           aria-label="Toggle Language"
+          data-baseweb="button"
           style={{
             padding: "6px 12px", borderRadius: "20px",
             display: "flex", alignItems: "center", gap: "4px",
@@ -150,6 +154,7 @@ export default function Navbar() {
           id="nav-cta"
           href="https://au.linkedin.com/in/zifuera17n9"
           target="_blank" rel="noreferrer"
+          data-baseweb="button"
           style={{
             padding: "9px 22px", borderRadius: "6px",
             background: "var(--olive)", color: "#ffffff",
@@ -177,6 +182,7 @@ export default function Navbar() {
         <button
           onClick={toggleTheme}
           aria-label="Toggle Theme"
+          data-baseweb="button"
           style={{
             width: "30px", height: "30px", borderRadius: "50%",
             display: "flex", alignItems: "center", justifyContent: "center",
@@ -194,6 +200,7 @@ export default function Navbar() {
         <button
           onClick={handleLanguageToggle}
           aria-label="Toggle Language"
+          data-baseweb="button"
           style={{
             padding: "4px 10px", borderRadius: "20px",
             display: "flex", alignItems: "center", gap: "2px",
@@ -212,6 +219,7 @@ export default function Navbar() {
           id="mobile-menu-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Navigation"
+          data-baseweb="button"
           style={{ display: "flex", flexDirection: "column", gap: "5px", padding: "4px" }}
         >
           {[0, 1, 2].map((i) => (
@@ -224,6 +232,7 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div
           id="mobile-menu"
+          data-baseweb="tab-list"
           style={{
             position: "fixed", top: 0, left: 0,
             width: "100vw", height: "100vh",
@@ -234,11 +243,13 @@ export default function Navbar() {
         >
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)}
+              data-baseweb="tab"
               style={{ fontSize: "2rem", fontWeight: "800", color: "var(--fg-color)", letterSpacing: "-0.02em" }}>
               {link.name}
             </a>
           ))}
           <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}
+            data-baseweb="button"
             style={{ padding: "14px 36px", borderRadius: "6px", background: "var(--olive)", color: "#fff", fontSize: "1rem", fontWeight: "700" }}>
             {t("nav_hire_me")}
           </a>

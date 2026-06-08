@@ -30,5 +30,7 @@ $RECYCLE.BIN/
 *.swp
 log.md
 
-
-
+# Logs and test outputs
+*.log
+*.err
+*.out

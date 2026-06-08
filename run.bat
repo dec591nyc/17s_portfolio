@@ -22,7 +22,7 @@ if errorlevel 1 (
 )
 
 echo [1/2] Launching Python FastAPI Backend on http://localhost:8000 ...
-start "Portfolio Backend - FastAPI" cmd /k "cd /d ""%~dp0backend"" && .venv\Scripts\python.exe -m uvicorn main:app --port 8000 --reload"
+start "Portfolio Backend - FastAPI" cmd /k "cd /d ""%~dp0backend"" && (if not exist .venv (echo Creating virtual environment... && python -m venv .venv && .venv\Scripts\pip install -r requirements.txt) && .venv\Scripts\python.exe -m uvicorn main:app --port 8000 --reload)"
 
 echo [2/2] Launching Next.js Frontend on http://localhost:3000 ...
 start "Portfolio Frontend - Next.js" cmd /k "cd /d ""%~dp0frontend"" && if exist node_modules (npm run dev) else (npm ci && npm run dev)"
