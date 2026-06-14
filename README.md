@@ -1,8 +1,8 @@
 # Portfolio Dashboard
 
-這是一個以 AI 結合個人專業知識開發的個人職涯作品集儀表板，也是職前訓練第二份作業。
+這是一個結合個人專業經驗開發的個人職涯作品集儀表板。
 
-專案旨在以前端 `Next.js`、`TypeScript` 與後端 `FastAPI` 整合實作，展示個人背景、職涯軌跡、技能概況、專案作品和反饋意見的收集。
+成果旨在以前端 `Next.js`、`TypeScript` 與後端 `FastAPI` 整合實作，展示個人背景、職涯軌跡、技能概況、專案作品和反饋意見的收集。
 
 目前作品定位是「資料工程 / 後端工程 / 分析應用」方向的 portfolio。內容聚焦於資料工程、ETL 資料流水線、SQL 分析、Power BI / Tableau 儀表板、Python 自動化，以及過去 C# / Java 後端開發經驗。# Portfolio Dashboard
 
@@ -14,7 +14,6 @@
 
 | 面向 | 目前版本內容 |
 | --- | --- |
-| 專案定位 | 職前訓練第二份作業，個人 Portfolio Dashboard |
 | 前端技術 | Next.js 16、React 19、TypeScript、CSS Variables、Responsive Layout |
 | 後端技術 | FastAPI、SQLAlchemy、Pydantic、SQLite，本地可切 PostgreSQL / Supabase |
 | 作品展示 | Previous Projects、Developed Projects、Developing / Planned Projects |
@@ -42,9 +41,8 @@ flowchart LR
 - **中英文內容切換**：主要頁面支援英文與繁體中文顯示，包含職涯節點、專案描述、公司名稱與地點。
 - **深淺色主題**：使用 CSS variables 管理主題色彩與版面狀態。
 - **生涯軌跡**：以工作與教育兩種色彩區分經歷，並提供中英文內容。
-- **專案展示**：區分過往企業實作、職前訓練完成作業、以及未來規劃中的候選專案。
 - **聯絡表單**：可將留言提交至 FastAPI backend，並透過基礎防 spam 機制過濾異常提交。
-- **技術提示與狀態文案**：針對 demo contact form 補充明確說明，避免誤導使用者以為已完成正式寄信服務。
+- **技術提示與狀態文案**：對 demo contact form 補充說明寄信服務的開發進度。
 
 ---
 
