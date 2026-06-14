@@ -349,7 +349,7 @@ const translations = {
     proj_l8_desc: "職前訓練第四份作業。基於 CRISP-DM 框架的線性迴歸與空污異常觀測偵測展示工具，系統性整合公式模擬器與中部地區（台中、彰化、南投）實施 AQI 建模，利用殘差排序實踐污染監測決策支持原型。",
     proj_l8_highlight: "迴歸與 CRISP-DM 實踐",
 
-    proj_ml_study_title: "產業機器學習互動工作台",
+    proj_ml_study_title: "產業機器學習互動體驗站",
     proj_ml_study_desc: "職前訓練第五份作業。以互動方式整理常用機器學習模型，支援模型比較、參數調整、指標與決策邊界觀察，並串接 Gemini AI 助理依目前實驗情境提供解釋。",
     proj_ml_study_highlight: "模型選擇與 AI 引導",
 
