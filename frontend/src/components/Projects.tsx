@@ -102,6 +102,32 @@ export default function Projects() {
       tabGroup: "ai",
     },
     {
+      id: 9,
+      title: t("proj_ml_study_title"),
+      description: t("proj_ml_study_desc"),
+      category: "AI & ML Dev",
+      tags: ["Next.js", "FastAPI", "Scikit-Learn", "Gemini", "Model Selection", "Interactive Lab"],
+      github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
+      demo_url: "https://machine-learning-study.vercel.app",
+      period: "Jun 2026",
+      highlight: t("proj_ml_study_highlight"),
+      section: "developed",
+      tabGroup: "ai",
+    },
+    {
+      id: 10,
+      title: t("proj_startups_title"),
+      description: t("proj_startups_desc"),
+      category: "ML & Statistics",
+      tags: ["Python", "FastAPI", "OLS", "Beta Target Encoding", "Statistics", "Vanilla JS"],
+      github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
+      demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
+      period: "Jun 2026",
+      highlight: t("proj_startups_highlight"),
+      section: "developed",
+      tabGroup: "ai",
+    },
+    {
       id: 4,
       title: t("proj_linebot_title"),
       description: t("proj_linebot_desc"),
@@ -199,7 +225,16 @@ export default function Projects() {
     fetchProjects();
   }, []);
 
-  const projectsToRender = dbProjects || localProjects;
+  const localProjectIds = new Set(localProjects.map((project) => project.id));
+  const localProjectUrls = new Set(
+    localProjects.map((project) => project.github_url).filter((url): url is string => Boolean(url))
+  );
+  const supplementalDbProjects = (dbProjects || []).filter(
+    (project) =>
+      !localProjectIds.has(project.id) &&
+      (!project.github_url || !localProjectUrls.has(project.github_url))
+  );
+  const projectsToRender = [...localProjects, ...supplementalDbProjects];
 
   const renderProjectGrid = (projectsList: Project[]) => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px" }}>
@@ -414,3 +449,4 @@ export default function Projects() {
     </section>
   );
 }
+
