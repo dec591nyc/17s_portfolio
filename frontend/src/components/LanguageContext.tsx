@@ -36,7 +36,7 @@ const translations = {
     db_telemetry: "CAREER SNAPSHOT",
     db_stat_exp_val: "4+",
     db_stat_exp_lbl: "Years in Software",
-    db_stat_proj_val: "8",
+    db_stat_proj_val: "10",
     db_stat_proj_lbl: "Personal Projects & Planning",
     db_stat_skills_val: "16+",
     db_stat_skills_lbl: "Tools & Technologies",
@@ -155,6 +155,14 @@ const translations = {
     proj_l8_desc: "The fourth pre-employment training assignment: an interactive linear regression simulator and air-quality anomaly detection prototype built under the CRISP-DM framework. It uses central Taiwan AQI records to fit regression models and rank pollution residual outliers for decision support.",
     proj_l8_highlight: "Regression & CRISP-DM",
 
+    proj_ml_study_title: "Industry ML Workbench",
+    proj_ml_study_desc: "The fifth pre-employment training assignment: an interactive machine-learning guide for comparing models, tuning parameters, inspecting metrics and decision boundaries, and receiving contextual explanations from a Gemini AI assistant.",
+    proj_ml_study_highlight: "Model selection + AI guidance",
+
+    proj_startups_title: "50 Startups Profit Prediction",
+    proj_startups_desc: "The sixth pre-employment training assignment: a CRISP-DM decision-support platform combining a custom OLS regression model, Beta Target Encoding, prediction intervals, and an interactive dashboard for startup profit and risk analysis.",
+    proj_startups_highlight: "Custom OLS + Beta Target Encoding",
+
     // Skills
     skills_badge: "Personal Capabilities",
     skills_title: "Technical Expertise & Future Directions",
@@ -222,7 +230,7 @@ const translations = {
     db_telemetry: "職涯概覽",
     db_stat_exp_val: "4+ 年",
     db_stat_exp_lbl: "軟體開發經驗",
-    db_stat_proj_val: "8 個",
+    db_stat_proj_val: "10 個",
     db_stat_proj_lbl: "個人專案實作與規劃",
     db_stat_skills_val: "16+",
     db_stat_skills_lbl: "掌握的工具與技術",
@@ -341,6 +349,14 @@ const translations = {
     proj_l8_desc: "職前訓練第四份作業。基於 CRISP-DM 框架的線性迴歸與空污異常觀測偵測展示工具，系統性整合公式模擬器與中部地區（台中、彰化、南投）實施 AQI 建模，利用殘差排序實踐污染監測決策支持原型。",
     proj_l8_highlight: "迴歸與 CRISP-DM 實踐",
 
+    proj_ml_study_title: "產業機器學習互動工作台",
+    proj_ml_study_desc: "職前訓練第五份作業。以互動方式整理常用機器學習模型，支援模型比較、參數調整、指標與決策邊界觀察，並串接 Gemini AI 助理依目前實驗情境提供解釋。",
+    proj_ml_study_highlight: "模型選擇與 AI 引導",
+
+    proj_startups_title: "50 Startups 獲利預測與特徵分析",
+    proj_startups_desc: "職前訓練第六份作業。依 CRISP-DM 流程整合自製 OLS 多元線性迴歸、貝氏目標編碼與預測區間，透過互動儀表板分析新創公司的獲利與風險。",
+    proj_startups_highlight: "自製 OLS 與貝氏目標編碼",
+
     // Skills
     skills_badge: "個人專業能力",
     skills_title: "專業技術與發展方向",
@@ -429,3 +445,4 @@ export function useLanguage() {
   }
   return context;
 }
+
