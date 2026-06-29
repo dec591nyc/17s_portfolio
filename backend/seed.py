@@ -73,7 +73,7 @@ def seed_db():
             category="Data Engineering",
             tags="Next.js,React,Python,Supabase,PostgreSQL,n8n,Data Pipeline,Data Integrity",
             github_url="https://github.com/dec591nyc/PSJJV",
-            demo_url="https://dec591nyc.github.io/PSJJV/",
+            demo_url="https://public-safety-integrity-analytics.vercel.app/",
             image_url="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
