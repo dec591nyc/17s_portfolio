@@ -68,13 +68,13 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Judicial Penalty Case Scraper Analysis",
-            description="A planned data-analysis practice around scraping public judicial or administrative penalty case data, then organizing it into searchable summaries and basic trend views.",
-            category="Planned Idea",
-            tags="Web Scraping,Data Analysis,Legal Data,Dashboard",
-            github_url=None,
-            demo_url=None,
-            image_url="https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=800&auto=format&fit=crop"
+            title="Taiwan Local Public Safety Statistics & Data Integrity Audit Platform",
+            description="A data analytics platform combining a Next.js dashboard with Python automated pipelines. Integrates n8n on MOI crime datasets (code 9603) to automate data extraction, reconciliation, and audit integrity, analyzing monthly trends, six metropolitan areas, and YoY variations.",
+            category="Data Engineering",
+            tags="Next.js,React,Python,Supabase,PostgreSQL,n8n,Data Pipeline,Data Integrity",
+            github_url="https://github.com/dec591nyc/PSJJV",
+            demo_url="https://dec591nyc.github.io/PSJJV/",
+            image_url="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
             title="Travel Planning Suggestions with Scraper Practice",

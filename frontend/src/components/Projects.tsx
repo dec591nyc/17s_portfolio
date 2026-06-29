@@ -144,14 +144,14 @@ export default function Projects() {
       id: 7,
       title: t("proj_legal_title"),
       description: t("proj_legal_desc"),
-      category: t("proj_idea_category"),
-      tags: ["Web Scraping", "Data Analysis", "Legal Data", "Dashboard"],
-      github_url: null,
-      demo_url: null,
-      period: t("proj_idea_period"),
+      category: "Data Engineering",
+      tags: ["Next.js", "React", "Python", "Supabase", "PostgreSQL", "n8n", "Data Pipeline", "Data Integrity"],
+      github_url: "https://github.com/dec591nyc/PSJJV",
+      demo_url: "https://dec591nyc.github.io/PSJJV/",
+      period: "Jun 2026",
       highlight: t("proj_legal_highlight"),
-      section: "developing",
-      tabGroup: "future",
+      section: "developed",
+      tabGroup: "data",
     },
     {
       id: 8,
@@ -186,8 +186,16 @@ export default function Projects() {
             const titleLower = (item.title || "").toLowerCase();
             const categoryLower = (item.category || "").toLowerCase();
             
-            if (titleLower.includes("donor") || titleLower.includes("analytics")) {
+            if (titleLower.includes("donor")) {
               sec = "previous";
+              tabGroup = "data";
+            } else if (
+              categoryLower.includes("data") ||
+              titleLower.includes("analytics") ||
+              titleLower.includes("integrity") ||
+              titleLower.includes("psjjv")
+            ) {
+              sec = "developed";
               tabGroup = "data";
             } else if (
               categoryLower.includes("planned") ||
@@ -449,4 +457,3 @@ export default function Projects() {
     </section>
   );
 }
-
