@@ -144,14 +144,14 @@ export default function Projects() {
       id: 7,
       title: t("proj_legal_title"),
       description: t("proj_legal_desc"),
-      category: t("proj_idea_category"),
-      tags: ["Web Scraping", "Data Analysis", "Legal Data", "Dashboard"],
-      github_url: null,
-      demo_url: null,
-      period: t("proj_idea_period"),
+      category: "Data Engineering",
+      tags: ["Python", "SQLite", "n8n", "Data Pipeline"],
+      github_url: "https://github.com/dec591nyc/Public-Safety-Integrity-Analytics",
+      demo_url: "https://dec591nyc.github.io/Public-Safety-Integrity-Analytics/",
+      period: "Jun 2026",
       highlight: t("proj_legal_highlight"),
-      section: "developing",
-      tabGroup: "future",
+      section: "developed",
+      tabGroup: "data",
     },
     {
       id: 8,
@@ -175,17 +175,17 @@ export default function Projects() {
         const res = await fetch(`${API_URL}/api/projects`);
         if (!res.ok) throw new Error("API responded with code " + res.status);
         const data = await res.json();
-        
+
         // Map API objects to matching fields (ensuring correct section categories)
         if (Array.isArray(data) && data.length > 0) {
           const mapped: Project[] = (data as ApiProject[]).map((item) => {
             // Determine section & tabGroup based on tags or category from DB
             let sec: "previous" | "developed" | "developing" = "developed";
             let tabGroup: "data" | "ai" | "future" = "ai";
-            
+
             const titleLower = (item.title || "").toLowerCase();
             const categoryLower = (item.category || "").toLowerCase();
-            
+
             if (titleLower.includes("donor") || titleLower.includes("analytics")) {
               sec = "previous";
               tabGroup = "data";
@@ -201,7 +201,7 @@ export default function Projects() {
               sec = "developing";
               tabGroup = "future";
             }
-            
+
             return {
               id: item.id,
               title: item.title || "",
@@ -449,4 +449,3 @@ export default function Projects() {
     </section>
   );
 }
-
