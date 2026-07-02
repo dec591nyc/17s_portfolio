@@ -1,10 +1,10 @@
 # Portfolio Dashboard
 
-這是一個結合個人專業經驗開發的個人職涯作品集儀表板。
+🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
-成果旨在以前端 `Next.js`、`TypeScript` 與後端 `FastAPI` 整合實作，展示個人背景、職涯軌跡、技能概況、專案作品和反饋意見的收集。
+這是一個前後端分離架構的的個人作品集網站，前端使用 Next.js、TypeScript，後端使用 FastAPI、Python 與輕量級的資料庫 SQLite 建立，用來整理我的技術背景、專案經驗與展現我的數據工程 / 前後端開發能力。
 
-目前作品定位是「資料工程 / 後端工程 / 分析應用」方向的 portfolio。內容聚焦於資料工程、ETL 資料流水線、SQL 分析、Power BI / Tableau 儀表板、Python 自動化，以及過去 C# / Java 後端開發經驗。# Portfolio Dashboard
+網站除了呈現作品展示、職涯時間軸、技能整理與教育背景也提供聯絡表單更是證明我擁有將作品集以未來容易維護、部署、可持續延伸的規劃能力。
 
 🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
