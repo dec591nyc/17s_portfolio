@@ -145,9 +145,9 @@ export default function Projects() {
       title: t("proj_legal_title"),
       description: t("proj_legal_desc"),
       category: "Data Engineering",
-      tags: ["Python", "SQLite", "n8n", "Data Pipeline"],
-      github_url: "https://github.com/dec591nyc/Public-Safety-Integrity-Analytics",
-      demo_url: "https://dec591nyc.github.io/Public-Safety-Integrity-Analytics/",
+      tags: ["Next.js", "React", "Python", "Supabase", "PostgreSQL", "n8n", "Data Pipeline", "Data Integrity"],
+      github_url: "https://github.com/dec591nyc/PSJJV",
+      demo_url: "https://public-safety-integrity-analytics.vercel.app/",
       period: "Jun 2026",
       highlight: t("proj_legal_highlight"),
       section: "developed",
@@ -186,8 +186,16 @@ export default function Projects() {
             const titleLower = (item.title || "").toLowerCase();
             const categoryLower = (item.category || "").toLowerCase();
 
-            if (titleLower.includes("donor") || titleLower.includes("analytics")) {
+            if (titleLower.includes("donor")) {
               sec = "previous";
+              tabGroup = "data";
+            } else if (
+              categoryLower.includes("data") ||
+              titleLower.includes("analytics") ||
+              titleLower.includes("integrity") ||
+              titleLower.includes("psjjv")
+            ) {
+              sec = "developed";
               tabGroup = "data";
             } else if (
               categoryLower.includes("planned") ||

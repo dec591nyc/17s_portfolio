@@ -68,12 +68,12 @@ def seed_db():
             image_url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
-            title="Public Safety & Integrity Analytics",
-            description="A platform for comparing official public safety statistics with social media public opinions. Includes data ingestion pipelines, automated crime classification, severity-weighted regional risk indicators, and traceable legal document summarization.",
+            title="Taiwan Local Public Safety Statistics & Data Integrity Audit Platform",
+            description="A data analytics platform combining a Next.js dashboard with Python automated pipelines. Integrates n8n on MOI crime datasets (code 9603) to automate data extraction, reconciliation, and audit integrity, analyzing monthly trends, six metropolitan areas, and YoY variations.",
             category="Data Engineering",
-            tags="Python,SQLite,n8n,Data Pipeline",
-            github_url="https://github.com/dec591nyc/Public-Safety-Integrity-Analytics",
-            demo_url="https://dec591nyc.github.io/Public-Safety-Integrity-Analytics/",
+            tags="Next.js,React,Python,Supabase,PostgreSQL,n8n,Data Pipeline,Data Integrity",
+            github_url="https://github.com/dec591nyc/PSJJV",
+            demo_url="https://public-safety-integrity-analytics.vercel.app/",
             image_url="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
         ),
         models.Project(
