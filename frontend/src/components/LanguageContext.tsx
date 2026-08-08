@@ -200,6 +200,8 @@ const translations = {
     contact_err_failed: "Network connection error. This message was not delivered. Please use LinkedIn or GitHub instead.",
     contact_err_rate_limited: "The inbox bouncer says: one message at a time. Please wait a moment and try again.",
     contact_err_rejected: "This message looked a little too bot-like. Please shorten it, reduce links, and try again.",
+    contact_err_smtp_auth: "Gmail App Password verification failed. Please ensure 2-Step Verification is active and password is correct.",
+    contact_err_smtp_send: "Mail delivery connection timed out. Please check SMTP settings.",
     contact_delivery_note: "Privacy notice: No messages are stored in any database; feedback is securely dispatched directly to the author's inbox via the backend.",
 
     // Footer
@@ -394,6 +396,8 @@ const translations = {
     contact_err_failed: "網路連線異常，此訊息沒有成功送達。請改用 LinkedIn 或 GitHub 聯繫。",
     contact_err_rate_limited: "收件口的小門衛說：先喝口水，等一下再送。請稍後再試一次。",
     contact_err_rejected: "這則訊息看起來有點像機器人手滑。請縮短內容、減少連結後再試一次。",
+    contact_err_smtp_auth: "Gmail 應用程式密碼驗證未通過。請確認密碼為 16 位無空格，且 Google 帳號已開啟「兩步驟驗證」。",
+    contact_err_smtp_send: "郵件發送連線超時，請檢查 SMTP 連線設定或稍後再試。",
     contact_delivery_note: "隱私承諾：系統不儲存任何留言於資料庫中，表單將直接透過後端安全寄送至作者信箱。",
 
     // Footer

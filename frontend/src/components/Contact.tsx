@@ -29,19 +29,26 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
+        const errorJson = await response.json().catch(() => ({}));
         if (response.status === 429) throw new Error("rate_limited");
         if (response.status === 400 || response.status === 422) throw new Error("rejected");
-        throw new Error("HTTP error " + response.status);
+        if (errorJson.error === "smtp_auth_failed") throw new Error("smtp_auth_failed");
+        if (errorJson.error === "smtp_send_failed") throw new Error("smtp_send_failed");
+        throw new Error(errorJson.error || "HTTP error " + response.status);
       }
       setStatus("success"); setFormData({ name: "", email: "", message: "", website: "" });
     } catch (err) {
-      console.warn("Backend API not reachable. Contact request was not delivered.", err);
+      console.warn("Contact form dispatch encountered an error:", err);
       setStatus("error");
       const errorType = err instanceof Error ? err.message : "";
       if (errorType === "rate_limited") {
         setErrorMessage(t("contact_err_rate_limited"));
       } else if (errorType === "rejected") {
         setErrorMessage(t("contact_err_rejected"));
+      } else if (errorType === "smtp_auth_failed") {
+        setErrorMessage(t("contact_err_smtp_auth"));
+      } else if (errorType === "smtp_send_failed") {
+        setErrorMessage(t("contact_err_smtp_send"));
       } else {
         setErrorMessage(t("contact_err_failed"));
       }
