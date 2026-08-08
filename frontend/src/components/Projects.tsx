@@ -67,7 +67,7 @@ export default function Projects() {
       title: t("proj_portfolio_title"),
       description: t("proj_portfolio_desc"),
       category: "Full-Stack Dev",
-      tags: ["Next.js", "TypeScript", "FastAPI", "SQLite", "Contact API", "Anti-Spam"],
+      tags: ["Next.js", "TypeScript", "FastAPI", "SQLite", "Email Dispatch", "Anti-Spam"],
       github_url: "https://github.com/dec591nyc/17s_portfolio",
       demo_url: null,
       period: "Jun 2026",
@@ -128,6 +128,32 @@ export default function Projects() {
       tabGroup: "ai",
     },
     {
+      id: 7,
+      title: t("proj_legal_title"),
+      description: t("proj_legal_desc"),
+      category: "Data Engineering",
+      tags: ["Next.js", "React", "Python", "Turso", "SQLite", "GitHub Actions", "Data Pipeline", "Data Integrity"],
+      github_url: "https://github.com/dec591nyc/PSJJV",
+      demo_url: "https://public-safety-integrity-analytics.vercel.app/",
+      period: "Jun 2026",
+      highlight: t("proj_legal_highlight"),
+      section: "developed",
+      tabGroup: "data",
+    },
+    {
+      id: 11,
+      title: t("proj_bi_rmp_title"),
+      description: t("proj_bi_rmp_desc"),
+      category: "Data Engineering",
+      tags: ["FastAPI", "Python", "Supabase", "PostgreSQL", "n8n", "Playwright", "SearXNG", "PTT", "Threads", "Google Maps"],
+      github_url: "https://github.com/dec591nyc/BI-RMP",
+      demo_url: null,
+      period: "Jun 2026",
+      highlight: t("proj_bi_rmp_highlight"),
+      section: "developed",
+      tabGroup: "data",
+    },
+    {
       id: 4,
       title: t("proj_linebot_title"),
       description: t("proj_linebot_desc"),
@@ -139,19 +165,6 @@ export default function Projects() {
       highlight: t("proj_linebot_highlight"),
       section: "developing",
       tabGroup: "future",
-    },
-    {
-      id: 7,
-      title: t("proj_legal_title"),
-      description: t("proj_legal_desc"),
-      category: "Data Engineering",
-      tags: ["Next.js", "React", "Python", "Supabase", "PostgreSQL", "n8n", "Data Pipeline", "Data Integrity"],
-      github_url: "https://github.com/dec591nyc/PSJJV",
-      demo_url: "https://public-safety-integrity-analytics.vercel.app/",
-      period: "Jun 2026",
-      highlight: t("proj_legal_highlight"),
-      section: "developed",
-      tabGroup: "data",
     },
     {
       id: 8,
@@ -193,7 +206,9 @@ export default function Projects() {
               categoryLower.includes("data") ||
               titleLower.includes("analytics") ||
               titleLower.includes("integrity") ||
-              titleLower.includes("psjjv")
+              titleLower.includes("psjjv") ||
+              titleLower.includes("rmp") ||
+              titleLower.includes("reputation")
             ) {
               sec = "developed";
               tabGroup = "data";
@@ -201,8 +216,6 @@ export default function Projects() {
               categoryLower.includes("planned") ||
               categoryLower.includes("idea") ||
               titleLower.includes("line bot") ||
-              titleLower.includes("judicial") ||
-              titleLower.includes("penalty") ||
               titleLower.includes("travel") ||
               titleLower.includes("scraper")
             ) {

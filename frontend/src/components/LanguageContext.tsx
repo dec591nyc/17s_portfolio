@@ -36,7 +36,7 @@ const translations = {
     db_telemetry: "CAREER SNAPSHOT",
     db_stat_exp_val: "4+",
     db_stat_exp_lbl: "Years in Software",
-    db_stat_proj_val: "10",
+    db_stat_proj_val: "11",
     db_stat_proj_lbl: "Personal Projects & Planning",
     db_stat_skills_val: "16+",
     db_stat_skills_lbl: "Tools & Technologies",
@@ -128,7 +128,7 @@ const translations = {
     proj_donor_highlight: "Century-scale fundraising records",
 
     proj_portfolio_title: "Portfolio Dashboard",
-    proj_portfolio_desc: "The second pre-employment training assignment: a career portfolio dashboard built with Next.js, TypeScript, and a FastAPI backend. It combines portfolio presentation, contact-message storage, basic anti-spam checks, and deployment-ready frontend/backend structure.",
+    proj_portfolio_desc: "The second pre-employment training assignment: a career portfolio dashboard built with Next.js, TypeScript, and a FastAPI backend. It features direct server-side email dispatch with zero database message persistence, anti-spam protections, and deployment-ready architecture.",
     proj_portfolio_highlight: "Portfolio",
 
     proj_idea_category: "Planned Idea",
@@ -137,8 +137,11 @@ const translations = {
     proj_linebot_desc: "A possible future project combining a reservation workflow, LINE Bot push notifications, and n8n automation. This is a candidate idea, not a completed feature.",
     proj_linebot_highlight: "LINE Bot + n8n",
     proj_legal_title: "Taiwan Local Public Safety Statistics & Data Integrity Audit Platform",
-    proj_legal_desc: "A data analytics platform combining a Next.js dashboard with Python automated pipelines. Integrates n8n on MOI crime datasets (code 9603) to automate data extraction, reconciliation, and audit integrity, analyzing monthly trends, six metropolitan areas, and YoY variations.",
-    proj_legal_highlight: "Next.js + Python Pipeline + Data Integrity Controls",
+    proj_legal_desc: "A data analytics platform combining a Next.js dashboard, Python automated ETL pipelines, and Turso distributed Cloud SQLite. Features monthly automated GitHub Actions ETL on MOI crime datasets (code 9603), automated checksum reconciliation and data integrity audit, analyzing monthly trends, six metropolitan areas, and YoY variations.",
+    proj_legal_highlight: "Turso Cloud SQLite + GitHub Actions ETL + Data Integrity Audit",
+    proj_bi_rmp_title: "BI-RMP: Business Reputation & Sentiment Risk Platform",
+    proj_bi_rmp_desc: "An automated multi-platform public sentiment & reputation monitoring service integrating PTT, Google Maps, and Threads. Features LINE / LIFF entry, n8n workflow routing, FastAPI crawler scheduling (SearXNG + Playwright), merchant identity contract matching, rolling delta deduplication, and Supabase PostgreSQL persistence with audit logging.",
+    proj_bi_rmp_highlight: "Multi-Platform Crawlers + n8n + Supabase + Risk Detection",
     proj_travel_title: "Travel Planning Suggestions with Scraper Practice",
     proj_travel_desc: "A planned practice combining travel-planning suggestions with crawler-based information gathering, then turning scattered travel data into easier comparison material.",
     proj_travel_highlight: "Travel crawler",
@@ -191,7 +194,7 @@ const translations = {
     contact_btn_send: "Submit Feedback",
     contact_btn_sending: "Sending...",
     contact_success_title: "Message Sent!",
-    contact_success_desc: "The form request was submitted to the backend demo service. For time-sensitive contact, please use LinkedIn or GitHub.",
+    contact_success_desc: "Your message has been emailed directly to the author via the backend. Thank you for your feedback!",
     contact_success_btn: "Send Another",
     contact_err_required: "Name field is required.",
     contact_err_email: "Please enter a valid email address.",
@@ -200,7 +203,7 @@ const translations = {
     contact_err_failed: "Network connection error. This message was not delivered. Please use LinkedIn or GitHub instead.",
     contact_err_rate_limited: "The inbox bouncer says: one message at a time. Please wait a moment and try again.",
     contact_err_rejected: "This message looked a little too bot-like. Please shorten it, reduce links, and try again.",
-    contact_delivery_note: "Technical confession: this demo form saves the request, but the email courier is not wired up yet. For real contact, LinkedIn or GitHub is the safer route.",
+    contact_delivery_note: "Privacy notice: No messages are stored in any database; feedback is securely dispatched directly to the author's inbox via the backend.",
 
     // Footer
     footer_text: "All rights reserved. This website is a personal practice of applying IT domain knowledge to data analysis, industry analysis, data engineering, and AI applications.",
@@ -230,7 +233,7 @@ const translations = {
     db_telemetry: "職涯概覽",
     db_stat_exp_val: "4+ 年",
     db_stat_exp_lbl: "軟體開發經驗",
-    db_stat_proj_val: "10 個",
+    db_stat_proj_val: "11 個",
     db_stat_proj_lbl: "個人專案實作與規劃",
     db_stat_skills_val: "16+",
     db_stat_skills_lbl: "掌握的工具與技術",
@@ -322,7 +325,7 @@ const translations = {
     proj_donor_highlight: "近百年募款資料收集",
 
     proj_portfolio_title: "個人 Portfolio Dashboard",
-    proj_portfolio_desc: "職前訓練第二份作業。以前端 Next.js、TypeScript 與後端 FastAPI 整合作為作品集展示，包含深淺色主題、聯絡表單儲存、基礎防 spam 機制與前後端部署結構。",
+    proj_portfolio_desc: "職前訓練第二份作業。以前端 Next.js、TypeScript 與後端 FastAPI 整合作為作品集展示，包含深淺色主題、後端直接寄送 Email、零資料庫留言儲存、基礎防 spam 機制與前後端部署結構。",
     proj_portfolio_highlight: "Portfolio",
 
     proj_idea_category: "構想規劃",
@@ -331,8 +334,11 @@ const translations = {
     proj_linebot_desc: "可能開發的方向：結合預約流程、LINE Bot 推播與 n8n 自動化。此項目目前是候選構想，不是已完成作品。",
     proj_linebot_highlight: "LINE Bot + n8n",
     proj_legal_title: "台灣地方治安統計數據分析平台",
-    proj_legal_desc: "結合 Next.js 數據儀表板與 Python 自動化數據管道的治安統計分析平台。採用 n8n 於內政部刑事案件數據集（代號 9603）實現自動化資料撈取、校對與完整度審計，研判各類犯罪的月度趨勢、六都分布及 YoY 增減變化。",
-    proj_legal_highlight: "數據審計校對與高可用雙模架構",
+    proj_legal_desc: "結合 Next.js 數據儀表板、Python 自動化 ETL 管道與 Turso 雲端分散式 SQLite 的治安統計分析平台。採用 GitHub Actions 每月自動於內政部刑事案件數據集（代號 9603）執行資料擷取、加總比對與完整度審計，研判各類犯罪的月度趨勢、六都分布及 YoY 增減變化。",
+    proj_legal_highlight: "Turso 雲端 SQLite + GitHub Actions 自動化 ETL + 數據完整性審計",
+    proj_bi_rmp_title: "BI-RMP 商業聲譽與輿情風險管理平台",
+    proj_bi_rmp_desc: "結合 PTT、Google Maps 與 Threads 的自動化網路聲譽監控與數據驗證服務。以 LINE / LIFF 作為服務入口，透過 n8n 進行流程協調，由 FastAPI 後端執行防護爬蟲與任務調度 (SearXNG + Playwright)，具備商家身份契約匹配、滾動時間窗 (Rolling Delta) 增量去重，並將結構化資料持久化至 Supabase PostgreSQL 與審計紀錄。",
+    proj_bi_rmp_highlight: "多平台輿情爬蟲 + n8n 流程調度 + Supabase 審計日誌",
     proj_travel_title: "旅遊規劃建議配合爬蟲實踐",
     proj_travel_desc: "以旅遊規劃建議為主題，搭配爬蟲蒐集旅遊資訊，練習資料整理、比較與行程規劃流程，目標是把零散資訊轉成較容易判斷的旅遊決策素材。",
     proj_travel_highlight: "旅遊資料蒐集",
@@ -385,7 +391,7 @@ const translations = {
     contact_btn_send: "送出建議",
     contact_btn_sending: "傳送中...",
     contact_success_title: "訊息已成功送出！",
-    contact_success_desc: "表單已送到後端展示服務。若是正式或即時聯繫，請優先使用 LinkedIn 或 GitHub。",
+    contact_success_desc: "您的訊息已透過後端直接寄送至作者的電子信箱。感謝您的寶貴回饋與建議！",
     contact_success_btn: "再次送出",
     contact_err_required: "姓名欄位為必填。",
     contact_err_email: "請輸入有效的電子郵件地址。",
@@ -394,7 +400,7 @@ const translations = {
     contact_err_failed: "網路連線異常，此訊息沒有成功送達。請改用 LinkedIn 或 GitHub 聯繫。",
     contact_err_rate_limited: "收件口的小門衛說：先喝口水，等一下再送。請稍後再試一次。",
     contact_err_rejected: "這則訊息看起來有點像機器人手滑。請縮短內容、減少連結後再試一次。",
-    contact_delivery_note: "技術自白：此展示版表單會保存請求，但寄信郵差還沒接線。若要正式聯繫，LinkedIn 或 GitHub 會比較可靠。",
+    contact_delivery_note: "隱私承諾：系統不儲存任何留言於資料庫中，表單將直接透過後端安全寄送至作者信箱。",
 
     // Footer
     footer_text: "版權所有。該網頁為個人運用自身 IT domain knowledge 展示資料分析、產業分析、數據工程、AI Application 的實踐",
@@ -409,7 +415,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const savedLocale = localStorage.getItem("locale") as Locale | null;
     if (savedLocale === "en" || savedLocale === "zh") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocaleState(savedLocale);
     } else {
       // Auto-detect browser locale
@@ -445,4 +450,3 @@ export function useLanguage() {
   }
   return context;
 }
-

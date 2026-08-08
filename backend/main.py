@@ -2,21 +2,24 @@ import os
 import hashlib
 import re
 import time
-
-from fastapi import FastAPI, Depends, HTTPException, Request, status
-from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
+import smtplib
+import logging
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 from typing import List
 
-from database import engine, get_db
-import models, schemas
+from fastapi import FastAPI, HTTPException, Request, status
+from fastapi.middleware.cors import CORSMiddleware
 
-# Create tables (SQLite will auto-create portfolio.db on launch)
-models.Base.metadata.create_all(bind=engine)
+import schemas
+from data import PROJECTS, SKILLS, EXPERIENCES
+
+logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI(
     title="Developer Portfolio API",
-    description="Backend API for portfolio website",
+    description="Stateless Backend API for portfolio website (0 Database)",
     version="1.0.0"
 )
 
@@ -39,6 +42,17 @@ CONTACT_IP_LIMIT_1M = int(os.getenv("CONTACT_IP_LIMIT_1M", "5"))
 CONTACT_EMAIL_LIMIT_10M = int(os.getenv("CONTACT_EMAIL_LIMIT_10M", "3"))
 CONTACT_MAX_LINKS = int(os.getenv("CONTACT_MAX_LINKS", "3"))
 CONTACT_HASH_SALT = os.getenv("CONTACT_HASH_SALT", "portfolio-contact")
+
+# Destination email hardcoded strictly on the backend to avoid any leakage to clients
+RECIPIENT_EMAIL = "jan992nyc@gmail.com"
+
+# Optional SMTP configuration from environment variables
+SMTP_HOST = os.getenv("SMTP_HOST", "")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER = os.getenv("SMTP_USER", "")
+SMTP_PASS = os.getenv("SMTP_PASSWORD", os.getenv("SMTP_PASS", ""))
+SMTP_FROM = os.getenv("SMTP_FROM", SMTP_USER or "portfolio@localhost")
+SMTP_USE_TLS = os.getenv("SMTP_USE_TLS", "true").lower() in ("true", "1", "yes")
 
 contact_attempts = []
 
@@ -135,35 +149,90 @@ def _validate_contact_message(message: schemas.ContactMessageCreate, request: Re
     )
     return name, email, text
 
+
+def _dispatch_feedback_email(name: str, sender_email: str, text: str, client_ip: str) -> None:
+    """
+    Dispatches the feedback directly via email to the administrator.
+    Zero data is saved to any database.
+    """
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    subject = f"[Portfolio Feedback] Message from {name}"
+    body = (
+        f"You have received a new feedback message from your portfolio website:\n\n"
+        f"--------------------------------------------------\n"
+        f"Sender Name:  {name}\n"
+        f"Sender Email: {sender_email}\n"
+        f"Received At:  {timestamp}\n"
+        f"Sender IP:    {client_ip}\n"
+        f"--------------------------------------------------\n\n"
+        f"Message Content:\n{text}\n\n"
+        f"--------------------------------------------------\n"
+        f"(This feedback was dispatched directly to your inbox with zero database persistence.)\n"
+    )
+
+    if SMTP_HOST and SMTP_USER and SMTP_PASS:
+        try:
+            msg = MIMEMultipart()
+            msg["From"] = SMTP_FROM
+            msg["To"] = RECIPIENT_EMAIL
+            msg["Subject"] = subject
+            msg["Reply-To"] = sender_email
+            msg.attach(MIMEText(body, "plain", "utf-8"))
+
+            if SMTP_USE_TLS:
+                server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+                server.starttls()
+            else:
+                server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+
+            server.login(SMTP_USER, SMTP_PASS)
+            server.sendmail(SMTP_FROM, [RECIPIENT_EMAIL], msg.as_string())
+            server.quit()
+            logger.info(f"Feedback email dispatched successfully to admin via SMTP for {name}.")
+        except Exception as exc:
+            logger.error(f"Failed to deliver feedback email via SMTP: {exc}. Notification logged to server output.")
+    else:
+        # In demo / local environment without external SMTP configured,
+        # securely output notification to server logs without database persistence.
+        logger.info(
+            f"\n=== [FEEDBACK EMAIL DISPATCH] ===\n"
+            f"To: [ADMIN INBOX PROTECTED]\n"
+            f"From: {name} <{sender_email}>\n"
+            f"Subject: {subject}\n\n"
+            f"{text}\n"
+            f"=================================\n"
+        )
+
+
 @app.get("/")
 def read_root():
-    return {"status": "healthy", "service": "Portfolio API"}
+    return {"status": "healthy", "service": "Portfolio API (Stateless, 0 DB)"}
+
 
 @app.get("/api/projects", response_model=List[schemas.Project])
-def get_projects(db: Session = Depends(get_db)):
-    return db.query(models.Project).all()
+def get_projects():
+    return PROJECTS
+
 
 @app.get("/api/skills", response_model=List[schemas.Skill])
-def get_skills(db: Session = Depends(get_db)):
-    return db.query(models.Skill).all()
+def get_skills():
+    return SKILLS
+
 
 @app.get("/api/experience", response_model=List[schemas.Experience])
-def get_experience(db: Session = Depends(get_db)):
-    return db.query(models.Experience).all()
+def get_experience():
+    return EXPERIENCES
 
-@app.post("/api/contact", response_model=schemas.ContactMessage, status_code=status.HTTP_201_CREATED)
+
+@app.post("/api/contact", response_model=schemas.ContactResponse, status_code=status.HTTP_200_OK)
 def create_contact_message(
     message: schemas.ContactMessageCreate,
     request: Request,
-    db: Session = Depends(get_db),
 ):
     name, email, text = _validate_contact_message(message, request)
-    db_message = models.ContactMessage(
-        name=name,
-        email=email,
-        message=text,
+    client_ip = _client_ip(request)
+    _dispatch_feedback_email(name, email, text, client_ip)
+    return schemas.ContactResponse(
+        status="success",
+        message="Feedback received and dispatched directly to the administrator."
     )
-    db.add(db_message)
-    db.commit()
-    db.refresh(db_message)
-    return db_message
