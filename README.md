@@ -1,134 +1,158 @@
 # Portfolio Dashboard
 
-這是一個前後端分離架構的個人作品集網站，前端使用 Next.js、TypeScript，後端使用 FastAPI、Python 建立，用來整理個人技術背景、專案經驗與展現數據工程 / 後端自動化與全端開發的能力。
+這是一個採用前後端分離架構打造的個人作品集網站。前端使用 Next.js 16、React 19 與 TypeScript，後端使用 FastAPI (Python)。除了彙整個人的技術背景、專案成果與工作經歷外，也實作了具備防灌水保護的 Email 聯絡表單，展現資料處理、後端 API 與全端整合能力。
 
-網站除了呈現作品展示、職涯時間軸、技能整理與教育背景，也提供直接寄送 Email 的反饋建議功能，證明有將專案以極簡、易維護、易部署與重視隱私的規劃能力。
-
-🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
+🔗 [**Live Demo 網頁體驗**](https://17s-portfolio.vercel.app)
 
 ---
 
-## 系統 Infography
+## 💡 網站開發動機 (Motivation)
 
-| 面向 | 目前版本內容 |
+1. **作品與技能集中展示**：建立一個乾淨、現代化的個人儀表板，讓訪客快速了解我的專案經驗、技術堆疊與求職狀態。
+2. **保護隱私的聯絡管道**：避免在公開網頁上直接放個人 Email 導致被垃圾信爬蟲收割，改用後端代寄信的方式，並加上基礎防灌水機制。
+3. **輕量好維護的架構**：留言直接轉寄 Email，不需要額外維護資料庫伺服器，前後端都能輕鬆部署到 Vercel 或各家雲端平台。
+
+---
+
+## 🏗️ 技術架構與資料流 (Technical Architecture)
+
+### 技術選型
+
+| 面向 | 選用技術 |
 | --- | --- |
-| 前端技術 | Next.js 16、React 19、TypeScript、CSS Variables、Responsive Layout |
-| 後端技術 | FastAPI、Pydantic、Python smtplib，純靜態結構化資料提供** |
-| 作品展示 | Previous Projects、Developed Projects (包含 PSJJV、BI-RMP 等 9 個專案)、Developing / Planned Projects |
-| 聯絡/反饋 | 後端直接寄送 Email 至作者信箱，保護訪客隱私 |
-| 防 spam | Honeypot、IP 限流、Email 限流、重複訊息偵測、連結數限制、250 字留言上限 |
-| 部署優勢 | 前端 Vercel，後端可無痛部署至任何 Serverless / Container 平台 (Cloud Run / Render) |
+| **前端框架** | Next.js 16 (App Router)、React 19、TypeScript |
+| **樣式設計** | 原生 CSS 變數 (CSS Variables)、毛玻璃光影效果、RWD 響應式版面 |
+| **後端 API** | FastAPI、Pydantic (資料驗證)、Python smtplib / Nodemailer |
+| **狀態管理** | React Context (支援中英雙語切換與深淺色主題切換) |
+| **安全防護** | Honeypot 機器人陷阱、IP/Email 發送頻率限制、重複內容過濾 |
+| **雲端部署** | 前端 Vercel、後端可直接容器化部署至 Cloud Run 或 Render |
+
+### 系統運作流程
 
 ```mermaid
 flowchart LR
-    A["使用者瀏覽 Portfolio"] --> B["Next.js Frontend"]
-    B --> C["職涯儀表板與專案卡片"]
-    B --> D["Feedback / Contact Form"]
-    D --> E["FastAPI Backend (100% Stateless)"]
-    E --> F["Anti-Spam Checks\n(Honeypot, Rate Limit, Spam Filter)"]
-    F --> G["Direct Email Dispatch\n(後端寄信至指定信箱 / 0 DB 留存)"]
-    E --> H["In-Memory Portfolio Data\n(Projects, Skills, Experiences)"]
-    H --> C
+    A["訪客瀏覽網站"] --> B["Next.js 前端介面"]
+    B --> C["專案卡片與職涯時間軸"]
+    B --> D["中英雙語 / 深淺色切換\n(React Context)"]
+    D --> C
+    B --> E["聯絡表單"]
+    E --> F["後端 API 接收"]
+    F --> G["表單防灌水檢查\n(Honeypot / 頻率限制 / 重複過濾)"]
+    G --> H["SMTP 自動寄信\n(寄至管理員 Gmail 信箱)"]
 ```
 
----
-
-## 目前功能
-
-- **職涯儀表板**：首頁以 dashboard 方式呈現工作年資、專案分類、核心技術與目前求職狀態。
-- **中英文內容切換**：主要頁面支援英文與繁體中文雙語切換，包含職涯節點、專案描述、公司名稱與地點。
-- **深淺色主題**：使用 CSS variables 管理主題色彩、毛玻璃光效與版面狀態。
-- **生涯軌跡**：以工作與教育兩種色彩區分經歷，並提供中英文詳細內容。
-- **直接郵件反饋 (Direct Email Feedback)**：訪客提交反饋後，後端透過郵件安全發送至作者信箱。
-- **完整防 spam 機制**：結合 Honeypot 蜜罐陷阱、IP 頻率限制、Email 限流、重複訊息防範與連結數上限。
-
----
-
-## 專案展示內容
-
-| 分類 | 專案名稱 | 內容摘要與架構特色 |
-| --- | --- | --- |
-| Previous Projects | **Donor Analytics Pipeline** | 聚焦聖彼得大學近 20 年 SQL Server 捐款數據，進行預測建模、高額捐款特徵分析與 Power BI / Excel 報告。 |
-| Developed Projects | **台灣地方治安統計分析平台 (PSJJV)** | 結合 Next.js 儀表板、Python 自動化 ETL 與 Turso 雲端分散式 SQLite。GitHub Actions 每月自動下載內政部犯罪資料 (代號 9603) 並執行完整性加總審計。 |
-| Developed Projects | **BI-RMP 商業聲譽與輿情風險平台** | 整合 PTT (SearXNG + aiohttp)、Google Maps 與 Threads (Playwright) 輿情爬蟲，LINE/LIFF 服務入口，n8n 流程調度，FastAPI 任務去重與 Supabase PostgreSQL 持久化。 |
-| Developed Projects | **個人 Portfolio Dashboard** | 職前訓練第二份作業。Next.js + TypeScript + FastAPI，具備直接 Email 寄送、零 DB 留言儲存、防 spam 與雙語切換。 |
-| Developed Projects | **50 Startups 獲利預測與特徵分析** | CRISP-DM 決策平台，整合自製 OLS 多元線性迴歸、貝氏目標編碼與預測區間互動儀表板。 |
-| Developed Projects | **產業機器學習互動體驗站** | 互動式機器學習導引，支援多模型指標與決策邊界比較，並串接 Gemini AI 助理提供情境解釋。 |
-| Developed Projects | **Hugging Face AI 繪圖生成器** | Streamlit 串接 FLUX.1 Schnell 與 SDXL，支援多圖並行、雙語介面與本機 Demo 模式。 |
-| Developed Projects | **線性迴歸與空污異常監測實作** | CRISP-DM 框架的線性迴歸與中部地區 AQI 空污異常偵測展示工具。 |
-| Developed Projects | **AI 開發儀表板實踐** | 互動式前端網頁儀表板，具備毛玻璃擬態 UI、滑鼠折射光影特效與即時數位日曆時鐘。 |
-| Developing / Planned Projects | **預約 App 與 LINE Bot 推播** | 候選構想：結合預約流程、LINE Bot 推播與 n8n 自動化。 |
-| Developing / Planned Projects | **旅遊規劃建議配合爬蟲實踐** | 候選構想：搭配爬蟲蒐集旅遊資訊，練習資料整理、比較與行程規劃決策素材。 |
-
----
-
-## 技術架構
+### 專案目錄結構
 
 ```text
 17s_portfolio/
 ├── frontend/
-│   ├── src/app/                 # Next.js App Router
-│   ├── src/components/          # Hero, Projects, Skills, Experience, Contact, LanguageContext
-│   ├── src/config.ts            # Frontend API endpoint configuration
+│   ├── src/app/                 # Next.js 頁面與 API Routes (包含 contact 寄信 API)
+│   ├── src/components/          # 頁面元件 (Hero, Projects, Skills, Experience, Contact)
+│   ├── src/data/                # 網站靜態多語系資料 (portfolioData.ts)
+│   ├── src/config.ts            # API 網址設定
+│   ├── .env.local               # SMTP 寄信帳密設定 (本地環境變數)
 │   └── package.json
 ├── backend/
-│   ├── main.py                  # Stateless FastAPI routes, anti-spam logic, direct email dispatch
-│   ├── data.py                  # Structured portfolio data (0 DB, in-memory catalog)
-│   ├── schemas.py               # Pydantic schemas (Project, Skill, Experience, ContactResponse)
-│   └── requirements.txt         # Minimal lightweight dependencies (no DB ORM needed)
+│   ├── main.py                  # FastAPI 路由、防灌水邏輯與郵件寄送
+│   ├── data.py                  # 後端資料結構
+│   ├── schemas.py               # Pydantic 資料型別驗證
+│   └── requirements.txt         # 後端套件清單
 ├── docs/
-│   └── deployment_guide.md
-├── run.bat
+│   └── deployment_guide.md      # 完整雲端部署步驟
+├── run.bat                      # Windows 一鍵啟動前後端腳本
 └── README.md
 ```
 
 ---
 
-## 本機執行
+## ⚡ 核心功能 (Core Features)
 
-### 方式一：Windows 一鍵啟動
+- **職涯儀表板**：首頁直觀呈現工作年資、專案分類、核心技術與求職狀態。
+- **中英雙語即時切換**：透過 Context 實現全站一鍵切換繁體中文與英文。
+- **深淺色主題切換**：支援暗黑模式與明亮模式，搭配毛玻璃效果與微動畫。
+- **職涯歷程時間軸**：以不同色彩區分工作與教育經歷，清晰呈現個人成長背景。
+- **即時 Email 聯絡表單**：訪客送出表單後，後端會自動寄信通知作者，不需將 Email 公開在網頁上。
 
-在專案根目錄執行：
+---
+
+## ⚙️ 環境變數與安全設定 (Configuration)
+
+### 設定寄信帳密 (`frontend/.env.local`)
+
+若要啟用表單寄信功能，請在 `frontend/.env.local` 填入 Gmail SMTP 設定：
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_16_char_app_password
+```
+
+> **📌 密碼取得方式**：`SMTP_PASSWORD` 請使用 Google 帳號產生的 **16 位應用程式密碼**（需先開啟 Google 帳號兩步驟驗證，至 [Google 應用程式密碼頁面](https://myaccount.google.com/apppasswords) 即可新增一組 16 位密碼）。
+
+### 表單防灌水機制
+
+| 機制名稱 | 白話說明 |
+| --- | --- |
+| **Honeypot（防機器人隱藏欄位）** | 表單中埋入人類看不到的隱藏欄位，自動填表機器人若填寫即會被系統自動阻擋。 |
+| **IP 發送頻率限制** | 同一個 IP 限制 1 分鐘內最多送出 5 次，避免被程式惡意刷留言。 |
+| **Email 發送限制** | 同一個 Email 限制 10 分鐘內最多送出 3 次。 |
+| **重複內容過濾** | 24 小時內若送出完全相同的留言內容會自動過濾，防止按鈕連點造成重複發信。 |
+| **字數與網址限制** | 限制留言內容在 10 ~ 250 字之間，且最多包含 3 個網址，降低廣告垃圾信機率。 |
+
+---
+
+## 🚀 本機啟動方式 (Getting Started)
+
+### 方式一：Windows 一鍵啟動（推薦）
+
+在專案根目錄直接點擊或執行：
 
 ```bat
 run.bat
 ```
 
-此腳本會分別啟動：
+腳本會自動檢查環境並同時開啟：
+- **FastAPI 後端**：`http://localhost:8000`（API 文件：`http://localhost:8000/docs`）
+- **Next.js 前端**：`http://localhost:3000`
 
-- FastAPI backend: [http://localhost:8000](http://localhost:8000)
-- Next.js frontend: [http://localhost:3000](http://localhost:3000)
+### 方式二：手動分開啟動
 
-### 方式二：手動啟動
-
-啟動後端：
-
+**1. 啟動後端：**
 ```powershell
 cd backend
+python -m venv .venv
 .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
 python -m uvicorn main:app --port 8000 --reload
 ```
 
-後端 API 文件：
-
-```text
-http://localhost:8000/docs
-```
-
-啟動前端：
-
+**2. 啟動前端：**
 ```powershell
 cd frontend
 npm ci
 npm run dev
 ```
 
-前端頁面：
+---
 
-```text
-http://localhost:3000
-```
+## 🌐 雲端部署步驟 (Deployment)
 
-`npm ci` 會依照 `package-lock.json` 安裝固定版本，適合 fresh clone 後使用。若 Windows PowerShell 擋下 `npm`，可改用 Command Prompt，或執行 `npm.cmd ci` 與 `npm.cmd run dev`。
+- **前端部署至 Vercel**：
+  1. 將專案 Push 至 GitHub 並連結到 Vercel。
+  2. 設定 Root Directory 為 `frontend`。
+  3. 在 Vercel 後台的 Environment Variables 加入 `SMTP_USER` 與 `SMTP_PASSWORD` 即完成部署。
+- **後端部署至 Google Cloud Run 或 Render**：
+  - 支援將 FastAPI 打包為 Docker 容器部署。
+  - 在後端環境變數中設定 `ALLOWED_ORIGINS` 填入前端網址以通過跨域 (CORS) 檢查。
+
+完整部署說明請參考 [docs/deployment_guide.md](./docs/deployment_guide.md)。
 
 ---
+
+## 💡 開發收穫與心得 (Takeaways)
+
+- **前後端整合與型別串接**：熟悉 Next.js App Router 與 FastAPI RESTful API 之間的資料傳遞、狀態處理與 TypeScript 型別對齊。
+- **雙語與主題切換實作**：使用原生 React Context 與 CSS 變數實作無縫切換，不用依賴繁重的第三方套件即可達成乾淨架構。
+- **表單驗證與防灌水設計**：實作簡單實用的防垃圾信邏輯（Honeypot 陷阱、頻率限制與重複過濾），串接 SMTP 即時寄信。
+- **兼顧隱私與維護成本**：訪客留言直接轉寄信箱，省去額外架設與維護資料庫伺服器的麻煩，降低維運成本與資安風險。
