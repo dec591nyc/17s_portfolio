@@ -1,8 +1,8 @@
 # Portfolio Dashboard
 
-這是一個前後端分離架構的個人作品集網站，前端使用 Next.js、TypeScript，後端使用 FastAPI、Python 建立，全面採用**無資料庫（0 Database / 100% Stateless）**架構，用來整理個人技術背景、專案經驗與展現數據工程 / 後端自動化與全端開發的能力。
+這是一個前後端分離架構的個人作品集網站，前端使用 Next.js、TypeScript，後端使用 FastAPI、Python 建立，用來整理個人技術背景、專案經驗與展現數據工程 / 後端自動化與全端開發的能力。
 
-網站除了呈現作品展示、職涯時間軸、技能整理與教育背景，也提供無資料庫留存、直接寄送 Email 的反饋建議功能，證明我擁有將專案以極簡、易維護、易部署、重視隱私與無狀態（Stateless）的規劃能力。
+網站除了呈現作品展示、職涯時間軸、技能整理與教育背景，也提供直接寄送 Email 的反饋建議功能，證明有將專案以極簡、易維護、易部署與重視隱私的規劃能力。
 
 🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
@@ -13,11 +13,11 @@
 | 面向 | 目前版本內容 |
 | --- | --- |
 | 前端技術 | Next.js 16、React 19、TypeScript、CSS Variables、Responsive Layout |
-| 後端技術 | FastAPI、Pydantic、Python smtplib，**0 Database / 純靜態結構化資料提供** |
+| 後端技術 | FastAPI、Pydantic、Python smtplib，純靜態結構化資料提供** |
 | 作品展示 | Previous Projects、Developed Projects (包含 PSJJV、BI-RMP 等 9 個專案)、Developing / Planned Projects |
-| 聯絡/反饋 | 後端直接寄送 Email 至作者信箱，**0 資料庫留存 (Zero DB Persistence)**，保護訪客隱私 |
+| 聯絡/反饋 | 後端直接寄送 Email 至作者信箱，保護訪客隱私 |
 | 防 spam | Honeypot、IP 限流、Email 限流、重複訊息偵測、連結數限制、250 字留言上限 |
-| 部署優勢 | 前端 Vercel，後端可無痛部署至任何 Serverless / Container 平台 (Cloud Run / Render)，**零資料庫連線與維護負擔** |
+| 部署優勢 | 前端 Vercel，後端可無痛部署至任何 Serverless / Container 平台 (Cloud Run / Render) |
 
 ```mermaid
 flowchart LR
@@ -39,8 +39,7 @@ flowchart LR
 - **中英文內容切換**：主要頁面支援英文與繁體中文雙語切換，包含職涯節點、專案描述、公司名稱與地點。
 - **深淺色主題**：使用 CSS variables 管理主題色彩、毛玻璃光效與版面狀態。
 - **生涯軌跡**：以工作與教育兩種色彩區分經歷，並提供中英文詳細內容。
-- **直接郵件反饋 (Direct Email Feedback)**：訪客提交反饋後，後端透過郵件安全發送至作者信箱，**完全不將任何留言內容寫入資料庫**，且收件者信箱寫死在後端，絕不外洩至前端客戶端。
-- **100% 無狀態極簡架構 (0 Database)**：作品展示、技能與經歷資料改由結構化資料模組提供，免除資料庫鎖死、遷移與連線遺失風險。
+- **直接郵件反饋 (Direct Email Feedback)**：訪客提交反饋後，後端透過郵件安全發送至作者信箱。
 - **完整防 spam 機制**：結合 Honeypot 蜜罐陷阱、IP 頻率限制、Email 限流、重複訊息防範與連結數上限。
 
 ---
@@ -133,25 +132,3 @@ http://localhost:3000
 `npm ci` 會依照 `package-lock.json` 安裝固定版本，適合 fresh clone 後使用。若 Windows PowerShell 擋下 `npm`，可改用 Command Prompt，或執行 `npm.cmd ci` 與 `npm.cmd run dev`。
 
 ---
-
-## 後端防 spam 與反饋寄信設定
-
-FastAPI feedback / contact endpoint 支援以下環境變數配置：
-
-| 變數 | 預設值 | 說明 |
-| --- | --- | --- |
-| `SMTP_HOST` | *(選填)* | SMTP 伺服器主機 (如 `smtp.gmail.com`、`smtp.office365.com`) |
-| `SMTP_PORT` | `587` | SMTP 伺服器連接埠 |
-| `SMTP_USER` | *(選填)* | SMTP 登入帳號 |
-| `SMTP_PASSWORD` | *(選填)* | SMTP 密碼或應用程式專用密碼 |
-| `SMTP_USE_TLS` | `true` | 是否啟用 STARTTLS 加密 |
-| `CONTACT_IP_LIMIT_1M` | `5` | 同 IP 每 1 分鐘最多 5 則 |
-| `CONTACT_EMAIL_LIMIT_10M` | `3` | 同 email 每 10 分鐘最多 3 則 |
-| `CONTACT_MAX_LINKS` | `3` | 單則留言最多 3 個連結 |
-| `CONTACT_HASH_SALT` | `portfolio-contact` | IP / email / message hash salt |
-| `ALLOWED_ORIGINS` | `http://localhost:3000` | 允許呼叫 backend 的 frontend origin |
-
-> **隱私與安全說明**：
-> - 收件者信箱寫死在後端內部 (`main.py`)，不會暴露在任何 API 回應、API 說明文件或前端 JavaScript bundle 中。
-> - 訪客的反饋訊息透過後端直接寄出，**完全不儲存於任何資料庫中** (0 DB persistence)。
-> - 在本機開發或未設定外部 SMTP 帳號的展示環境下，後端會將通知安全記錄於伺服器 log 中，確保服務穩定不拋出異常。
