@@ -37,14 +37,24 @@ export const PROJECTS_DATA: ProjectData[] = [
     image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
   },
   {
-    id: 2,
-    title: "AI Dev Dashboard Practice",
-    description: "The first pre-employment training assignment: an interactive front-end dashboard featuring a glassmorphic UI, mouse-responsive light effects, ambient gradients, and a real-time calendar clock.",
-    category: "Frontend Dev",
-    tags: "HTML5,CSS3,JavaScript,CSS Variables,Interactive UI",
-    github_url: "https://github.com/dec591nyc/First-AI-Dev-Practice",
-    demo_url: "https://dec591nyc.github.io/First-AI-Dev-Practice/",
-    image_url: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
+    id: 7,
+    title: "Taiwan Local Public Safety Statistics & Data Integrity Audit Platform",
+    description: "A data analytics platform combining a Next.js dashboard, Python automated ETL pipelines, and Turso distributed Cloud SQLite. Integrates GitHub Actions to automatically fetch MOI crime open datasets (code 9603) monthly, performing checksum reconciliation and audit integrity while analyzing monthly trends, six metropolitan areas, and YoY variations.",
+    category: "Data Engineering",
+    tags: "Next.js,React,Python,Turso,SQLite,GitHub Actions,Data Pipeline,Data Integrity",
+    github_url: "https://github.com/dec591nyc/PSJJV",
+    demo_url: "https://public-safety-integrity-analytics.vercel.app/",
+    image_url: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 11,
+    title: "BI-RMP: Business Reputation & Sentiment Risk Platform",
+    description: "An automated multi-platform reputation and sentiment risk monitoring platform integrating PTT, Google Maps, and Threads. Features LINE / LIFF service entry, n8n workflow routing, FastAPI crawler orchestration (SearXNG + Playwright), merchant identity contract matching, rolling delta incremental deduplication, and Supabase PostgreSQL persistence with audit logs.",
+    category: "Data Engineering",
+    tags: "FastAPI,Python,Supabase,PostgreSQL,n8n,Playwright,SearXNG,PTT,Threads,Google Maps",
+    github_url: "https://github.com/dec591nyc/BI-RMP",
+    demo_url: null,
+    image_url: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 3,
@@ -55,6 +65,26 @@ export const PROJECTS_DATA: ProjectData[] = [
     github_url: "https://github.com/dec591nyc/17s_portfolio",
     demo_url: null,
     image_url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 10,
+    title: "50 Startups Profit Prediction",
+    description: "The sixth pre-employment training assignment: a CRISP-DM decision-support platform combining a custom OLS regression model, Beta Target Encoding, prediction intervals, and an interactive dashboard for startup profit and risk analysis.",
+    category: "ML & Statistics",
+    tags: "Python,FastAPI,OLS,Beta Target Encoding,Statistics,Vanilla JS",
+    github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
+    demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
+    image_url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 9,
+    title: "Industry ML Workbench",
+    description: "The fifth pre-employment training assignment: an interactive machine-learning guide for comparing models, tuning parameters, inspecting metrics and decision boundaries, and receiving contextual explanations from a Gemini AI assistant.",
+    category: "AI & ML Dev",
+    tags: "Next.js,FastAPI,Scikit-Learn,Gemini,Model Selection,Interactive Lab",
+    github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
+    demo_url: "https://machine-learning-study.vercel.app",
+    image_url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 5,
@@ -77,44 +107,14 @@ export const PROJECTS_DATA: ProjectData[] = [
     image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
   },
   {
-    id: 9,
-    title: "Industry ML Workbench",
-    description: "The fifth pre-employment training assignment: an interactive machine-learning guide for comparing models, tuning parameters, inspecting metrics and decision boundaries, and receiving contextual explanations from a Gemini AI assistant.",
-    category: "AI & ML Dev",
-    tags: "Next.js,FastAPI,Scikit-Learn,Gemini,Model Selection,Interactive Lab",
-    github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
-    demo_url: "https://machine-learning-study.vercel.app",
-    image_url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    id: 10,
-    title: "50 Startups Profit Prediction",
-    description: "The sixth pre-employment training assignment: a CRISP-DM decision-support platform combining a custom OLS regression model, Beta Target Encoding, prediction intervals, and an interactive dashboard for startup profit and risk analysis.",
-    category: "ML & Statistics",
-    tags: "Python,FastAPI,OLS,Beta Target Encoding,Statistics,Vanilla JS",
-    github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
-    demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
-    image_url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    id: 7,
-    title: "Taiwan Local Public Safety Statistics & Data Integrity Audit Platform",
-    description: "A data analytics platform combining a Next.js dashboard, Python automated ETL pipelines, and Turso distributed Cloud SQLite. Integrates GitHub Actions to automatically fetch MOI crime open datasets (code 9603) monthly, performing checksum reconciliation and audit integrity while analyzing monthly trends, six metropolitan areas, and YoY variations.",
-    category: "Data Engineering",
-    tags: "Next.js,React,Python,Turso,SQLite,GitHub Actions,Data Pipeline,Data Integrity",
-    github_url: "https://github.com/dec591nyc/PSJJV",
-    demo_url: "https://public-safety-integrity-analytics.vercel.app/",
-    image_url: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    id: 11,
-    title: "BI-RMP: Business Reputation & Sentiment Risk Platform",
-    description: "An automated multi-platform reputation and sentiment risk monitoring platform integrating PTT, Google Maps, and Threads. Features LINE / LIFF service entry, n8n workflow routing, FastAPI crawler orchestration (SearXNG + Playwright), merchant identity contract matching, rolling delta incremental deduplication, and Supabase PostgreSQL persistence with audit logs.",
-    category: "Data Engineering",
-    tags: "FastAPI,Python,Supabase,PostgreSQL,n8n,Playwright,SearXNG,PTT,Threads,Google Maps",
-    github_url: "https://github.com/dec591nyc/BI-RMP",
-    demo_url: null,
-    image_url: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
+    id: 2,
+    title: "AI Dev Dashboard Practice",
+    description: "The first pre-employment training assignment: an interactive front-end dashboard featuring a glassmorphic UI, mouse-responsive light effects, ambient gradients, and a real-time calendar clock.",
+    category: "Frontend Dev",
+    tags: "HTML5,CSS3,JavaScript,CSS Variables,Interactive UI",
+    github_url: "https://github.com/dec591nyc/First-AI-Dev-Practice",
+    demo_url: "https://dec591nyc.github.io/First-AI-Dev-Practice/",
+    image_url: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 8,
@@ -133,18 +133,19 @@ export const SKILLS_DATA: SkillData[] = [
   { id: 2, name: "SQL / PostgreSQL / MySQL / SQLite", category: "Data Engineering", proficiency: 90 },
   { id: 3, name: "Power BI", category: "Data Engineering", proficiency: 82 },
   { id: 4, name: "Tableau", category: "Data Engineering", proficiency: 78 },
-  { id: 5, name: "Python (FastAPI / Flask)", category: "Backend", proficiency: 88 },
-  { id: 6, name: "C# (.Net MVC / WebForm)", category: "Backend", proficiency: 82 },
-  { id: 7, name: "Java (SpringBoot)", category: "Backend", proficiency: 75 },
-  { id: 8, name: "RESTful API", category: "Backend", proficiency: 90 },
-  { id: 9, name: "Docker", category: "Tools", proficiency: 82 },
-  { id: 10, name: "Kubernetes", category: "Tools", proficiency: 72 },
-  { id: 11, name: "GitLab CI/CD & GitHub Actions", category: "Tools", proficiency: 80 },
-  { id: 12, name: "Jenkins", category: "Tools", proficiency: 70 },
-  { id: 13, name: "LightGBM / GBDT", category: "ML & Analytics", proficiency: 72 },
-  { id: 14, name: "Data Analysis", category: "ML & Analytics", proficiency: 85 },
-  { id: 15, name: "Predictive Modeling", category: "ML & Analytics", proficiency: 70 },
-  { id: 16, name: "Excel / Reporting", category: "ML & Analytics", proficiency: 88 }
+  { id: 5, name: "n8n Workflow Automation", category: "Data Engineering", proficiency: 85 },
+  { id: 6, name: "Python (FastAPI / Flask)", category: "Backend", proficiency: 88 },
+  { id: 7, name: "C# (.Net MVC / WebForm)", category: "Backend", proficiency: 82 },
+  { id: 8, name: "Java (SpringBoot)", category: "Backend", proficiency: 75 },
+  { id: 9, name: "RESTful API", category: "Backend", proficiency: 90 },
+  { id: 10, name: "Docker", category: "Tools", proficiency: 82 },
+  { id: 11, name: "Kubernetes", category: "Tools", proficiency: 72 },
+  { id: 12, name: "GitLab CI/CD & GitHub Actions", category: "Tools", proficiency: 80 },
+  { id: 13, name: "Jenkins", category: "Tools", proficiency: 70 },
+  { id: 14, name: "LightGBM / GBDT", category: "ML & Analytics", proficiency: 72 },
+  { id: 15, name: "Data Analysis", category: "ML & Analytics", proficiency: 85 },
+  { id: 16, name: "Predictive Modeling", category: "ML & Analytics", proficiency: 70 },
+  { id: 17, name: "Excel / Reporting", category: "ML & Analytics", proficiency: 88 }
 ];
 
 export const EXPERIENCES_DATA: ExperienceData[] = [

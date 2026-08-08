@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-// Hardcoded recipient email kept private on server side (0 DB storage)
+// Destination email hardcoded strictly on server side (0 DB persistence)
 const RECIPIENT_EMAIL = "jan992nyc@gmail.com";
 
 const contactAttempts: Array<{
@@ -86,7 +87,8 @@ export async function POST(req: NextRequest) {
     const now = Date.now();
     pruneAttempts(now);
 
-    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const msgHash = simpleHash(cleanMessage.toLowerCase().replace(/\s+/g, " "));
 
     const recentIpCount = contactAttempts.filter(
@@ -126,12 +128,55 @@ export async function POST(req: NextRequest) {
       messageHash: msgHash,
     });
 
-    // Server-side direct dispatch log (0 DB storage)
-    console.log(`[VERCEL SERVERLESS FEEDBACK EMAIL DISPATCH]`);
-    console.log(`To: ${RECIPIENT_EMAIL}`);
-    console.log(`From: ${cleanName} <${cleanEmail}>`);
-    console.log(`IP: ${clientIp}`);
-    console.log(`Message:\n${cleanMessage}`);
+    // SMTP credentials from environment variables
+    const smtpHost = process.env.SMTP_HOST || "";
+    const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
+    const smtpUser = process.env.SMTP_USER || "";
+    const smtpPass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || "";
+    const smtpFrom = process.env.SMTP_FROM || smtpUser || "portfolio@localhost";
+
+    const timestamp = new Date().toISOString();
+    const mailSubject = `[Portfolio Feedback] New message from ${cleanName}`;
+    const mailContent = [
+      `You have received a new feedback message from your portfolio website:`,
+      `--------------------------------------------------`,
+      `Sender Name:  ${cleanName}`,
+      `Sender Email: ${cleanEmail}`,
+      `Received At:  ${timestamp}`,
+      `Sender IP:    ${clientIp}`,
+      `--------------------------------------------------`,
+      ``,
+      `Message:`,
+      cleanMessage,
+      ``,
+      `--------------------------------------------------`,
+      `(This feedback was dispatched directly to your inbox with zero database persistence.)`,
+    ].join("\n");
+
+    if (smtpHost && smtpUser && smtpPass) {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpPort === 465,
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"${cleanName}" <${smtpFrom}>`,
+        to: RECIPIENT_EMAIL,
+        replyTo: cleanEmail,
+        subject: mailSubject,
+        text: mailContent,
+      });
+
+      console.log(`[SMTP DISPATCH SUCCESS] Real email sent to admin for ${cleanName}`);
+    } else {
+      console.log(`[SIMULATED DISPATCH] (SMTP_HOST/USER/PASSWORD not set)`);
+      console.log(`To: ${RECIPIENT_EMAIL}\n${mailContent}`);
+    }
 
     return NextResponse.json(
       {
@@ -143,7 +188,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Error processing contact message:", err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Failed to dispatch email. Please check SMTP configuration." },
       { status: 500 }
     );
   }
