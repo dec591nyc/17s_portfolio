@@ -50,28 +50,67 @@ export default function Projects() {
       tabGroup: "data",
     },
     {
-      id: 2,
-      title: t("proj_l2_title"),
-      description: t("proj_l2_desc"),
-      category: "Frontend Dev",
-      tags: ["HTML5", "CSS3", "JavaScript", "CSS Variables", "Interactive UI"],
-      github_url: "https://github.com/dec591nyc/First-AI-Dev-Practice",
-      demo_url: "https://dec591nyc.github.io/First-AI-Dev-Practice/",
+      id: 7,
+      title: t("proj_legal_title"),
+      description: t("proj_legal_desc"),
+      category: "Data Engineering",
+      tags: ["Next.js", "React", "Python", "Turso", "SQLite", "GitHub Actions", "Data Pipeline", "Data Integrity"],
+      github_url: "https://github.com/dec591nyc/PSJJV",
+      demo_url: "https://public-safety-integrity-analytics.vercel.app/",
       period: "Jun 2026",
-      highlight: t("proj_l2_highlight"),
+      highlight: t("proj_legal_highlight"),
       section: "developed",
-      tabGroup: "ai",
+      tabGroup: "data",
+    },
+    {
+      id: 11,
+      title: t("proj_bi_rmp_title"),
+      description: t("proj_bi_rmp_desc"),
+      category: "Data Engineering",
+      tags: ["FastAPI", "Python", "Supabase", "PostgreSQL", "n8n", "Playwright", "SearXNG", "PTT", "Threads", "Google Maps"],
+      github_url: "https://github.com/dec591nyc/BI-RMP",
+      demo_url: null,
+      period: "Jun 2026",
+      highlight: t("proj_bi_rmp_highlight"),
+      section: "developed",
+      tabGroup: "data",
     },
     {
       id: 3,
       title: t("proj_portfolio_title"),
       description: t("proj_portfolio_desc"),
       category: "Full-Stack Dev",
-      tags: ["Next.js", "TypeScript", "FastAPI", "SQLite", "Email Dispatch", "Anti-Spam"],
+      tags: ["Next.js", "TypeScript", "FastAPI", "Stateless API", "Email Dispatch", "Anti-Spam"],
       github_url: "https://github.com/dec591nyc/17s_portfolio",
       demo_url: null,
       period: "Jun 2026",
       highlight: t("proj_portfolio_highlight"),
+      section: "developed",
+      tabGroup: "ai",
+    },
+    {
+      id: 10,
+      title: t("proj_startups_title"),
+      description: t("proj_startups_desc"),
+      category: "ML & Statistics",
+      tags: ["Python", "FastAPI", "OLS", "Beta Target Encoding", "Statistics", "Vanilla JS"],
+      github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
+      demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
+      period: "Jun 2026",
+      highlight: t("proj_startups_highlight"),
+      section: "developed",
+      tabGroup: "ai",
+    },
+    {
+      id: 9,
+      title: t("proj_ml_study_title"),
+      description: t("proj_ml_study_desc"),
+      category: "AI & ML Dev",
+      tags: ["Next.js", "FastAPI", "Scikit-Learn", "Gemini", "Model Selection", "Interactive Lab"],
+      github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
+      demo_url: "https://machine-learning-study.vercel.app",
+      period: "Jun 2026",
+      highlight: t("proj_ml_study_highlight"),
       section: "developed",
       tabGroup: "ai",
     },
@@ -102,69 +141,17 @@ export default function Projects() {
       tabGroup: "ai",
     },
     {
-      id: 9,
-      title: t("proj_ml_study_title"),
-      description: t("proj_ml_study_desc"),
-      category: "AI & ML Dev",
-      tags: ["Next.js", "FastAPI", "Scikit-Learn", "Gemini", "Model Selection", "Interactive Lab"],
-      github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
-      demo_url: "https://machine-learning-study.vercel.app",
+      id: 2,
+      title: t("proj_l2_title"),
+      description: t("proj_l2_desc"),
+      category: "Frontend Dev",
+      tags: ["HTML5", "CSS3", "JavaScript", "CSS Variables", "Interactive UI"],
+      github_url: "https://github.com/dec591nyc/First-AI-Dev-Practice",
+      demo_url: "https://dec591nyc.github.io/First-AI-Dev-Practice/",
       period: "Jun 2026",
-      highlight: t("proj_ml_study_highlight"),
+      highlight: t("proj_l2_highlight"),
       section: "developed",
       tabGroup: "ai",
-    },
-    {
-      id: 10,
-      title: t("proj_startups_title"),
-      description: t("proj_startups_desc"),
-      category: "ML & Statistics",
-      tags: ["Python", "FastAPI", "OLS", "Beta Target Encoding", "Statistics", "Vanilla JS"],
-      github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
-      demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
-      period: "Jun 2026",
-      highlight: t("proj_startups_highlight"),
-      section: "developed",
-      tabGroup: "ai",
-    },
-    {
-      id: 7,
-      title: t("proj_legal_title"),
-      description: t("proj_legal_desc"),
-      category: "Data Engineering",
-      tags: ["Next.js", "React", "Python", "Turso", "SQLite", "GitHub Actions", "Data Pipeline", "Data Integrity"],
-      github_url: "https://github.com/dec591nyc/PSJJV",
-      demo_url: "https://public-safety-integrity-analytics.vercel.app/",
-      period: "Jun 2026",
-      highlight: t("proj_legal_highlight"),
-      section: "developed",
-      tabGroup: "data",
-    },
-    {
-      id: 11,
-      title: t("proj_bi_rmp_title"),
-      description: t("proj_bi_rmp_desc"),
-      category: "Data Engineering",
-      tags: ["FastAPI", "Python", "Supabase", "PostgreSQL", "n8n", "Playwright", "SearXNG", "PTT", "Threads", "Google Maps"],
-      github_url: "https://github.com/dec591nyc/BI-RMP",
-      demo_url: null,
-      period: "Jun 2026",
-      highlight: t("proj_bi_rmp_highlight"),
-      section: "developed",
-      tabGroup: "data",
-    },
-    {
-      id: 4,
-      title: t("proj_linebot_title"),
-      description: t("proj_linebot_desc"),
-      category: t("proj_idea_category"),
-      tags: ["LINE Bot", "n8n", "Automation", "Booking App"],
-      github_url: null,
-      demo_url: null,
-      period: t("proj_idea_period"),
-      highlight: t("proj_linebot_highlight"),
-      section: "developing",
-      tabGroup: "future",
     },
     {
       id: 8,
@@ -181,18 +168,19 @@ export default function Projects() {
     },
   ];
 
-  // Try to load projects from backend API on mount
+  // Try to load projects from API on mount
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/projects`);
+        const endpoint = API_URL ? `${API_URL}/api/projects` : "/api/projects";
+        const res = await fetch(endpoint);
         if (!res.ok) throw new Error("API responded with code " + res.status);
         const data = await res.json();
 
         // Map API objects to matching fields (ensuring correct section categories)
         if (Array.isArray(data) && data.length > 0) {
           const mapped: Project[] = (data as ApiProject[]).map((item) => {
-            // Determine section & tabGroup based on tags or category from DB
+            // Determine section & tabGroup based on tags or category from data
             let sec: "previous" | "developed" | "developing" = "developed";
             let tabGroup: "data" | "ai" | "future" = "ai";
 
@@ -215,7 +203,6 @@ export default function Projects() {
             } else if (
               categoryLower.includes("planned") ||
               categoryLower.includes("idea") ||
-              titleLower.includes("line bot") ||
               titleLower.includes("travel") ||
               titleLower.includes("scraper")
             ) {
@@ -240,7 +227,7 @@ export default function Projects() {
           setDbProjects(mapped);
         }
       } catch (e) {
-        console.warn("FastAPI backend is offline. Using Next.js local static fallback data.", e);
+        console.warn("Using Next.js localized static fallback data.", e);
       }
     };
     fetchProjects();

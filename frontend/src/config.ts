@@ -1,2 +1,2 @@
-// API Configuration for frontend connecting to backend service
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// API Configuration for frontend (defaults to native Next.js API Routes, supports optional FastAPI backend)
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
