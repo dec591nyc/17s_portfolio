@@ -120,6 +120,9 @@ const translations = {
     proj_tab_future: "Future Blueprints",
     proj_view_github: "GitHub",
     proj_view_demo: "Live Demo",
+    proj_sort_label: "Sort by",
+    proj_sort_newest: "Newest First",
+    proj_sort_oldest: "Oldest First",
     proj_coming_soon: "More projects coming soon — currently building and open sourcing more data engineering work.",
 
     // Specific Projects
@@ -316,6 +319,9 @@ const translations = {
     proj_tab_future: "未來規劃",
     proj_view_github: "GitHub",
     proj_view_demo: "線上展示",
+    proj_sort_label: "排序方式",
+    proj_sort_newest: "由新至舊 (最新優先)",
+    proj_sort_oldest: "由舊至新 (早期優先)",
     proj_coming_soon: "更多專案持續開發中 ── 正努力打造並開源更多實用的數據工程專案。",
 
     // Specific Projects

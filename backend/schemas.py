@@ -11,6 +11,8 @@ class Project(BaseModel):
     github_url: Optional[str] = None
     demo_url: Optional[str] = None
     image_url: Optional[str] = None
+    date: Optional[str] = None
+    period: Optional[str] = None
 
 # Skill schemas
 class Skill(BaseModel):

@@ -88,7 +88,7 @@ export default function Skills() {
             }}>
               {t("skills_title")}<span style={{ color: "var(--orange)" }}>.</span>
             </h2>
-            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "420px", lineHeight: "1.80" }}>
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "720px", lineHeight: "1.80" }}>
               {t("skills_desc")}
             </p>
           </div>

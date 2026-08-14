@@ -34,3 +34,12 @@ log.md
 *.log
 *.err
 *.out
+
+# Personal Agent Customizations & Skills (Do NOT commit)
+.agents/
+.claude/
+.codex/
+.omc/
+skills/
+AGENTS.md
+

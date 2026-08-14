@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/LanguageContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { API_URL } from "@/config";
 
 interface Project {
@@ -13,6 +13,7 @@ interface Project {
   github_url: string | null;
   demo_url: string | null;
   period: string;
+  date: string;
   highlight: string;
   section: "previous" | "developed" | "developing";
   tabGroup: "data" | "ai" | "future";
@@ -27,12 +28,14 @@ interface ApiProject {
   github_url?: string | null;
   demo_url?: string | null;
   period?: string;
+  date?: string;
   highlight?: string;
 }
 
 export default function Projects() {
   const { t, locale } = useLanguage();
   const [dbProjects, setDbProjects] = useState<Project[] | null>(null);
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
 
   // Local fallback project list (highly localized)
   const localProjects: Project[] = [
@@ -45,6 +48,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/Donor-Analytics-Pipeline",
       demo_url: null,
       period: "Aug – Nov 2025",
+      date: "2025-08",
       highlight: t("proj_donor_highlight"),
       section: "previous",
       tabGroup: "data",
@@ -58,6 +62,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/PSJJV",
       demo_url: "https://public-safety-integrity-analytics.vercel.app/",
       period: "Jul 2026",
+      date: "2026-07",
       highlight: t("proj_legal_highlight"),
       section: "developed",
       tabGroup: "data",
@@ -71,6 +76,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/BI-RMP",
       demo_url: null,
       period: "Aug 2026",
+      date: "2026-08",
       highlight: t("proj_bi_rmp_highlight"),
       section: "developed",
       tabGroup: "data",
@@ -84,6 +90,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/17s_portfolio",
       demo_url: null,
       period: "Jun 2026",
+      date: "2026-06-05",
       highlight: t("proj_portfolio_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -97,6 +104,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
       demo_url: "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
       period: "Jun 2026",
+      date: "2026-06-25",
       highlight: t("proj_startups_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -110,6 +118,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/Machine-Learning-Study",
       demo_url: "https://machine-learning-study.vercel.app",
       period: "Jun 2026",
+      date: "2026-06-20",
       highlight: t("proj_ml_study_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -123,6 +132,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/HuggingFace-Practice",
       demo_url: "https://huggingface-practice-dec591nyc.streamlit.app/",
       period: "Jun 2026",
+      date: "2026-06-10",
       highlight: t("proj_l3_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -136,6 +146,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/Linear-Regression-Practice",
       demo_url: "https://linear-regression-practice-dec591nyc.streamlit.app/",
       period: "Jun 2026",
+      date: "2026-06-15",
       highlight: t("proj_l8_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -149,6 +160,7 @@ export default function Projects() {
       github_url: "https://github.com/dec591nyc/First-AI-Dev-Practice",
       demo_url: "https://dec591nyc.github.io/First-AI-Dev-Practice/",
       period: "Jun 2026",
+      date: "2026-06-01",
       highlight: t("proj_l2_highlight"),
       section: "developed",
       tabGroup: "ai",
@@ -162,6 +174,7 @@ export default function Projects() {
       github_url: null,
       demo_url: null,
       period: t("proj_idea_period"),
+      date: "developing",
       highlight: t("proj_travel_highlight"),
       section: "developing",
       tabGroup: "future",
@@ -219,6 +232,7 @@ export default function Projects() {
               github_url: item.github_url ?? null,
               demo_url: item.demo_url ?? null,
               period: item.period || "2025/2026",
+              date: item.date || item.period || "2026-01",
               highlight: item.highlight || item.category || "",
               section: sec,
               tabGroup: tabGroup,
@@ -243,6 +257,27 @@ export default function Projects() {
       (!project.github_url || !localProjectUrls.has(project.github_url))
   );
   const projectsToRender = [...localProjects, ...supplementalDbProjects];
+
+  // Memoized time-sorted projects (with Idea Stage / developing strictly fixed at the bottom)
+  const sortedProjects = useMemo(() => {
+    // 1. Separate developing (Idea Stage / 構想中) projects to fix at the bottom
+    const developingProjects = projectsToRender.filter((p) => p.section === "developing");
+    const activeProjects = projectsToRender.filter((p) => p.section !== "developing");
+
+    // 2. Sort active projects chronologically
+    activeProjects.sort((a, b) => {
+      const dateA = a.date || "";
+      const dateB = b.date || "";
+      if (sortOrder === "newest") {
+        return dateB.localeCompare(dateA) || b.id - a.id;
+      } else {
+        return dateA.localeCompare(dateB) || a.id - b.id;
+      }
+    });
+
+    // 3. Idea stage is strictly fixed at the bottom
+    return [...activeProjects, ...developingProjects];
+  }, [projectsToRender, sortOrder]);
 
   const renderProjectGrid = (projectsList: Project[]) => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px" }}>
@@ -405,9 +440,10 @@ export default function Projects() {
     <section id="projects" style={{ padding: "48px 5%", background: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "42px" }}>
         {/* Header */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <span className="section-badge" style={{ alignSelf: "flex-start" }}>{t("proj_badge")}</span>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "20px" }}>
             <h2 style={{
               fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: "900",
               fontFamily: "var(--font-outfit)", letterSpacing: "-0.04em",
@@ -419,17 +455,94 @@ export default function Projects() {
                 <>個人專案<br /><span style={{ color: "var(--orange)" }}>實作展示</span></>
               )}
             </h2>
-            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", maxWidth: "420px", lineHeight: "1.80" }}>
-              {t("proj_subtitle")}
-            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "14px", maxWidth: "720px", width: "100%" }}>
+              <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", lineHeight: "1.80", textAlign: "right" }}>
+                {t("proj_subtitle")}
+              </p>
+
+              {/* Time-sorting Dropdown placed right beneath the subtitle and aligned to the right */}
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", alignSelf: "flex-end" }}>
+                <label
+                  htmlFor="project-sort-select"
+                  style={{
+                    fontSize: "0.82rem",
+                    fontWeight: "700",
+                    color: "var(--fg-muted)",
+                    letterSpacing: "0.02em",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                  }}
+                >
+                  <span>⏳</span> {t("proj_sort_label")}:
+                </label>
+                <div style={{ position: "relative" }}>
+                  <select
+                    id="project-sort-select"
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
+                    aria-label={t("proj_sort_label")}
+                    style={{
+                      padding: "8px 36px 8px 14px",
+                      borderRadius: "8px",
+                      background: "var(--bg-card)",
+                      border: "1.5px solid var(--card-border)",
+                      color: "var(--fg-color)",
+                      fontSize: "0.84rem",
+                      fontWeight: "700",
+                      fontFamily: "var(--font-sans)",
+                      cursor: "pointer",
+                      outline: "none",
+                      appearance: "none",
+                      WebkitAppearance: "none",
+                      MozAppearance: "none",
+                      transition: "all 0.2s ease",
+                      boxShadow: "var(--card-shadow)",
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "var(--olive)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px var(--olive-tint)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "var(--card-border)";
+                      e.currentTarget.style.boxShadow = "var(--card-shadow)";
+                    }}
+                  >
+                    <option value="newest" style={{ background: "var(--bg-card)", color: "var(--fg-color)" }}>
+                      {t("proj_sort_newest")}
+                    </option>
+                    <option value="oldest" style={{ background: "var(--bg-card)", color: "var(--fg-color)" }}>
+                      {t("proj_sort_oldest")}
+                    </option>
+                  </select>
+                  {/* Custom arrow indicator */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      right: "12px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      pointerEvents: "none",
+                      color: "var(--olive)",
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ▼
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div style={{ width: "50px", height: "3px", background: "var(--olive)", borderRadius: "2px" }} />
         </div>
 
         {/* Main Grid display */}
         <div style={{ minHeight: "380px" }}>
-          {projectsToRender.length > 0 ? (
-            renderProjectGrid(projectsToRender)
+          {sortedProjects.length > 0 ? (
+            renderProjectGrid(sortedProjects)
           ) : (
             <div style={{
               textAlign: "center", padding: "64px 32px",
@@ -457,3 +570,4 @@ export default function Projects() {
     </section>
   );
 }
+

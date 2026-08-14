@@ -12,7 +12,9 @@ PROJECTS = [
         "tags": "Python,SQL Server,Power BI,ETL,Predictive Modeling,Excel",
         "github_url": "https://github.com/dec591nyc/Donor-Analytics-Pipeline",
         "demo_url": None,
-        "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+        "date": "2025-08",
+        "period": "Aug – Nov 2025"
     },
     {
         "id": 7,
@@ -22,7 +24,9 @@ PROJECTS = [
         "tags": "Next.js,React,Python,Turso,SQLite,GitHub Actions,Data Pipeline,Data Integrity",
         "github_url": "https://github.com/dec591nyc/PSJJV",
         "demo_url": "https://public-safety-integrity-analytics.vercel.app/",
-        "image_url": "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-07",
+        "period": "Jul 2026"
     },
     {
         "id": 11,
@@ -32,7 +36,9 @@ PROJECTS = [
         "tags": "FastAPI,Python,Supabase,PostgreSQL,n8n,Playwright,SearXNG,PTT,Threads,Google Maps",
         "github_url": "https://github.com/dec591nyc/BI-RMP",
         "demo_url": None,
-        "image_url": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-08",
+        "period": "Aug 2026"
     },
     {
         "id": 3,
@@ -42,7 +48,9 @@ PROJECTS = [
         "tags": "Next.js,TypeScript,FastAPI,Stateless API,Email Dispatch,Anti-Spam",
         "github_url": "https://github.com/dec591nyc/17s_portfolio",
         "demo_url": None,
-        "image_url": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-05",
+        "period": "Jun 2026"
     },
     {
         "id": 10,
@@ -52,7 +60,9 @@ PROJECTS = [
         "tags": "Python,FastAPI,OLS,Beta Target Encoding,Statistics,Vanilla JS",
         "github_url": "https://github.com/dec591nyc/50-Startups-Profit-Prediction",
         "demo_url": "https://dec591nyc.github.io/50-Startups-Profit-Prediction/frontend/index.html",
-        "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-25",
+        "period": "Jun 2026"
     },
     {
         "id": 9,
@@ -62,7 +72,9 @@ PROJECTS = [
         "tags": "Next.js,FastAPI,Scikit-Learn,Gemini,Model Selection,Interactive Lab",
         "github_url": "https://github.com/dec591nyc/Machine-Learning-Study",
         "demo_url": "https://machine-learning-study.vercel.app",
-        "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-20",
+        "period": "Jun 2026"
     },
     {
         "id": 5,
@@ -72,7 +84,9 @@ PROJECTS = [
         "tags": "Python,Streamlit,Hugging Face,FLUX.1,SDXL,Image Generation",
         "github_url": "https://github.com/dec591nyc/HuggingFace-Practice",
         "demo_url": "https://huggingface-practice-dec591nyc.streamlit.app/",
-        "image_url": "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-10",
+        "period": "Jun 2026"
     },
     {
         "id": 6,
@@ -82,7 +96,9 @@ PROJECTS = [
         "tags": "Python,Streamlit,Scikit-Learn,Linear Regression,CRISP-DM,Pandas",
         "github_url": "https://github.com/dec591nyc/Linear-Regression-Practice",
         "demo_url": "https://linear-regression-practice-dec591nyc.streamlit.app/",
-        "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-15",
+        "period": "Jun 2026"
     },
     {
         "id": 2,
@@ -92,7 +108,9 @@ PROJECTS = [
         "tags": "HTML5,CSS3,JavaScript,CSS Variables,Interactive UI",
         "github_url": "https://github.com/dec591nyc/First-AI-Dev-Practice",
         "demo_url": "https://dec591nyc.github.io/First-AI-Dev-Practice/",
-        "image_url": "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop",
+        "date": "2026-06-01",
+        "period": "Jun 2026"
     },
     {
         "id": 8,
@@ -102,7 +120,9 @@ PROJECTS = [
         "tags": "Web Scraping,Travel Planning,Python,Automation",
         "github_url": None,
         "demo_url": None,
-        "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"
+        "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+        "date": "developing",
+        "period": "Idea Stage"
     }
 ]
 
