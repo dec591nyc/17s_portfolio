@@ -2,7 +2,7 @@
 
 這是一個採用前後端分離架構打造的個人作品集網站。前端使用 Next.js 16、React 19 與 TypeScript，後端使用 FastAPI (Python)。除了彙整個人的技術背景、專案成果與工作經歷外，也實作了具備防灌水保護的 Email 聯絡表單，展現資料處理、後端 API 與全端整合能力。
 
-🔗 [**Live Demo 網頁體驗**](https://17s-portfolio.vercel.app)
+🔗 [**Live Demo**](https://17s-portfolio.vercel.app)
 
 ---
 
