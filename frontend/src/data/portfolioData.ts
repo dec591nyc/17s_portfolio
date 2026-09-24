@@ -197,7 +197,7 @@ export const EXPERIENCES_DATA: ExperienceData[] = [
   },
   {
     id: 4,
-    title: "Professional Software Engineer",
+    title: "Advanced Engineer",
     company: "FarEasTone Telecom",
     period: "Mar 2020 – Apr 2022",
     description: "Data analysis using GBDT, optimizing internal staff processes, and maintaining Insurance E-commerce portal.",
@@ -205,7 +205,7 @@ export const EXPERIENCES_DATA: ExperienceData[] = [
   },
   {
     id: 5,
-    title: "Software Programmer",
+    title: "Software Engineer",
     company: "South China Insurance Co., Ltd.",
     period: "Dec 2017 – Feb 2020",
     description: "Internal staff E-workplace platform, Insurance E-commerce portal and customer data analysis.",

@@ -17,13 +17,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Yichi Nien | Data Engineer Portfolio",
-  description: "Professional portfolio of Yichi Nien — a backend software engineer planning to invest more career effort in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation. Based in Changhua, Taiwan.",
-  keywords: ["Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
+  title: "Yichi Nien | SME 智慧製造工程師 Portfolio",
+  description: "Professional portfolio of Yichi Nien — an SME smart manufacturing engineer and backend software engineer with expertise in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation. Based in Changhua, Taiwan.",
+  keywords: ["SME 智慧製造工程師", "SME Smart Manufacturing Engineer", "Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
   authors: [{ name: "Yichi Nien" }],
   openGraph: {
-    title: "Yichi Nien | Data Engineer Portfolio",
-    description: "Backend software engineer planning to invest more career effort in data engineering, ETL, SQL analytics, Power BI, and Python automation.",
+    title: "Yichi Nien | SME 智慧製造工程師 Portfolio",
+    description: "SME smart manufacturing engineer and software engineer with expertise in data engineering, ETL, SQL analytics, Power BI, and Python automation.",
     type: "website",
   },
 };

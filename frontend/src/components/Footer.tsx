@@ -32,7 +32,7 @@ export default function Footer() {
             Yichi<span style={{ color: "var(--orange)" }}>.</span>
           </a>
           <p style={{ color: "var(--fg-subtle)", fontSize: "0.82rem", fontWeight: "500" }}>
-            Data Engineer · Changhua, Taiwan
+            {t("footer_role")} · Changhua, Taiwan
           </p>
         </div>
 

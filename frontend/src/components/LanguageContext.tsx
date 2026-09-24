@@ -59,8 +59,8 @@ const translations = {
     career_nchu_role: "AI & Data Analysis Training (Taiwan)",
     career_spc_role: "Data Specialist (Adelaide)",
     career_unisa_role: "Master of IT (Adelaide)",
-    career_fet_role: "Professional Software Engineer (Taiwan)",
-    career_sci_role: "Software Programmer (Taiwan)",
+    career_fet_role: "Advanced Engineer (Taiwan)",
+    career_sci_role: "Software Engineer (Taiwan)",
     loc_taichung_tw: "Taichung, Taiwan",
     loc_adelaide_au: "Mawson Lake, Adelaide, SA",
     loc_new_taipei_tw: "Banqiao, New Taipei",
@@ -82,7 +82,7 @@ const translations = {
     exp_spc_b3: "Produced donor segmentation lists to support targeted engagement strategies.",
     exp_spc_b4: "Generated Excel reports and Power BI dashboards for fundraising stakeholders.",
 
-    exp_fet_title: "Professional Software Engineer",
+    exp_fet_title: "Advanced Engineer",
     exp_fet_company: "FarEasTone Telecom",
     exp_fet_desc: "Data analysis using GBDT, optimizing internal staff processes, and maintaining Insurance E-commerce portal at FarEasTone Telecom.",
     exp_fet_b1: "Built a LightGBM model to analyze customer data on telecom bill payment behavior.",
@@ -91,7 +91,7 @@ const translations = {
     exp_fet_b4: "Migrated large amounts of bank data to an insurance company per policy requirements.",
     exp_fet_b5: "Collaborated with subcontractors to build internal websites and database schemas.",
 
-    exp_sci_title: "Software Programmer",
+    exp_sci_title: "Software Engineer",
     exp_sci_company: "South China Insurance Co., Ltd.",
     exp_sci_desc: "Internal staff E-workplace platform, Insurance E-commerce portal and customer data analysis at South China Insurance Co., Ltd.",
     exp_sci_b1: "Expanded and maintained a B2C insurance E-commerce website for external customers.",
@@ -208,6 +208,7 @@ const translations = {
     contact_delivery_note: "Privacy notice: No messages are stored in any database; feedback is securely dispatched directly to the author's inbox via the backend.",
 
     // Footer
+    footer_role: "SME Smart Manufacturing Engineer",
     footer_text: "All rights reserved. This website is a personal practice of applying IT domain knowledge to data analysis, industry analysis, data engineering, and AI applications.",
   },
   zh: {
@@ -251,15 +252,15 @@ const translations = {
     db_nav_proj_desc: "瀏覽過往開發、職前訓所學以及開發中的各式專案。",
     db_nav_skills_desc: "檢視各語言、框架、工具與資料處理之精通熟練度。",
     career_nchu_company: "中興大學",
-    career_spc_company: "聖彼得大學",
+    career_spc_company: "St Peter's College",
     career_unisa_company: "阿德萊德大學",
-    career_fet_company: "FarEasTone",
-    career_sci_company: "華南產險",
+    career_fet_company: "遠傳電信",
+    career_sci_company: "華南產物保險",
     career_nchu_role: "AI 與資料分析職前訓練",
     career_spc_role: "數據專員",
     career_unisa_role: "資訊科技碩士 (Adelaide)",
-    career_fet_role: "專業工程師",
-    career_sci_role: "網頁軟體工程師",
+    career_fet_role: "高階工程師",
+    career_sci_role: "軟體工程師",
     loc_taichung_tw: "台灣台中",
     loc_adelaide_au: "南澳默森湖",
     loc_new_taipei_tw: "新北板橋",
@@ -274,15 +275,15 @@ const translations = {
 
     // Experience Items
     exp_spc_title: "數據專員",
-    exp_spc_company: "聖彼得大學",
-    exp_spc_desc: "於聖彼得大學 (St Peter's College) 開發 Python 資料流水線以自動化募款團隊的數據分析工作。",
+    exp_spc_company: "St Peter's College",
+    exp_spc_desc: "於 St Peter's College 開發 Python 資料流水線以自動化募款團隊的數據分析工作。",
     exp_spc_b1: "分析 SQL Server 中近 20 年的捐款資料，進行預測建模與捐款行為分析。",
     exp_spc_b2: "實作預測模型以識別影響高價值捐款的關鍵因子。",
     exp_spc_b3: "建立捐款者分群清單，以支援客製化的群眾接觸策略。",
     exp_spc_b4: "產出 Excel 深度報表與 Power BI 視覺化儀表板供團隊決策者使用。",
 
-    exp_fet_title: "專業工程師",
-    exp_fet_company: "FarEasTone",
+    exp_fet_title: "高階工程師",
+    exp_fet_company: "遠傳電信",
     exp_fet_desc: "於遠傳電信 (FarEasTone Telecom) 運用 GBDT 模型進行數據分析、優化內部人員流程，並維護保險電商平台。",
     exp_fet_b1: "建立 LightGBM 模型分析客戶在電信帳單繳費行為上的特徵與預測。",
     exp_fet_b2: "利用多執行緒 RESTful API 與 Kubernetes 提供電信服務系統。",
@@ -290,8 +291,8 @@ const translations = {
     exp_fet_b4: "依照法規政策需求，將大量銀行資料安全移轉至保險公司資料庫。",
     exp_fet_b5: "與外包廠商協同開發內部網站系統與資料庫結構設計。",
 
-    exp_sci_title: "網頁軟體工程師",
-    exp_sci_company: "華南產險",
+    exp_sci_title: "軟體工程師",
+    exp_sci_company: "華南產物保險",
     exp_sci_desc: "於華南產物保險建構內部員工電子辦公平台、維護保險電子商務網站並進行客戶數據分析。",
     exp_sci_b1: "擴充並維護面向一般大眾的 B2C 保險電子商務網站，提供良好響式體驗。",
     exp_sci_b2: "開發內部辦公系統並排程自動化資料串接與交換任務。",
@@ -326,7 +327,7 @@ const translations = {
 
     // Specific Projects
     proj_donor_title: "募款行為數據分析流水線 (Donor Analytics Pipeline)",
-    proj_donor_desc: "以聖彼得大學募款紀錄作為資料來源，開發 Python 數據工程流水線。專案重點是針對 SQL Server 中近 20 年捐款資料進行訓練建模，分析高額捐款特徵，並產出 Power BI 視覺化與 Excel 分析報告。",
+    proj_donor_desc: "以 St Peter's College 募款紀錄作為資料來源，開發 Python 數據工程流水線。專案重點是針對 SQL Server 中近 20 年捐款資料進行訓練建模，分析高額捐款特徵，並產出 Power BI 視覺化與 Excel 分析報告。",
     proj_donor_highlight: "近百年募款資料收集",
 
     proj_portfolio_title: "個人 Portfolio Dashboard",
@@ -407,6 +408,7 @@ const translations = {
     contact_delivery_note: "隱私承諾：系統不儲存任何留言於資料庫中，表單將直接透過後端安全寄送至作者信箱。",
 
     // Footer
+    footer_role: "SME 智慧製造工程師",
     footer_text: "版權所有。該網頁為個人運用自身 IT domain knowledge 展示資料分析、產業分析、數據工程、AI Application 的實踐",
   },
 };
@@ -428,6 +430,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.title = locale === "zh"
+        ? "Yichi Nien | SME 智慧製造工程師 Portfolio"
+        : "Yichi Nien | SME Smart Manufacturing Engineer Portfolio";
+    }
+  }, [locale]);
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
