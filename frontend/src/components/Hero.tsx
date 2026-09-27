@@ -2,10 +2,12 @@
 
 import { useLanguage } from "@/components/LanguageContext";
 import { useEffect, useState } from "react";
+import { getCareerStatus } from "@/data/siteSettings";
 
 export default function Hero() {
   const { t, locale } = useLanguage();
   const [liveTime, setLiveTime] = useState("");
+  const availability = getCareerStatus(locale);
 
   useEffect(() => {
     const updateTime = () => {
@@ -27,7 +29,7 @@ export default function Hero() {
     { val: t("db_stat_exp_val"), lbl: t("db_stat_exp_lbl"), icon: "💼" },
     { val: t("db_stat_proj_val"), lbl: t("db_stat_proj_lbl"), icon: "🚀" },
     { val: t("db_stat_skills_val"), lbl: t("db_stat_skills_lbl"), icon: "🛠️" },
-    { val: t("db_stat_status_val"), lbl: t("db_stat_status_lbl"), icon: "🟢" },
+    { val: availability.label, lbl: availability.description, icon: "" },
   ];
 
   const coreTech = ["Python", "SQL / Postgres", "Next.js", "n8n", "Power BI", "Tableau", "C#", "Java", "Docker", "FastAPI"];
@@ -107,22 +109,22 @@ export default function Hero() {
           gap: "18px",
         }}>
           {stats.map((stat, idx) => (
-            <div key={idx} className="card" style={{
+            <div key={idx} className={`card${idx === 3 ? ` career-status career-status--${availability.state}` : ""}`} style={{
               padding: "20px", display: "flex", alignItems: "center", gap: "16px",
               background: "var(--bg-card)", border: "1px solid var(--card-border)",
             }}>
               <div style={{
                 width: "48px", height: "48px", borderRadius: "10px",
-                background: idx === 3 ? "var(--olive-tint)" : "var(--orange-tint)",
-                border: idx === 3 ? "1px solid var(--olive-border)" : "1px solid var(--orange-border)",
+                background: idx === 3 ? "var(--status-tint)" : "var(--orange-tint)",
+                border: idx === 3 ? "1px solid var(--status-border)" : "1px solid var(--orange-border)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: "1.4rem",
               }}>
-                {stat.icon}
+                {idx === 3 ? <span className="career-status-orb" aria-hidden="true" /> : stat.icon}
               </div>
               <div>
                 <div style={{
-                  fontSize: "1.6rem", fontWeight: "900", color: idx === 3 ? "var(--olive)" : "var(--orange)",
+                  fontSize: "1.6rem", fontWeight: "900", color: idx === 3 ? "var(--status-text)" : "var(--orange)",
                   fontFamily: "var(--font-outfit)", lineHeight: 1.1,
                 }}>
                   {stat.val}

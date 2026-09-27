@@ -72,10 +72,25 @@ flowchart LR
 - **深淺色主題切換**：支援暗黑模式與明亮模式，搭配毛玻璃效果與微動畫。
 - **職涯歷程時間軸**：以不同色彩區分工作與教育經歷，清晰呈現個人成長背景。
 - **即時 Email 聯絡表單**：訪客送出表單後，後端會自動寄信通知作者，不需將 Email 公開在網頁上。
+- **公開工作筆記**：導覽列位於首頁與專案展示之間，採精簡列表，支援分類、標籤與搜尋；筆記直接填寫標題及內文，不另設摘要。
+- **單一管理員操作**：透過右上角「後台操作」使用 Supabase Auth 登入，在筆記原頁面新增、編輯及發布內容。草稿與垃圾桶僅管理員可見，刪除可復原為草稿。
+- **資料庫權限保護**：Supabase PostgreSQL 的 RLS 限制訪客只能讀取已發布筆記，只有管理員能寫入；公開註冊關閉，密碼由 Supabase Auth 管理。
+- **職稱與求職狀態**：職稱為 IME（Intelligent Manufacturing Engineer）；目前在職以鐵灰色呈現，開放求職時使用藍色，可於 `frontend/src/data/siteSettings.ts` 切換。
 
 ---
 
 ## ⚙️ 環境變數與安全設定 (Configuration)
+
+### 工作筆記與登入
+
+在 `frontend/.env.local` 與 Vercel 的環境變數加入以下設定，部署平台修改後需重新建置：
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
+```
+
+瀏覽器僅使用公開的 publishable key，不可放入 service role 或 secret key。資料表、管理員授權及登入返回網址的設定見 [supabase/SETUP.md](./supabase/SETUP.md)，資料表結構見 [supabase/schema.sql](./supabase/schema.sql)。工作筆記直接透過 Supabase 儲存，不影響原本留言轉寄 Email 的流程。
 
 ### 設定寄信帳密 (`frontend/.env.local`)
 

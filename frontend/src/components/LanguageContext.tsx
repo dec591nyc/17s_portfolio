@@ -208,7 +208,7 @@ const translations = {
     contact_delivery_note: "Privacy notice: No messages are stored in any database; feedback is securely dispatched directly to the author's inbox via the backend.",
 
     // Footer
-    footer_role: "SME Smart Manufacturing Engineer",
+    footer_role: "IME Intelligent Manufacturing Engineer",
     footer_text: "All rights reserved. This website is a personal practice of applying IT domain knowledge to data analysis, industry analysis, data engineering, and AI applications.",
   },
   zh: {
@@ -408,7 +408,7 @@ const translations = {
     contact_delivery_note: "隱私承諾：系統不儲存任何留言於資料庫中，表單將直接透過後端安全寄送至作者信箱。",
 
     // Footer
-    footer_role: "SME 智慧製造工程師",
+    footer_role: "IME 智慧製造工程師",
     footer_text: "版權所有。該網頁為個人運用自身 IT domain knowledge 展示資料分析、產業分析、數據工程、AI Application 的實踐",
   },
 };
@@ -419,23 +419,26 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
-    const savedLocale = localStorage.getItem("locale") as Locale | null;
-    if (savedLocale === "en" || savedLocale === "zh") {
-      setLocaleState(savedLocale);
-    } else {
-      // Auto-detect browser locale
-      const browserLang = navigator.language.toLowerCase();
-      if (browserLang.includes("zh")) {
-        setLocaleState("zh");
+    const timer = setTimeout(() => {
+      const savedLocale = localStorage.getItem("locale") as Locale | null;
+      if (savedLocale === "en" || savedLocale === "zh") {
+        setLocaleState(savedLocale);
+      } else {
+        // Auto-detect browser locale
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.includes("zh")) {
+          setLocaleState("zh");
+        }
       }
-    }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.title = locale === "zh"
-        ? "Yichi Nien | SME 智慧製造工程師 Portfolio"
-        : "Yichi Nien | SME Smart Manufacturing Engineer Portfolio";
+        ? "Yichi Nien | IME 智慧製造工程師 Portfolio"
+        : "Yichi Nien | IME Intelligent Manufacturing Engineer Portfolio";
     }
   }, [locale]);
 

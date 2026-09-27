@@ -1,0 +1,67 @@
+/* Availability only affects the status card/banner, not the home layout. */
+.career-status { --status-color: #7d8794; --status-light: #b7c0cb; --status-dark: #3d4856; --status-text: #485464; --status-tint: #7d879417; --status-border: #7d879440; }
+.career-status--open { --status-color: #5b8def; --status-light: #a2c0ff; --status-dark: #2f5cac; --status-text: #2f5cac; --status-tint: #5b8def17; --status-border: #5b8def40; }
+[data-theme="dark"] .career-status { --status-text: #b7c0cb; }
+[data-theme="dark"] .career-status--open { --status-text: #a2c0ff; }
+.career-status-orb { display: inline-block; flex-shrink: 0; width: 23px; height: 23px; border-radius: 50%; background: radial-gradient(circle at 32% 25%, var(--status-light), var(--status-color) 45%, var(--status-dark)); box-shadow: inset 0 0 1px #ffffff77; }
+.notes-admin-entry { padding: 8px 4px; color: var(--fg-subtle); font: inherit; font-size: .72rem; background: transparent; border: 0; white-space: nowrap; }
+.notes-admin-entry:hover { color: var(--fg-color); }
+#navbar a[aria-current="page"] { color: var(--orange) !important; }
+.notes-page { max-width: 1200px; min-height: 80vh; margin: 0 auto; padding: 125px 5% 70px; }
+.notes-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
+.notes-heading h1 { font: 800 clamp(2rem, 4vw, 3rem)/1.2 var(--font-outfit), sans-serif; margin: 10px 0; }
+.notes-heading h1 span { color: var(--orange); }
+.notes-heading p, .notes-muted { color: var(--fg-subtle); }
+.notes-page button, .notes-login button { font: inherit; border: 1px solid var(--card-border); border-radius: 7px; padding: 8px 12px; color: var(--fg-muted); background: var(--bg-card); cursor: pointer; }
+.notes-page button:hover, .notes-login button:hover { border-color: var(--olive); color: var(--fg-color); }
+.notes-page button:disabled, .notes-login button:disabled { opacity: .5; cursor: not-allowed; }
+.notes-primary, .notes-page .notes-primary, .notes-login .notes-primary { background: var(--olive); color: #fff; border: 1px solid transparent; padding: 10px 16px; font-weight: 700; }
+.notes-primary:hover, .notes-page .notes-primary:hover, .notes-login .notes-primary:hover { background: var(--olive-dark); color: #fff; }
+.notes-admin-tabs, .notes-row-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.notes-admin-tabs { margin: 20px 0 5px; }
+.notes-admin-tabs [aria-pressed="true"], .notes-filters [aria-pressed="true"] { background: var(--bg-secondary); color: var(--fg-color); border-color: var(--card-border-hover); }
+.notes-filters { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; border-bottom: 1px solid var(--card-border); padding: 18px 0; }
+.notes-filters button { font-size: .8rem; }
+.notes-filters input { margin-left: auto; width: 220px; }
+.notes-page input, .notes-page textarea, .notes-login input { font: inherit; background: var(--bg-card); color: var(--fg-color); border: 1px solid var(--card-border); padding: 10px 12px; border-radius: 7px; max-width: 100%; min-width: 0; }
+.notes-row { display: grid; grid-template-columns: 95px minmax(0,1fr) auto; align-items: start; gap: 22px; padding: 25px 0; border-bottom: 1px solid var(--card-border); }
+.notes-row time { color: var(--fg-subtle); font-size: .78rem; padding-top: 5px; }
+.notes-title { color: var(--fg-color); font-size: 1.1rem; font-weight: 700; overflow-wrap: anywhere; }
+.notes-title:hover { color: var(--orange); }
+.notes-row p { color: var(--fg-muted); font-size: .87rem; margin: 8px 0 12px; overflow-wrap: anywhere; }
+.notes-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+.notes-tags span { padding: 3px 8px; color: var(--fg-subtle); background: var(--bg-secondary); border-radius: 4px; font-size: .72rem; overflow-wrap: anywhere; }
+.notes-row-actions button { font-size: .8rem; padding: 6px 8px; }
+.notes-empty { padding: 48px 0; color: var(--fg-subtle); }
+.notes-empty button { margin-top: 15px; }
+.notes-message { padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--card-border); border-radius: 8px; margin: 15px 0; }
+.notes-article { max-width: 850px; margin: 28px auto 0; }
+.notes-article h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.4; margin: 15px 0; overflow-wrap: anywhere; }
+.notes-article .notes-row-actions { margin-top: 16px; }
+.notes-body { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; color: var(--fg-muted); margin-top: 32px; }
+.notes-editor { padding: 24px; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 14px; margin-top: 22px; }
+.notes-editor-heading, .notes-dialog-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
+.notes-editor-heading h2, .notes-dialog-heading h2 { margin-right: auto; font-size: 1.25rem; }
+.notes-editor label, .notes-login label { display: block; margin: 16px 0 7px; color: var(--fg-muted); font-size: .85rem; }
+.notes-editor input, .notes-editor textarea, .notes-login input { display: block; width: 100%; margin-top: 7px; }
+.notes-editor textarea { resize: vertical; }
+.notes-editor-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.notes-body-input { min-height: 320px; }
+.notes-login { width: min(420px, calc(100% - 32px)); max-height: 90dvh; margin: auto; padding: 26px; overflow-y: auto; background: var(--bg-card); color: var(--fg-color); border: 1px solid var(--card-border); border-radius: 14px; box-shadow: var(--card-shadow); }
+.notes-login::backdrop { background: #0009; backdrop-filter: blur(3px); }
+.notes-login p { margin: 14px 0; font-size: .87rem; }
+.notes-login .notes-checkbox { display: flex; align-items: center; gap: 9px; }
+.notes-login .notes-checkbox input { width: auto; margin: 0; }
+.notes-login form > .notes-primary { width: 100%; margin: 12px 0; }
+.notes-login .notes-quiet { border: 0; background: transparent; font-size: .8rem; }
+.notes-error { color: var(--fg-color); border-left: 3px solid var(--orange); padding-left: 10px; }
+.notes-page :focus-visible, .notes-login :focus-visible, .notes-admin-entry:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .notes-page { padding-top: 110px; }
+  .notes-row { grid-template-columns: 1fr; gap: 8px; }
+  .notes-filters input { width: 100%; margin: 8px 0 0; }
+  .notes-editor { padding: 18px; }
+  .notes-editor-columns { grid-template-columns: 1fr; gap: 0; }
+  .notes-page input, .notes-page textarea, .notes-login input { font-size: 16px; }
+  .notes-admin-entry { font-size: .68rem; }
+}

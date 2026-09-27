@@ -3,12 +3,18 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "@/components/ThemeContext";
 import { useLanguage } from "@/components/LanguageContext";
+import { useAuth } from "@/components/AuthProvider";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { locale, setLocale, t } = useLanguage();
+  const { isAdmin, openLogin, signOut } = useAuth();
+  const pathname = usePathname();
+  const home = pathname === "/" ? "" : "/";
+  const adminButton = <button className="notes-admin-entry" onClick={() => isAdmin ? void signOut() : openLogin()}>{locale === "zh" ? (isAdmin ? "管理模式 · 登出" : "後台操作") : (isAdmin ? "Sign out" : "Admin")}</button>;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -17,11 +23,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: t("nav_home"), href: "#home" },
-    { name: t("nav_projects"), href: "#projects" },
-    { name: t("nav_skills"), href: "#skills" },
-    { name: t("nav_background"), href: "#experience" },
-    { name: t("nav_contact"), href: "#contact" },
+    { name: t("nav_home"), href: `${home}#home` },
+    { name: locale === "zh" ? "工作筆記" : "Work Notes", href: "/notes" },
+    { name: t("nav_projects"), href: `${home}#projects` },
+    { name: t("nav_skills"), href: `${home}#skills` },
+    { name: t("nav_background"), href: `${home}#experience` },
+    { name: t("nav_contact"), href: `${home}#contact` },
   ];
 
   const handleLanguageToggle = () => {
@@ -49,7 +56,7 @@ export default function Navbar() {
     >
       {/* Brand */}
       <a
-        href="#home"
+        href={`${home}#home`}
         style={{
           fontSize: "1.25rem", fontWeight: "800",
           fontFamily: "var(--font-outfit)", letterSpacing: "-0.03em",
@@ -77,6 +84,7 @@ export default function Navbar() {
           <a
             key={link.href}
             href={link.href}
+            aria-current={pathname === link.href ? "page" : undefined}
             data-baseweb="tab"
             style={{
               fontSize: "0.82rem", fontWeight: "700", color: "var(--fg-muted)",
@@ -174,10 +182,12 @@ export default function Navbar() {
         >
           {t("nav_hire_me")}
         </a>
+        {adminButton}
       </div>
 
       {/* Hamburger Menu & Toggles for Mobile */}
       <div style={{ display: "none", alignItems: "center", gap: "10px" }} className="mobile-actions">
+        {adminButton}
         {/* Theme Switcher Button */}
         <button
           onClick={toggleTheme}
@@ -235,10 +245,10 @@ export default function Navbar() {
           data-baseweb="tab-list"
           style={{
             position: "fixed", top: 0, left: 0,
-            width: "100vw", height: "100vh",
+            width: "100vw", height: "100dvh", overflowY: "auto", padding: "32px 16px",
             backgroundColor: "var(--bg-color)",
-            display: "flex", flexDirection: "column", justifyContent: "center",
-            alignItems: "center", gap: "28px", zIndex: 999,
+            display: "flex", flexDirection: "column", justifyContent: "safe center",
+            alignItems: "center", gap: "18px", zIndex: 999,
           }}
         >
           {navLinks.map((link) => (
@@ -248,7 +258,8 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}
+          <button style={{ color: "var(--fg-color)", fontSize: "1.5rem", minWidth: "44px", minHeight: "44px" }} onClick={() => setIsMobileMenuOpen(false)} aria-label={locale === "zh" ? "關閉選單" : "Close menu"}>×</button>
+          <a href={`${home}#contact`} onClick={() => setIsMobileMenuOpen(false)}
             data-baseweb="button"
             style={{ padding: "14px 36px", borderRadius: "6px", background: "var(--olive)", color: "#fff", fontSize: "1rem", fontWeight: "700" }}>
             {t("nav_hire_me")}
@@ -257,7 +268,7 @@ export default function Navbar() {
       )}
 
       <style jsx global>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1150px) {
           .desktop-menu { display: none !important; }
           .mobile-actions { display: flex !important; }
         }

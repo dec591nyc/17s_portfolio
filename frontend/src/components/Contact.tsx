@@ -1,4 +1,5 @@
 "use client";
+import { getCareerStatus } from "@/data/siteSettings";
 
 import { useState } from "react";
 import { API_URL } from "@/config";
@@ -7,7 +8,7 @@ import { useLanguage } from "@/components/LanguageContext";
 type ContactIcon = "location" | "linkedin" | "github";
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "", website: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -185,16 +186,16 @@ export default function Contact() {
               );
             })}
 
-            {/* Availability banner */}
-            <div style={{
+            {/* Availability follows the same setting as the home card. */}
+            <div className={`career-status career-status--${getCareerStatus(locale).state}`} style={{
               padding: "16px 18px", borderRadius: "12px",
-              background: "var(--olive-tint)", border: "1.5px solid var(--olive-border)",
+              background: "var(--status-tint)", border: "1.5px solid var(--status-border)",
               display: "flex", alignItems: "center", gap: "12px",
             }}>
-              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "var(--olive)", flexShrink: 0, boxShadow: "0 0 8px var(--olive-glow)" }} />
+              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "var(--status-color)", flexShrink: 0 }} />
               <div>
-                <div style={{ fontWeight: "800", color: "var(--olive-dark)", fontSize: "0.85rem", letterSpacing: "0.03em" }}>{t("contact_avail_title")}</div>
-                <div style={{ color: "var(--olive)", fontSize: "0.78rem", marginTop: "1px" }}>{t("contact_avail_desc")}</div>
+                <div style={{ fontWeight: "800", color: "var(--status-text)", fontSize: "0.85rem", letterSpacing: "0.03em" }}>{getCareerStatus(locale).label}</div>
+                <div style={{ color: "var(--fg-muted)", fontSize: "0.78rem", marginTop: "1px" }}>{getCareerStatus(locale).description}</div>
               </div>
             </div>
           </div>

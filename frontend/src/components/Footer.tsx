@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/LanguageContext";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,12 +26,12 @@ export default function Footer() {
       >
         {/* Branding */}
         <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <a
-            href="#home"
+          <Link
+            href="/#home"
             style={{ fontSize: "1.15rem", fontWeight: "900", fontFamily: "var(--font-outfit)", letterSpacing: "-0.03em", color: "var(--fg-color)" }}
           >
             Yichi<span style={{ color: "var(--orange)" }}>.</span>
-          </a>
+          </Link>
           <p style={{ color: "var(--fg-subtle)", fontSize: "0.82rem", fontWeight: "500" }}>
             {t("footer_role")} · Changhua, Taiwan
           </p>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import "./notes.css";
+import { AuthProvider } from "@/components/AuthProvider";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { LanguageProvider } from "@/components/LanguageContext";
 
@@ -17,13 +19,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Yichi Nien | SME 智慧製造工程師 Portfolio",
-  description: "Professional portfolio of Yichi Nien — an SME smart manufacturing engineer and backend software engineer with expertise in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation. Based in Changhua, Taiwan.",
-  keywords: ["SME 智慧製造工程師", "SME Smart Manufacturing Engineer", "Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
+  title: "Yichi Nien | IME 智慧製造工程師 Portfolio",
+  description: "Professional portfolio of Yichi Nien — an IME intelligent manufacturing engineer and backend software engineer with expertise in data engineering, ETL pipelines, SQL analytics, Power BI dashboards, and Python automation. Based in Changhua, Taiwan.",
+  keywords: ["IME 智慧製造工程師", "IME Intelligent Manufacturing Engineer", "Data Engineer", "ETL Pipeline", "Python Developer", "Power BI", "SQL", "Software Engineer Portfolio", "Changhua Taiwan"],
   authors: [{ name: "Yichi Nien" }],
   openGraph: {
-    title: "Yichi Nien | SME 智慧製造工程師 Portfolio",
-    description: "SME smart manufacturing engineer and software engineer with expertise in data engineering, ETL, SQL analytics, Power BI, and Python automation.",
+    title: "Yichi Nien | IME 智慧製造工程師 Portfolio",
+    description: "IME intelligent manufacturing engineer and software engineer with expertise in data engineering, ETL, SQL analytics, Power BI, and Python automation.",
     type: "website",
   },
 };
@@ -41,7 +43,7 @@ export default function RootLayout({
       <body style={{ fontFamily: 'var(--font-inter), sans-serif' }} suppressHydrationWarning>
         <ThemeProvider>
           <LanguageProvider>
-            {children}
+            <AuthProvider>{children}</AuthProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>
