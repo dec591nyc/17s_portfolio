@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import PasswordField from "./PasswordField";
+import { authErrorMessage } from "@/lib/authErrors";
 import type { User } from "@supabase/supabase-js";
 import { getSupabase, rememberSession } from "@/lib/supabase";
 import { useLanguage } from "./LanguageContext";
@@ -60,7 +62,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     {children}
     <dialog className="notes-login" ref={dialog} onCancel={event => { if (busy) event.preventDefault(); }}>
       <form onSubmit={async event => {
-        event.preventDefault(); setError(""); setInfo("");
+        event.preventDefault(); if (busy) return; setError(""); setInfo("");
         const supabase = getSupabase();
         if (!supabase) { setError(zh ? "登入服務尚未設定，請稍後再試。" : "Sign-in is not configured yet."); return; }
         const form = event.currentTarget;
@@ -69,7 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           rememberSession(fields.get("remember") === "on");
           const { data, error: failure } = await supabase.auth.signInWithPassword({ email: String(fields.get("email")).trim(), password: String(fields.get("password")) });
-          if (failure || !data.user) { setError(zh ? "登入失敗，請確認帳號密碼或稍後重試。" : "Sign-in failed. Check your credentials or retry later."); return; }
+          if (failure || !data.user) { setError(authErrorMessage(failure, zh)); return; }
           const admin = await supabase.from("site_admins").select("user_id").eq("user_id", data.user.id).maybeSingle();
           if (admin.error || !admin.data) {
             await supabase.auth.signOut({ scope: "local" });
@@ -82,7 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }}>
         <div className="notes-dialog-heading"><h2>{zh ? "管理員登入" : "Administrator sign-in"}</h2><button type="button" disabled={busy} onClick={() => dialog.current?.close()} aria-label={zh ? "關閉" : "Close"}>×</button></div>
         <label>{zh ? "電子郵件" : "Email"}<input ref={emailInput} name="email" type="email" autoComplete="username" required disabled={busy} /></label>
-        <label>{zh ? "密碼" : "Password"}<input name="password" type="password" autoComplete="current-password" required disabled={busy} /></label>
+        <PasswordField label={zh ? "密碼" : "Password"} name="password" autoComplete="current-password" disabled={busy} zh={zh} />
         <label className="notes-checkbox"><input name="remember" type="checkbox" disabled={busy} />{zh ? "在此裝置保持登入" : "Keep me signed in on this device"}</label>
         {error && <p className="notes-error" role="alert">{error}</p>}
         {info && <p role="status">{info}</p>}
@@ -95,7 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setBusy(true); setError(""); setInfo("");
           try {
             const { error } = await supabase.auth.resetPasswordForEmail(email.value.trim(), { redirectTo: `${window.location.origin}/auth/reset` });
-            if (error) setError(zh ? "暫時無法寄送，請稍後重試。" : "Unable to send right now. Please retry.");
+            if (error) setError(authErrorMessage(error, zh));
             else setInfo(zh ? "若帳號存在，將收到密碼重設郵件。" : "If the account exists, a reset email will arrive.");
           } catch { setError(zh ? "連線失敗，請稍後重試。" : "Connection failed. Please retry."); }
           finally { setBusy(false); }

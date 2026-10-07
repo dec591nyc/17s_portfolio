@@ -49,6 +49,9 @@
 .notes-body-input { min-height: 320px; }
 .notes-login { width: min(420px, calc(100% - 32px)); max-height: 90dvh; margin: auto; padding: 26px; overflow-y: auto; background: var(--bg-card); color: var(--fg-color); border: 1px solid var(--card-border); border-radius: 14px; box-shadow: var(--card-shadow); }
 .notes-login::backdrop { background: #0009; backdrop-filter: blur(3px); }
+.notes-password-field { display: flex; align-items: stretch; gap: 8px; }
+.notes-password-field input { flex: 1; width: 0; margin-top: 0; }
+.notes-password-field button { flex-shrink: 0; min-width: 56px; }
 .notes-login p { margin: 14px 0; font-size: .87rem; }
 .notes-login .notes-checkbox { display: flex; align-items: center; gap: 9px; }
 .notes-login .notes-checkbox input { width: auto; margin: 0; }
